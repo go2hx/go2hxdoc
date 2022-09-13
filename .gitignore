@@ -1,0 +1,4 @@
+bin
+go2hxdoc
+example-project/bin
+.DS_Store
