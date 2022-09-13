@@ -158,22 +158,22 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		for _, r := range CompilationTestResults.Results {
 			if r.Module != lastModule {
 				lastModule = r.Module
-				tests := "no"
+				tests := "❌ no"
 				if r.HasTest {
-					tests = "yes"
+					tests = "✅ yes"
 				}
-				pf := "fail"
+				pf := "❌"
 				if r.CompiledOK {
-					pf = "pass"
+					pf = "✅"
 				}
 				line := fmt.Sprintf("| %s | %s | %s |", r.Module, pf, tests)
 				for _, t := range haxedoc.Targets {
 					if r.HasTest {
 						passed, exists := r.TargetTestOK[t]
 						if exists {
-							disp := "fail"
+							disp := "❌"
 							if passed {
-								disp = "pass"
+								disp = "✅"
 							}
 							line += fmt.Sprintf(" %s |", disp)
 						} else {
