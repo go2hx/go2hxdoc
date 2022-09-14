@@ -1,0 +1,37 @@
+package golang_org.x.example.stringutil;
+import stdgo.StdGoTypes;
+import stdgo.Error;
+import stdgo.Go;
+import stdgo.GoString;
+import stdgo.Pointer;
+import stdgo.Slice;
+import stdgo.GoArray;
+import stdgo.GoMap;
+import stdgo.Chan;
+/**
+    // Package stringutil contains utility functions for working with strings.
+**/
+private var __go2hxdoc__package : Bool;
+/**
+    // Reverse returns its argument string reversed rune-wise left to right.
+**/
+function reverse(_s:GoString):GoString {
+    var _r = (_s : Slice<GoRune>);
+    {
+        var _i:GoInt = (0 : GoInt), _j:GoInt = (_r.length) - (1 : GoInt);
+        Go.cfor(_i < (_r.length / (2 : GoInt)), {
+            final __tmp__0 = _i + (1 : GoInt);
+            final __tmp__1 = _j - (1 : GoInt);
+            _i = __tmp__0;
+            _j = __tmp__1;
+        }, {
+            {
+                final __tmp__0 = _r[_j];
+                final __tmp__1 = _r[_i];
+                _r[_i] = __tmp__0;
+                _r[_j] = __tmp__1;
+            };
+        });
+    };
+    return (_r : GoString);
+}

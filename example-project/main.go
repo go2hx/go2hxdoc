@@ -8,6 +8,7 @@ package main
 import (
 	_ "github.com/arriqaaq/zset"
 	_ "github.com/kr/text"
+	_ "golang.org/x/example/stringutil"
 )
 
 func main() {}

@@ -21,3 +21,4 @@ TO DO
 - Fix Typedef Haxe display to be correct
 - Fix all stdgo core functionality appearing, not just the .Go code
 - Create a better working Haxe programe using the library in example-project
+- Demonstrate use of tests in example-project
