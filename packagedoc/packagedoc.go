@@ -142,7 +142,7 @@ func (cfg *Config) CodeHref(file string, line uint) string {
 	return fmt.Sprintf("./%s#L%d", fname, line)
 }
 
-func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError bool) []byte { // TODO return err
+func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError bool) (libIndex, readme []byte) { // TODO return err
 
 	cfg := Config{
 		MD:  new(format.GitHubFlavoredMarkdown),
@@ -150,6 +150,13 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 	}
 
 	if showGlobalResults {
+
+		// local version of cfg
+		cfg := Config{
+			MD:  new(format.GitHubFlavoredMarkdown),
+			Out: bytes.Buffer{},
+		}
+
 		cfg.Header(1, "Library compilation and test results")
 		cfg.Write(`
 | module | compile | tests | cpp | hl | interp | jvm | 
@@ -166,7 +173,12 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 				if r.CompiledOK {
 					pf = "✅"
 				}
-				line := fmt.Sprintf("| %s | %s | %s |", r.Module, pf, tests)
+
+				moduleLink := strings.ReplaceAll(r.Module, ".", "/") + "/README.md"
+				moduleLink = strings.TrimPrefix(moduleLink, "stdgo/") // stdgo directory is the first part of the module name
+				moduleLink = "./" + moduleLink
+
+				line := fmt.Sprintf("| [%s](%s) | %s | %s |", r.Module, moduleLink, pf, tests)
 				for _, t := range haxedoc.Targets {
 					if r.HasTest {
 						passed, exists := r.TargetTestOK[t]
@@ -187,11 +199,13 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			}
 		}
 		cfg.Write("") // blank line
+
+		libIndex = cfg.Out.Bytes()
 	}
 
 	if hadError {
 		cfg.Write(stdout)
-		return cfg.Out.Bytes()
+		return libIndex, cfg.Out.Bytes()
 	}
 
 	overallModule := ""
@@ -225,6 +239,30 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 	classMethodSeparator := " " // many other special characters have been tried here, but only space seems to work.
 
 	cfg.Header(1, "Module: "+module)
+
+	{ // link back to the top index
+		var overallIndexLink string
+		modParts := strings.Split(module, ".")
+		switch modParts[0] {
+		case "stdgo":
+			overallIndexLink = modParts[0] + ".md"
+			if modParts[0] == "stdgo" {
+				modParts = modParts[1:] // stdgo needs one fewer ../
+			}
+		default:
+			overallIndexLink = "golibs.md"
+		}
+		if len(modParts) == 0 || module == "Main" || // TODO document it relies on the top level always being called "Main"
+			module == "stdgo.Go" {
+			overallIndexLink = "./" + overallIndexLink
+		} else {
+			for i := 0; i < len(modParts); i++ {
+				overallIndexLink = "../" + overallIndexLink
+			}
+		}
+
+		cfg.Write(fmt.Sprintf("[(view library index)](%s)\n\n", overallIndexLink))
+	}
 
 	cfg.Header(1, headers[overview])
 	{
@@ -304,7 +342,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			for _, ex := range fn.Examples {
 				cfg.Example(&ex)
 			}
-			cfg.Write(cfg.Link("(view code)", cfg.CodeHref(dd.ModuleLevel.Class.File, fn.Line)) + "\n")
+			cfg.Write(cfg.Link("(view code)", cfg.CodeHref(dd.ModuleLevel.Class.File, fn.Line)) + "\n\n")
 		}
 	}
 
@@ -329,7 +367,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 				cfg.CodeBlock(fn.String())
 				cfg.Comment(fn.Doc)
 				if cd.Class.File != "" && fn.Line != 0 {
-					cfg.Write(cfg.Link("(view code)", cfg.CodeHref(cd.Class.File, fn.Line)) + "\n")
+					cfg.Write(cfg.Link("(view code)", cfg.CodeHref(cd.Class.File, fn.Line)) + "\n\n")
 				}
 			}
 
@@ -360,11 +398,11 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 				cfg.CodeBlock(fn.String())
 				cfg.Comment(fn.Doc)
 				if cd.Typedef.File != "" && fn.Line != 0 {
-					cfg.Write(cfg.Link("(view code)", cfg.CodeHref(cd.Typedef.File, fn.Line)) + "\n")
+					cfg.Write(cfg.Link("(view code)", cfg.CodeHref(cd.Typedef.File, fn.Line)) + "\n\n")
 				}
 			}
 		}
 	}
 
-	return cfg.Out.Bytes()
+	return libIndex, cfg.Out.Bytes()
 }

@@ -38,9 +38,6 @@ func writeFile(filepath string, content []byte) {
 func main() {
 	start := time.Now() // needed if -stats flag is used
 
-	// TODO
-	// --hl, --jvm, --cpp testing
-
 	debug = flag.Bool("debug", false, "put the output markdown files in the temporary directory (may do other things too) - for testing, do not use")
 
 	silent = flag.Bool("silent", false, "silence progress messages")
@@ -60,6 +57,11 @@ func main() {
 		os.Exit(1) // unprocessed flags
 	}
 
+	// make the tempDir, if it does not already exist
+	if err := os.MkdirAll(tempDir, 0777); err != nil {
+		panic(err)
+	}
+
 	baseDir = filepath.Clean(baseDir)
 
 	dirList := haxedoc.DirList(baseDir)
@@ -73,6 +75,9 @@ func main() {
 	var finalCompilation haxedoc.HxmlXmlFiles
 
 	compilationFunc := func(comp haxedoc.HxmlXmlFiles) {
+		var libIndex []byte // contents of the library index file, if present
+		var content []byte  // contents of the README file
+
 		// run the haxe compiler
 		//fmt.Println(comp.Hxml)
 		cmd := exec.Command("haxe", comp.HxmlDoc)
@@ -87,7 +92,7 @@ func main() {
 			errorMD = append(errorMD, errBuf.Bytes()...)
 			errorMD = append(errorMD, outBuf.Bytes()...)
 
-			content := packagedoc.FileMD(rtti.DirData{}, comp.Module, string(append(errorMD, []byte("\n```\n")...)), comp.DP.IsRoot, true)
+			libIndex, content = packagedoc.FileMD(rtti.DirData{}, comp.Module, string(append(errorMD, []byte("\n```\n")...)), comp.DP.IsRoot, true)
 			writeFile(readmeFile, content)
 
 			packagedoc.CompilationTestResults.Add(comp.Module, comp.DP.HasTest, false, nil)
@@ -130,12 +135,16 @@ func main() {
 					panic(fmt.Errorf("no files in target directory %s", d))
 				}
 				readmeFile := filepath.Join(d, "README.md")
-				content := packagedoc.FileMD(dirs[d], comp.Module, testResultsMD, comp.DP.IsRoot, false)
+				libIndex, content = packagedoc.FileMD(dirs[d], comp.Module, testResultsMD, comp.DP.IsRoot, false)
 
 				writeFile(readmeFile, content)
 				packagedoc.CompilationTestResults.Add(comp.Module, comp.DP.HasTest, true, resultsMap)
 
 			}
+		}
+		if libIndex != nil {
+			codeDirParts := strings.Split(comp.DP.CodeDir, "/")
+			writeFile(filepath.Join(comp.DP.CodeDir, codeDirParts[len(codeDirParts)-1]+".md"), libIndex)
 		}
 		if !comp.DP.IsRoot {
 			wg.Done()

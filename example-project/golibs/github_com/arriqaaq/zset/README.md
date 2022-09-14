@@ -1,6 +1,9 @@
 # Module: github\_com.arriqaaq.zset
 
 
+[(view library index)](../../../golibs.md)
+
+
 # Overview
 
 
@@ -117,6 +120,7 @@ function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.G
 
 [\(view code\)](<./Zset.hx#L126>)
 
+
 ## \_newZSkipList
 
 
@@ -129,6 +133,7 @@ function _newZSkipList():github_com.arriqaaq.zset._Zset.T_zskiplist
 
 
 [\(view code\)](<./Zset.hx#L133>)
+
 
 ## \_randomLevel
 
@@ -143,6 +148,7 @@ Returns a random level for the new skiplist node we are going to create. The ret
 
 [\(view code\)](<./Zset.hx#L116>)
 
+
 ## new\_
 
 
@@ -155,6 +161,7 @@ New create a new sorted set
 
 
 [\(view code\)](<./Zset.hx#L139>)
+
 
 # Classes
 
@@ -207,6 +214,7 @@ function new(?limit:Null<stdgo.GoInt>, ?excludeStart:Bool, ?excludeEnd:Bool):Voi
 
 [\(view code\)](<./Zset.hx#L100>)
 
+
 ## class ZSet
 
 
@@ -231,6 +239,7 @@ function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq
 
 [\(view code\)](<./Zset.hx#L21>)
 
+
 ### ZSet \_exist
 
 
@@ -243,6 +252,7 @@ function _exist( _key:stdgo.GoString):Bool
 
 
 [\(view code\)](<./Zset.hx#L737>)
+
 
 ### ZSet keys
 
@@ -257,6 +267,7 @@ function keys():stdgo.Slice<stdgo.GoString>
 
 [\(view code\)](<./Zset.hx#L278>)
 
+
 ### ZSet zadd
 
 
@@ -269,6 +280,7 @@ ZAdd Adds the specified member with the specified score to the sorted set stored
 
 
 [\(view code\)](<./Zset.hx#L710>)
+
 
 ### ZSet zcard
 
@@ -283,6 +295,7 @@ ZCard returns the sorted set cardinality \(number of elements\) of the sorted se
 
 [\(view code\)](<./Zset.hx#L683>)
 
+
 ### ZSet zclear
 
 
@@ -295,6 +308,7 @@ ZClear clear the key in zset.
 
 
 [\(view code\)](<./Zset.hx#L518>)
+
 
 ### ZSet zgetByRank
 
@@ -309,6 +323,7 @@ ZGetByRank gets the member at key by rank, the rank is ordered from lowest to hi
 
 [\(view code\)](<./Zset.hx#L456>)
 
+
 ### ZSet zincrBy
 
 
@@ -321,6 +336,7 @@ ZIncrBy increments the score of member in the sorted set stored at key by increm
 
 
 [\(view code\)](<./Zset.hx#L629>)
+
 
 ### ZSet zkeyExists
 
@@ -335,6 +351,7 @@ ZKeyExists check if the key exists in zset.
 
 [\(view code\)](<./Zset.hx#L527>)
 
+
 ### ZSet zpopMax
 
 
@@ -347,6 +364,7 @@ get and remove the element with maximum score, nil if the set is empty
 
 
 [\(view code\)](<./Zset.hx#L408>)
+
 
 ### ZSet zpopMin
 
@@ -361,6 +379,7 @@ get and remove the element with minimal score, nil if the set is empty
 
 [\(view code\)](<./Zset.hx#L424>)
 
+
 ### ZSet zrange
 
 
@@ -373,6 +392,7 @@ ZRange returns the specified range of elements in the sorted set stored at \<key
 
 
 [\(view code\)](<./Zset.hx#L507>)
+
 
 ### ZSet zrangeByScore
 
@@ -387,6 +407,7 @@ function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.
 
 [\(view code\)](<./Zset.hx#L297>)
 
+
 ### ZSet zrangeWithScores
 
 
@@ -399,6 +420,7 @@ ZRangeWithScores returns the specified range of elements in the sorted set store
 
 
 [\(view code\)](<./Zset.hx#L496>)
+
 
 ### ZSet zrank
 
@@ -413,6 +435,7 @@ ZRank returns the rank of member in the sorted set stored at key, with the score
 
 [\(view code\)](<./Zset.hx#L666>)
 
+
 ### ZSet zrem
 
 
@@ -425,6 +448,7 @@ ZRem removes the specified members from the sorted set stored at key. Non existi
 
 
 [\(view code\)](<./Zset.hx#L610>)
+
 
 ### ZSet zrevGetByRank
 
@@ -439,6 +463,7 @@ ZRevGetByRank get the member at key by rank, the rank is ordered from highest to
 
 [\(view code\)](<./Zset.hx#L441>)
 
+
 ### ZSet zrevRange
 
 
@@ -451,6 +476,7 @@ ZRevRange returns the specified range of elements in the sorted set stored at ke
 
 
 [\(view code\)](<./Zset.hx#L485>)
+
 
 ### ZSet zrevRangeWithScores
 
@@ -465,6 +491,7 @@ ZRevRange returns the specified range of elements in the sorted set stored at ke
 
 [\(view code\)](<./Zset.hx#L472>)
 
+
 ### ZSet zrevRank
 
 
@@ -477,6 +504,7 @@ ZRevRank returns the rank of member in the sorted set stored at key, with the sc
 
 
 [\(view code\)](<./Zset.hx#L649>)
+
 
 ### ZSet zrevScoreRange
 
@@ -491,6 +519,7 @@ ZRevScoreRange returns all the elements in the sorted set at key with a score be
 
 [\(view code\)](<./Zset.hx#L535>)
 
+
 ### ZSet zscore
 
 
@@ -504,6 +533,7 @@ ZScore returns the score of member in the sorted set at key.
 
 [\(view code\)](<./Zset.hx#L693>)
 
+
 ### ZSet zscoreRange
 
 
@@ -516,4 +546,5 @@ ZScoreRange returns all the elements in the sorted set at key with a score betwe
 
 
 [\(view code\)](<./Zset.hx#L572>)
+
 

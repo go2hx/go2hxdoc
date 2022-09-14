@@ -1,6 +1,9 @@
 # Module: github\_com.kr.text
 
 
+[(view library index)](../../../golibs.md)
+
+
 # Overview
 
 
@@ -43,6 +46,7 @@ Indent inserts prefix at the beginning of each non\-empty line of s. The end\-of
 
 [\(view code\)](<./Text.hx#L44>)
 
+
 ## indentBytes
 
 
@@ -55,6 +59,7 @@ IndentBytes inserts prefix at the beginning of each non\-empty line of b. The en
 
 
 [\(view code\)](<./Text.hx#L51>)
+
 
 ## newIndentWriter
 
@@ -69,6 +74,7 @@ NewIndentWriter makes a new write filter that indents the input lines. Each line
 
 [\(view code\)](<./Text.hx#L69>)
 
+
 ## wrap
 
 
@@ -81,6 +87,7 @@ Wrap wraps s into a paragraph of lines of length lim, with minimal raggedness.
 
 
 [\(view code\)](<./Text.hx#L77>)
+
 
 ## wrapBytes
 
@@ -95,6 +102,7 @@ WrapBytes wraps b into a paragraph of lines of length lim, with minimal raggedne
 
 [\(view code\)](<./Text.hx#L84>)
 
+
 ## wrapWords
 
 
@@ -107,4 +115,5 @@ WrapWords is the low\-level line\-breaking algorithm, useful if you need more co
 
 
 [\(view code\)](<./Text.hx#L105>)
+
 
