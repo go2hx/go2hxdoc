@@ -18,7 +18,7 @@ This project has only been tested on OSX.
 TO DO
 -----
 
-- Fix Typedef Haxe display to be correct
-- Fix all stdgo core functionality appearing, not just the .Go code
-- Create a better working Haxe programe using the library in example-project
-- Demonstrate use of tests in example-project
+- Fix Typedef Haxe code display to be correct
+- Fix to document all `stdgo` core functionality e.g. document abstract use in stdgo/GoString.hx
+- Create a better working Haxe programe using a transpiled library in example-project
+- Demonstrate use of Go package tests in example-project

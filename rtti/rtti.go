@@ -41,6 +41,8 @@ type TAbstractdecl struct {
 	Private  bool   `xml:"private,attr"`
 	Module   string `xml:"module,attr"`
 	MetaInfo Meta   `xml:"meta"`
+	This     CField `xml:"this"`
+	Doc      string `xml:"haxe_doc"`
 }
 
 type Type struct { // amalgum of Haxe types
@@ -309,12 +311,13 @@ func (tt *TypeTree) FilterBase(base string, incSubDirs bool) (*TypeTree, error) 
 }
 
 type ClassData struct {
-	Class     *TClassdecl // the class header
-	Typedef   *TTypedecl  // the typedef header
-	Constants []*CField   // the constants to show
-	Variables []*CField   // the variables to show
-	Functions []*CField   // the functions to show
-	Examples  []Example   // examples at class level, for the Typedef
+	Class     *TClassdecl    // the class header
+	Typedef   *TTypedecl     // the typedef header
+	Abstract  *TAbstractdecl // the abstract header
+	Constants []*CField      // the constants to show
+	Variables []*CField      // the variables to show
+	Functions []*CField      // the functions to show
+	Examples  []Example      // examples at class level, for the Typedef
 }
 
 func (cd *ClassData) AddField(fld *CField) {
@@ -374,7 +377,8 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 	an := make(Dirs)
 
 	for _, a := range tt.Abstracts {
-		an.AddFile(a.File, a.Module)
+		dir := an.AddFile(a.File, a.Module)
+		_ = dir // TODO build abstracts too, as used in stdgo (if not go2hx output)
 	}
 
 	for i, a := range tt.Classes {
@@ -452,7 +456,7 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 		an.AddFile(a.File, a.Module)
 	}
 
-	// find test module & directpry, if it exists
+	// find test module & directory, if it exists
 	tm := "" // test module
 	td := "" // test directory
 	for name, nameData := range an {
