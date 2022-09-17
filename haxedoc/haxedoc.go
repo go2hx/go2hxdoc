@@ -42,6 +42,10 @@ func init() {
 
 }
 
+func IsTest() bool {
+	return *interpFlag || *hlFlag || *cppFlag || *jvmFlag
+}
+
 var Targets = []string{"cpp", "hl", "interp", "jvm"} // in lexical order
 
 type DirPair struct {
@@ -96,7 +100,7 @@ func DirList(baseDir string) []DirPair {
 				// fmt.Println(path, "HX", hadHX, latestHX, "MD", hadMD, latestMD, latestMD.Before(latestHX)) // debug
 				if hadHX {
 					if hadMD {
-						if latestMD.Before(latestHX) || *Force {
+						if latestMD.Before(latestHX) || *Force || IsTest() { // TODO put test results into central JSON in order to skip if already done
 							dirsInTree[path] = true
 						}
 					} else {
@@ -177,7 +181,8 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			DP:        d,
 		}
 
-		hxmlCommon := "-lib go2hx\n-cp " + baseDir + "\n"
+		hxmlCommon := "-cp " + baseDir + "\n"
+		hxmlCommon += "-lib go2hx\n"
 		hxmlCommon += module + "\n"
 		if d.HasTest {
 			hxmlCommon += module + "_test\n"

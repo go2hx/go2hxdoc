@@ -18,14 +18,10 @@ import (
 	"github.com/go2hx/go2hxdoc/rtti"
 )
 
-var debug *bool    // set by the flags
 var tempDir string // set by the flags
 var silent *bool   // set by the flags
 
 func writeFile(filepath string, content []byte) {
-	if *debug {
-		filepath = tempDir + "/" + strings.ReplaceAll(filepath, "/", "_")
-	}
 	if !*silent {
 		fmt.Println("Creating:", filepath)
 	}
@@ -37,8 +33,6 @@ func writeFile(filepath string, content []byte) {
 
 func main() {
 	start := time.Now() // needed if -stats flag is used
-
-	debug = flag.Bool("debug", false, "put the output markdown files in the temporary directory (may do other things too) - for testing, do not use")
 
 	silent = flag.Bool("silent", false, "silence progress messages")
 
@@ -122,7 +116,6 @@ func main() {
 			if err != nil {
 				panic(err)
 			}
-			//fmt.Println("dirs", dirs.DirList())
 
 			// go through the directories and add a markdown README.md - there should only be one
 			for _, d := range dirs.DirList() {

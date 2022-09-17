@@ -15,13 +15,13 @@
 
 - [Constants](<#constants>)
 
-- [function \_createNode\(\_level:stdgo.GoInt, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode](<#_createnode>)
+- [function \_createNode\(\_level:stdgo.GoInt, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#_createnode>)
 
-- [function \_newZSkipList\(\):github\_com.arriqaaq.zset.\_Zset.T\_zskiplist](<#_newzskiplist>)
+- [function \_newZSkipList\(\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplist\>](<#_newzskiplist>)
 
 - [function \_randomLevel\(\):stdgo.GoInt](<#_randomlevel>)
 
-- [function new\_\(\):github\_com.arriqaaq.zset.ZSet](<#new_>)
+- [function new\_\(\):stdgo.Ref\<github\_com.arriqaaq.zset.ZSet\>](<#new_>)
 
 - [class ZRangeOptions](<#zrangeoptions>)
 
@@ -47,13 +47,13 @@
 
   - [function zkeyExists\( \_key:stdgo.GoString\):Bool](<#zset-zkeyexists>)
 
-  - [function zpopMax\( \_key:stdgo.GoString\):github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode](<#zset-zpopmax>)
+  - [function zpopMax\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-zpopmax>)
 
-  - [function zpopMin\( \_key:stdgo.GoString\):github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode](<#zset-zpopmin>)
+  - [function zpopMin\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-zpopmin>)
 
   - [function zrange\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrange>)
 
-  - [function zrangeByScore\( \_key:stdgo.GoString, \_start:stdgo.GoFloat64, \_end:stdgo.GoFloat64, \_options:github\_com.arriqaaq.zset.ZRangeOptions\):stdgo.Slice\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-zrangebyscore>)
+  - [function zrangeByScore\( \_key:stdgo.GoString, \_start:stdgo.GoFloat64, \_end:stdgo.GoFloat64, \_options:stdgo.Ref\<github\_com.arriqaaq.zset.ZRangeOptions\>\):stdgo.Slice\<stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>\>](<#zset-zrangebyscore>)
 
   - [function zrangeWithScores\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrangewithscores>)
 
@@ -111,7 +111,7 @@ import github_com.arriqaaq.zset.Zset
 
 
 ```haxe
-function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):github_com.arriqaaq.zset._Zset.T_zskiplistNode
+function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
 ```
 
 
@@ -125,7 +125,7 @@ function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.G
 
 
 ```haxe
-function _newZSkipList():github_com.arriqaaq.zset._Zset.T_zskiplist
+function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>
 ```
 
 
@@ -153,7 +153,7 @@ Returns a random level for the new skiplist node we are going to create. The ret
 
 
 ```haxe
-function new_():github_com.arriqaaq.zset.ZSet
+function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>
 ```
 
 
@@ -356,7 +356,7 @@ ZKeyExists check if the key exists in zset.
 
 
 ```haxe
-function zpopMax( _key:stdgo.GoString):github_com.arriqaaq.zset._Zset.T_zskiplistNode
+function zpopMax( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
 ```
 
 
@@ -370,7 +370,7 @@ get and remove the element with maximum score, nil if the set is empty
 
 
 ```haxe
-function zpopMin( _key:stdgo.GoString):github_com.arriqaaq.zset._Zset.T_zskiplistNode
+function zpopMin( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
 ```
 
 
@@ -398,7 +398,7 @@ ZRange returns the specified range of elements in the sorted set stored at \<key
 
 
 ```haxe
-function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.GoFloat64, _options:github_com.arriqaaq.zset.ZRangeOptions):stdgo.Slice<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
+function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.GoFloat64, _options:stdgo.Ref<github_com.arriqaaq.zset.ZRangeOptions>):stdgo.Slice<stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>>
 ```
 
 

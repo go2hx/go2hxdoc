@@ -123,20 +123,20 @@ function _randomLevel():GoInt {
         };
         return (32 : GoInt);
     }
-function _createNode(_level:GoInt, _score:GoFloat64, _member:GoString, _value:AnyInterface):T_zskiplistNode {
-        var _node = ({ _score : _score, _member : _member, _value : Go.toInterface(_value), _level : new Slice<Ref<T_zskiplistLevel>>((_level : GoInt).toBasic(), 0, ...[for (i in 0 ... (_level : GoInt).toBasic()) (null : T_zskiplistLevel)]) } : T_zskiplistNode);
+function _createNode(_level:GoInt, _score:GoFloat64, _member:GoString, _value:AnyInterface):Ref<T_zskiplistNode> {
+        var _node = ({ _score : _score, _member : _member, _value : _value, _level : new Slice<Ref<T_zskiplistLevel>>((_level : GoInt).toBasic(), 0, ...[for (i in 0 ... (_level : GoInt).toBasic()) (null : T_zskiplistLevel)]) } : T_zskiplistNode);
         for (_i => _ in _node._level) {
-            _node._level[_i] = ({  } : T_zskiplistLevel);
+            _node._level[_i] = ({} : T_zskiplistLevel);
         };
         return _node;
     }
-function _newZSkipList():T_zskiplist {
+function _newZSkipList():Ref<T_zskiplist> {
         return ({ _level : (1 : GoInt), _head : _createNode((32 : GoInt), (0 : GoFloat64), (Go.str() : GoString), (null : AnyInterface)) } : T_zskiplist);
     }
 /**
     // New create a new sorted set
 **/
-function new_():ZSet {
+function new_():Ref<ZSet> {
         return (new ZSet((new GoObjectMap<GoString, Ref<T_zset>>(new stdgo.reflect.Reflect._Type(stdgo.reflect.Reflect.GoType.mapType(stdgo.reflect.Reflect.GoType.basic(string_kind), stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zset", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_dict", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.mapType(stdgo.reflect.Reflect.GoType.basic(string_kind), stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(string_kind) }, { name : "_value", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.interfaceType(true, []) }, { name : "_score", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(float64_kind) }, { name : "_backward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_level", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.sliceType(stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_span", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(uint64_kind) }])))) }])))) }, { name : "_zsl", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplist", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_head", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(string_kind) }, { name : "_value", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.interfaceType(true, []) }, { name : "_score", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(float64_kind) }, { name : "_backward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_level", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.sliceType(stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_span", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(uint64_kind) }])))) }]))) }, { name : "_tail", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(string_kind) }, { name : "_value", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.interfaceType(true, []) }, { name : "_score", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(float64_kind) }, { name : "_backward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_level", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.sliceType(stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_span", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(uint64_kind) }])))) }]))) }, { name : "_length", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(int64_kind) }, { name : "_level", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(int_kind) }]))) }])))))) : GoMap<GoString, Ref<T_zset>>)) : ZSet);
     }
 class ZSet_asInterface {
@@ -154,17 +154,17 @@ class ZSet_asInterface {
         *|/
     **/
     @:keep
-    public function zrangeByScore(_key:GoString, _start:GoFloat64, _end:GoFloat64, _options:ZRangeOptions):Slice<T_zskiplistNode> return __self__.zrangeByScore(_key, _start, _end, _options);
+    public function zrangeByScore(_key:GoString, _start:GoFloat64, _end:GoFloat64, _options:Ref<ZRangeOptions>):Slice<Ref<T_zskiplistNode>> return __self__.zrangeByScore(_key, _start, _end, _options);
     /**
         // get and remove the element with maximum score, nil if the set is empty
     **/
     @:keep
-    public function zpopMax(_key:GoString):T_zskiplistNode return __self__.zpopMax(_key);
+    public function zpopMax(_key:GoString):Ref<T_zskiplistNode> return __self__.zpopMax(_key);
     /**
         // get and remove the element with minimal score, nil if the set is empty
     **/
     @:keep
-    public function zpopMin(_key:GoString):T_zskiplistNode return __self__.zpopMin(_key);
+    public function zpopMin(_key:GoString):Ref<T_zskiplistNode> return __self__.zpopMin(_key);
     /**
         // ZRevGetByRank get the member at key by rank, the rank is ordered from highest to lowest.
         // The rank of highest is 0 and so on.
@@ -275,7 +275,7 @@ class ZSet_asInterface {
 }
 @:keep private class ZSet_static_extension {
     @:keep
-    static public function keys( _z:ZSet):Slice<GoString> {
+    static public function keys( _z:Ref<ZSet>):Slice<GoString> {
         var _keys = new Slice<GoString>((0 : GoInt).toBasic(), (_z._records.length), ...[for (i in 0 ... (0 : GoInt).toBasic()) ("" : GoString)]);
         for (_k => _ in _z._records) {
             _keys = (_keys.__append__(_k));
@@ -294,8 +294,8 @@ class ZSet_asInterface {
         *|/
     **/
     @:keep
-    static public function zrangeByScore( _z:ZSet, _key:GoString, _start:GoFloat64, _end:GoFloat64, _options:ZRangeOptions):Slice<T_zskiplistNode> {
-        var _nodes:Slice<T_zskiplistNode> = (null : Slice<Ref<T_zskiplistNode>>);
+    static public function zrangeByScore( _z:Ref<ZSet>, _key:GoString, _start:GoFloat64, _end:GoFloat64, _options:Ref<ZRangeOptions>):Slice<Ref<T_zskiplistNode>> {
+        var _nodes:Slice<Ref<T_zskiplistNode>> = (null : Slice<Ref<T_zskiplistNode>>);
         if (!_z._exist(_key)) {
             return _nodes;
         };
@@ -405,8 +405,8 @@ class ZSet_asInterface {
         // get and remove the element with maximum score, nil if the set is empty
     **/
     @:keep
-    static public function zpopMax( _z:ZSet, _key:GoString):T_zskiplistNode {
-        var _rec:T_zskiplistNode = (null : T_zskiplistNode);
+    static public function zpopMax( _z:Ref<ZSet>, _key:GoString):Ref<T_zskiplistNode> {
+        var _rec:Ref<T_zskiplistNode> = (null : T_zskiplistNode);
         if (!_z._exist(_key)) {
             return _rec;
         };
@@ -421,8 +421,8 @@ class ZSet_asInterface {
         // get and remove the element with minimal score, nil if the set is empty
     **/
     @:keep
-    static public function zpopMin( _z:ZSet, _key:GoString):T_zskiplistNode {
-        var _rec:T_zskiplistNode = (null : T_zskiplistNode);
+    static public function zpopMin( _z:Ref<ZSet>, _key:GoString):Ref<T_zskiplistNode> {
+        var _rec:Ref<T_zskiplistNode> = (null : T_zskiplistNode);
         if (!_z._exist(_key)) {
             return _rec;
         };
@@ -438,7 +438,7 @@ class ZSet_asInterface {
         // The rank of highest is 0 and so on.
     **/
     @:keep
-    static public function zrevGetByRank( _z:ZSet, _key:GoString, _rank:GoInt):Slice<AnyInterface> {
+    static public function zrevGetByRank( _z:Ref<ZSet>, _key:GoString, _rank:GoInt):Slice<AnyInterface> {
         var _val:Slice<AnyInterface> = (null : Slice<AnyInterface>);
         if (!_z._exist(_key)) {
             return _val;
@@ -453,7 +453,7 @@ class ZSet_asInterface {
         // The rank of lowest is 0 and so on.
     **/
     @:keep
-    static public function zgetByRank( _z:ZSet, _key:GoString, _rank:GoInt):Slice<AnyInterface> {
+    static public function zgetByRank( _z:Ref<ZSet>, _key:GoString, _rank:GoInt):Slice<AnyInterface> {
         var _val:Slice<AnyInterface> = (null : Slice<AnyInterface>);
         if (!_z._exist(_key)) {
             return _val;
@@ -469,7 +469,7 @@ class ZSet_asInterface {
         // Descending lexicographical order is used for elements with equal score.
     **/
     @:keep
-    static public function zrevRangeWithScores( _z:ZSet, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
+    static public function zrevRangeWithScores( _z:Ref<ZSet>, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
         if (!_z._exist(_key)) {
             return (null : Slice<AnyInterface>);
         };
@@ -482,7 +482,7 @@ class ZSet_asInterface {
         // Descending lexicographical order is used for elements with equal score.
     **/
     @:keep
-    static public function zrevRange( _z:ZSet, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
+    static public function zrevRange( _z:Ref<ZSet>, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
         if (!_z._exist(_key)) {
             return (null : Slice<AnyInterface>);
         };
@@ -493,7 +493,7 @@ class ZSet_asInterface {
         // ZRangeWithScores returns the specified range of elements in the sorted set stored at <key>.
     **/
     @:keep
-    static public function zrangeWithScores( _z:ZSet, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
+    static public function zrangeWithScores( _z:Ref<ZSet>, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
         if (!_z._exist(_key)) {
             return (null : Slice<AnyInterface>);
         };
@@ -504,7 +504,7 @@ class ZSet_asInterface {
         // ZRange returns the specified range of elements in the sorted set stored at <key>.
     **/
     @:keep
-    static public function zrange( _z:ZSet, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
+    static public function zrange( _z:Ref<ZSet>, _key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> {
         if (!_z._exist(_key)) {
             return (null : Slice<AnyInterface>);
         };
@@ -515,7 +515,7 @@ class ZSet_asInterface {
         // ZClear clear the key in zset.
     **/
     @:keep
-    static public function zclear( _z:ZSet, _key:GoString):Void {
+    static public function zclear( _z:Ref<ZSet>, _key:GoString):Void {
         if (_z.zkeyExists(_key)) {
             if (_z._records != null) _z._records.__remove__(_key);
         };
@@ -524,7 +524,7 @@ class ZSet_asInterface {
         // ZKeyExists check if the key exists in zset.
     **/
     @:keep
-    static public function zkeyExists( _z:ZSet, _key:GoString):Bool {
+    static public function zkeyExists( _z:Ref<ZSet>, _key:GoString):Bool {
         return _z._exist(_key);
     }
     /**
@@ -532,7 +532,7 @@ class ZSet_asInterface {
         // In contrary to the default ordering of sorted sets, for this command the elements are considered to be ordered from high to low scores.
     **/
     @:keep
-    static public function zrevScoreRange( _z:ZSet, _key:GoString, _max:GoFloat64, _min:GoFloat64):Slice<AnyInterface> {
+    static public function zrevScoreRange( _z:Ref<ZSet>, _key:GoString, _max:GoFloat64, _min:GoFloat64):Slice<AnyInterface> {
         var _val:Slice<AnyInterface> = (null : Slice<AnyInterface>);
         if (!_z._exist(_key) || (_max < _min)) {
             return _val;
@@ -569,7 +569,7 @@ class ZSet_asInterface {
         // The elements are considered to be ordered from low to high scores.
     **/
     @:keep
-    static public function zscoreRange( _z:ZSet, _key:GoString, _min:GoFloat64, _max:GoFloat64):Slice<AnyInterface> {
+    static public function zscoreRange( _z:Ref<ZSet>, _key:GoString, _min:GoFloat64, _max:GoFloat64):Slice<AnyInterface> {
         var _val:Slice<AnyInterface> = (null : Slice<AnyInterface>);
         if (!_z._exist(_key) || (_min > _max)) {
             return _val;
@@ -607,7 +607,7 @@ class ZSet_asInterface {
         // An error is returned when key exists and does not hold a sorted set.
     **/
     @:keep
-    static public function zrem( _z:ZSet, _key:GoString, _member:GoString):Bool {
+    static public function zrem( _z:Ref<ZSet>, _key:GoString, _member:GoString):Bool {
         if (!_z._exist(_key)) {
             return false;
         };
@@ -626,14 +626,14 @@ class ZSet_asInterface {
         // If key does not exist, a new sorted set with the specified member as its sole member is created.
     **/
     @:keep
-    static public function zincrBy( _z:ZSet, _key:GoString, _increment:GoFloat64, _member:GoString):GoFloat64 {
+    static public function zincrBy( _z:Ref<ZSet>, _key:GoString, _increment:GoFloat64, _member:GoString):GoFloat64 {
         var _memberExists:Bool = false;
         var _keyExists:Bool = _z._exist(_key);
         if (_keyExists) {
             var __tmp__ = (_z._records[_key]._dict != null && _z._records[_key]._dict.__exists__(_member) ? { value : _z._records[_key]._dict[_member], ok : true } : { value : (null : T_zskiplistNode), ok : false }), _node:Ref<T_zskiplistNode> = __tmp__.value, _memberExists:Bool = __tmp__.ok;
             if (_memberExists) {
                 _increment = _increment + (_node._score);
-                _z.zadd(_key, _increment, _member, Go.toInterface(_node._value));
+                _z.zadd(_key, _increment, _member, _node._value);
             };
         };
         if (!_keyExists || !_memberExists) {
@@ -646,7 +646,7 @@ class ZSet_asInterface {
         // The rank (or index) is 0-based, which means that the member with the highest score has rank 0.
     **/
     @:keep
-    static public function zrevRank( _z:ZSet, _key:GoString, _member:GoString):GoInt64 {
+    static public function zrevRank( _z:Ref<ZSet>, _key:GoString, _member:GoString):GoInt64 {
         if (!_z._exist(_key)) {
             return (-1 : GoInt64);
         };
@@ -663,7 +663,7 @@ class ZSet_asInterface {
         // The rank (or index) is 0-based, which means that the member with the lowest score has rank 0.
     **/
     @:keep
-    static public function zrank( _z:ZSet, _key:GoString, _member:GoString):GoInt64 {
+    static public function zrank( _z:Ref<ZSet>, _key:GoString, _member:GoString):GoInt64 {
         if (!_z._exist(_key)) {
             return (-1 : GoInt64);
         };
@@ -680,7 +680,7 @@ class ZSet_asInterface {
         // ZCard returns the sorted set cardinality (number of elements) of the sorted set stored at key.
     **/
     @:keep
-    static public function zcard( _z:ZSet, _key:GoString):GoInt {
+    static public function zcard( _z:Ref<ZSet>, _key:GoString):GoInt {
         if (!_z._exist(_key)) {
             return (0 : GoInt);
         };
@@ -690,7 +690,7 @@ class ZSet_asInterface {
         // ZScore returns the score of member in the sorted set at key.
     **/
     @:keep
-    static public function zscore( _z:ZSet, _key:GoString, _member:GoString):{ var _0 : Bool; var _1 : GoFloat64; } {
+    static public function zscore( _z:Ref<ZSet>, _key:GoString, _member:GoString):{ var _0 : Bool; var _1 : GoFloat64; } {
         var _ok:Bool = false, _score:GoFloat64 = (0 : GoFloat64);
         if (!_z._exist(_key)) {
             return { _0 : _ok, _1 : _score };
@@ -707,7 +707,7 @@ class ZSet_asInterface {
         // Time complexity of this method is : O(log(N))
     **/
     @:keep
-    static public function zadd( _z:ZSet, _key:GoString, _score:GoFloat64, _member:GoString, _value:AnyInterface):GoInt {
+    static public function zadd( _z:Ref<ZSet>, _key:GoString, _score:GoFloat64, _member:GoString, _value:AnyInterface):GoInt {
         var _val:GoInt = (0 : GoInt);
         if (!_z._exist(_key)) {
             var _node = ({ _dict : (new GoObjectMap<GoString, Ref<T_zskiplistNode>>(new stdgo.reflect.Reflect._Type(stdgo.reflect.Reflect.GoType.mapType(stdgo.reflect.Reflect.GoType.basic(string_kind), stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(string_kind) }, { name : "_value", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.interfaceType(true, []) }, { name : "_score", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(float64_kind) }, { name : "_backward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_level", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.sliceType(stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.refType(stdgo.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.reflect.Reflect.GoType.invalidType)) }, { name : "_span", embedded : false, tag : "", type : stdgo.reflect.Reflect.GoType.basic(uint64_kind) }])))) }])))))) : GoMap<GoString, Ref<T_zskiplistNode>>), _zsl : _newZSkipList() } : T_zset);
@@ -715,18 +715,18 @@ class ZSet_asInterface {
         };
         var _item = _z._records[_key];
         var __tmp__ = (_item._dict != null && _item._dict.__exists__(_member) ? { value : _item._dict[_member], ok : true } : { value : (null : T_zskiplistNode), ok : false }), _v:Ref<T_zskiplistNode> = __tmp__.value, _exist:Bool = __tmp__.ok;
-        var _node:T_zskiplistNode = (null : T_zskiplistNode);
+        var _node:Ref<T_zskiplistNode> = (null : T_zskiplistNode);
         if (_exist) {
             _val = (0 : GoInt);
             if (_score != _v._score) {
                 _item._zsl._delete(_v._score, _member);
-                _node = _item._zsl._insert(_score, _member, Go.toInterface(_value));
+                _node = _item._zsl._insert(_score, _member, _value);
             } else {
-                _v._value = Go.toInterface(_value);
+                _v._value = _value;
             };
         } else {
             _val = (1 : GoInt);
-            _node = _item._zsl._insert(_score, _member, Go.toInterface(_value));
+            _node = _item._zsl._insert(_score, _member, _value);
         };
         if (_node != null) {
             _item._dict[_member] = _node;
@@ -734,14 +734,14 @@ class ZSet_asInterface {
         return _val;
     }
     @:keep
-    static public function _exist( _z:ZSet, _key:GoString):Bool {
+    static public function _exist( _z:Ref<ZSet>, _key:GoString):Bool {
         var __tmp__ = (_z._records != null && _z._records.__exists__(_key) ? { value : _z._records[_key], ok : true } : { value : (null : T_zset), ok : false }), _0:Ref<T_zset> = __tmp__.value, _exist:Bool = __tmp__.ok;
         return _exist;
     }
 }
 private class T_zskiplist_asInterface {
     @:keep
-    public function _getNodeByRank(_rank:GoUInt64):T_zskiplistNode return __self__._getNodeByRank(_rank);
+    public function _getNodeByRank(_rank:GoUInt64):Ref<T_zskiplistNode> return __self__._getNodeByRank(_rank);
     /**
         // Find the rank of the node specified by key
         // Note that the rank is 0-based integer. Rank 0 means the first node
@@ -757,7 +757,7 @@ private class T_zskiplist_asInterface {
         /|* Internal function used by delete, DeleteByScore and DeleteByRank *|/
     **/
     @:keep
-    public function _deleteNode(_x:T_zskiplistNode, _updates:Slice<T_zskiplistNode>):Void __self__._deleteNode(_x, _updates);
+    public function _deleteNode(_x:Ref<T_zskiplistNode>, _updates:Slice<Ref<T_zskiplistNode>>):Void __self__._deleteNode(_x, _updates);
     /**
         /|*
         	Insert a new node in the skiplist. Assumes the element does not already
@@ -766,7 +766,7 @@ private class T_zskiplist_asInterface {
         *|/
     **/
     @:keep
-    public function _insert(_score:GoFloat64, _member:GoString, _value:AnyInterface):T_zskiplistNode return __self__._insert(_score, _member, _value);
+    public function _insert(_score:GoFloat64, _member:GoString, _value:AnyInterface):Ref<T_zskiplistNode> return __self__._insert(_score, _member, _value);
     public function new(?__self__) {
         if (__self__ != null) this.__self__ = __self__;
     }
@@ -775,7 +775,7 @@ private class T_zskiplist_asInterface {
 }
 @:keep private class T_zskiplist_static_extension {
     @:keep
-    static public function _getNodeByRank( _z:T_zskiplist, _rank:GoUInt64):T_zskiplistNode {
+    static public function _getNodeByRank( _z:Ref<T_zskiplist>, _rank:GoUInt64):Ref<T_zskiplistNode> {
         var _traversed:GoUInt64 = (0 : GoUInt64);
         var _x = _z._head;
         {
@@ -797,7 +797,7 @@ private class T_zskiplist_asInterface {
         // Note that the rank is 0-based integer. Rank 0 means the first node
     **/
     @:keep
-    static public function _getRank( _z:T_zskiplist, _score:GoFloat64, _member:GoString):GoInt64 {
+    static public function _getRank( _z:Ref<T_zskiplist>, _score:GoFloat64, _member:GoString):GoInt64 {
         var _rank:GoUInt64 = (0 : GoUInt64);
         var _x = _z._head;
         {
@@ -818,7 +818,7 @@ private class T_zskiplist_asInterface {
         /|* Delete an element with matching score/key from the skiplist. *|/
     **/
     @:keep
-    static public function _delete( _z:T_zskiplist, _score:GoFloat64, _member:GoString):Void {
+    static public function _delete( _z:Ref<T_zskiplist>, _score:GoFloat64, _member:GoString):Void {
         var _update = new Slice<Ref<T_zskiplistNode>>((32 : GoInt).toBasic(), 0, ...[for (i in 0 ... (32 : GoInt).toBasic()) (null : T_zskiplistNode)]);
         var _x = _z._head;
         {
@@ -840,7 +840,7 @@ private class T_zskiplist_asInterface {
         /|* Internal function used by delete, DeleteByScore and DeleteByRank *|/
     **/
     @:keep
-    static public function _deleteNode( _z:T_zskiplist, _x:T_zskiplistNode, _updates:Slice<T_zskiplistNode>):Void {
+    static public function _deleteNode( _z:Ref<T_zskiplist>, _x:Ref<T_zskiplistNode>, _updates:Slice<Ref<T_zskiplistNode>>):Void {
         {
             var _i:GoInt = (0 : GoInt);
             Go.cfor(_i < _z._level, _i++, {
@@ -870,7 +870,7 @@ private class T_zskiplist_asInterface {
         *|/
     **/
     @:keep
-    static public function _insert( _z:T_zskiplist, _score:GoFloat64, _member:GoString, _value:AnyInterface):T_zskiplistNode {
+    static public function _insert( _z:Ref<T_zskiplist>, _score:GoFloat64, _member:GoString, _value:AnyInterface):Ref<T_zskiplistNode> {
         var _updates = new Slice<Ref<T_zskiplistNode>>((32 : GoInt).toBasic(), 0, ...[for (i in 0 ... (32 : GoInt).toBasic()) (null : T_zskiplistNode)]);
         var _rank = new Slice<GoUInt64>((32 : GoInt).toBasic(), 0, ...[for (i in 0 ... (32 : GoInt).toBasic()) (0 : GoUInt64)]);
         var _x = _z._head;
@@ -903,7 +903,7 @@ private class T_zskiplist_asInterface {
             };
             _z._level = _level;
         };
-        _x = _createNode(_level, _score, _member, Go.toInterface(_value));
+        _x = _createNode(_level, _score, _member, _value);
         {
             var _i:GoInt = (0 : GoInt);
             Go.cfor(_i < _level, _i++, {
@@ -946,7 +946,7 @@ private class T_zset_asInterface {
 }
 @:keep private class T_zset_static_extension {
     @:keep
-    static public function _findRange( _z:T_zset, _key:GoString, _start:GoInt64, _stop:GoInt64, _reverse:Bool, _withScores:Bool):Slice<AnyInterface> {
+    static public function _findRange( _z:Ref<T_zset>, _key:GoString, _start:GoInt64, _stop:GoInt64, _reverse:Bool, _withScores:Bool):Slice<AnyInterface> {
         var _val:Slice<AnyInterface> = (null : Slice<AnyInterface>);
         var _length:GoInt64 = _z._zsl._length;
         if (_start < (0 : GoInt64)) {
@@ -965,7 +965,7 @@ private class T_zset_asInterface {
             _stop = _length - (1 : GoInt64);
         };
         var _span:GoInt64 = (_stop - _start) + (1 : GoInt64);
-        var _node:T_zskiplistNode = (null : T_zskiplistNode);
+        var _node:Ref<T_zskiplistNode> = (null : T_zskiplistNode);
         if (_reverse) {
             _node = _z._zsl._tail;
             if (_start > (0 : GoInt64)) {
@@ -993,7 +993,7 @@ private class T_zset_asInterface {
         return _val;
     }
     @:keep
-    static public function _getNodeByRank( _z:T_zset, _key:GoString, _rank:GoInt64, _reverse:Bool):{ var _0 : GoString; var _1 : GoFloat64; } {
+    static public function _getNodeByRank( _z:Ref<T_zset>, _key:GoString, _rank:GoInt64, _reverse:Bool):{ var _0 : GoString; var _1 : GoFloat64; } {
         if ((_rank < (0 : GoInt64)) || (_rank > _z._zsl._length)) {
             return { _0 : (Go.str() : GoString), _1 : (-9.223372036854776e+18 : GoFloat64) };
         };

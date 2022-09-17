@@ -466,6 +466,7 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 			break
 		}
 	}
+
 	// write the module back in the header of the code directory
 	cd := "" // the code directory
 	if tm != "" {

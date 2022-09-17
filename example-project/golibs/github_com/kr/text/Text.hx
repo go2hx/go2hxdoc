@@ -172,7 +172,7 @@ private class T_indentWriter_asInterface {
         // The only errors returned are from the underlying indentWriter.
     **/
     @:keep
-    static public function write( _w:T_indentWriter, _p:Slice<GoByte>):{ var _0 : GoInt; var _1 : Error; } {
+    static public function write( _w:Ref<T_indentWriter>, _p:Slice<GoByte>):{ var _0 : GoInt; var _1 : Error; } {
         var _n:GoInt = (0 : GoInt), _err:Error = (null : stdgo.Error);
         for (_0 => _c in _p) {
             if (_w._bol) {
