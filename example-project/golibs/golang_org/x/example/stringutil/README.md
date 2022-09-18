@@ -15,7 +15,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000191926956176758)
+--- PASS: TestReverse (0.000192880630493164)
 ```
 </p>
 </details>
@@ -25,7 +25,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.0018918514251709)
+--- PASS: TestReverse (0.00185394287109375)
 ```
 </p>
 </details>
@@ -35,7 +35,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.0004119873046875)
+--- PASS: TestReverse (0.000414133071899414062)
 ```
 </p>
 </details>
@@ -62,8 +62,6 @@ Error: Command failed with error 1
 - [function reverse\(\_s:stdgo.GoString\):stdgo.GoString](<#reverse>)
 
 - [function testReverse\(\_t:stdgo.Ref\<stdgo.testing.T\>\):Void](<#testreverse>)
-
-- [typedef T\_\_struct\_0](<#t__struct_0>)
 
 # Functions
 
@@ -99,24 +97,5 @@ function testReverse(_t:stdgo.Ref<stdgo.testing.T>):Void
 
 
 [\(view code\)](<./Stringutil.hx#L42>)
-
-
-# Typedefs
-
-
-```haxe
-import golang_org.x.example.stringutil.*
-```
-
-
-## typedef T\_\_struct\_0
-
-
-```haxe
-typedef T__struct_0 = var a:{<_in> | stdgo.GoString | stdgo.GoString}
-```
-
-
- 
 
 

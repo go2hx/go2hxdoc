@@ -428,28 +428,30 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 	}
 
 	for i, td := range tt.Typedefs {
-		dir := an.AddFile(td.File, td.Module)
-		dd := an[dir]
-		cd := ClassData{
-			Typedef: &tt.Typedefs[i],
-		}
-		using := tt.Typedefs[i].MetaInfo.Using()
-		if using != "" {
-			if extn := tt.FindClass(tt.Typedefs[i].File, using); extn == nil {
-				fmt.Printf("Warning - @:using class " + using + " not found")
-			} else {
-				for ex := range extn.Fields {
-					extn.Fields[ex].TypeIs1stParam = true // signal to strip first parameter from call sig
-					cd.AddField(&extn.Fields[ex])
+		if !td.Private {
+			dir := an.AddFile(td.File, td.Module)
+			dd := an[dir]
+			cd := ClassData{
+				Typedef: &tt.Typedefs[i],
+			}
+			using := tt.Typedefs[i].MetaInfo.Using()
+			if using != "" {
+				if extn := tt.FindClass(tt.Typedefs[i].File, using); extn == nil {
+					fmt.Printf("Warning - @:using class " + using + " not found")
+				} else {
+					for ex := range extn.Fields {
+						extn.Fields[ex].TypeIs1stParam = true // signal to strip first parameter from call sig
+						cd.AddField(&extn.Fields[ex])
+					}
 				}
 			}
-		}
-		dd.Typedefs = append(dd.Typedefs, cd)
+			dd.Typedefs = append(dd.Typedefs, cd)
 
-		sort.Slice(dd.Typedefs, func(i, j int) bool {
-			return dd.Typedefs[i].Typedef.Path < dd.Typedefs[j].Typedef.Path
-		})
-		an[dir] = dd
+			sort.Slice(dd.Typedefs, func(i, j int) bool {
+				return dd.Typedefs[i].Typedef.Path < dd.Typedefs[j].Typedef.Path
+			})
+			an[dir] = dd
+		}
 	}
 
 	for _, a := range tt.Enums {
