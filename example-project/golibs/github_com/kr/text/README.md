@@ -44,7 +44,7 @@ function indent(_s:stdgo.GoString, _prefix:stdgo.GoString):stdgo.GoString
 Indent inserts prefix at the beginning of each non\-empty line of s. The end\-of\-line marker is NL. 
 
 
-[\(view code\)](<./Text.hx#L44>)
+[\(view code\)](<./Text.hx#L58>)
 
 
 ## function indentBytes
@@ -58,7 +58,7 @@ function indentBytes(_b:stdgo.Slice<stdgo.GoByte>, _prefix:stdgo.Slice<stdgo.GoB
 IndentBytes inserts prefix at the beginning of each non\-empty line of b. The end\-of\-line marker is NL. 
 
 
-[\(view code\)](<./Text.hx#L51>)
+[\(view code\)](<./Text.hx#L66>)
 
 
 ## function newIndentWriter
@@ -72,7 +72,7 @@ function newIndentWriter(_w:stdgo.io.Writer, _pre:haxe.Rest<stdgo.Slice<stdgo.Go
 NewIndentWriter makes a new write filter that indents the input lines. Each line is prefixed in order with the corresponding element of pre. If there are more lines than elements, the last element of pre is repeated for each subsequent line. 
 
 
-[\(view code\)](<./Text.hx#L69>)
+[\(view code\)](<./Text.hx#L85>)
 
 
 ## function wrap
@@ -86,7 +86,7 @@ function wrap(_s:stdgo.GoString, _lim:stdgo.GoInt):stdgo.GoString
 Wrap wraps s into a paragraph of lines of length lim, with minimal raggedness. 
 
 
-[\(view code\)](<./Text.hx#L77>)
+[\(view code\)](<./Text.hx#L94>)
 
 
 ## function wrapBytes
@@ -100,7 +100,7 @@ function wrapBytes(_b:stdgo.Slice<stdgo.GoByte>, _lim:stdgo.GoInt):stdgo.Slice<s
 WrapBytes wraps b into a paragraph of lines of length lim, with minimal raggedness. 
 
 
-[\(view code\)](<./Text.hx#L84>)
+[\(view code\)](<./Text.hx#L102>)
 
 
 ## function wrapWords
@@ -114,6 +114,6 @@ function wrapWords(_words:stdgo.Slice<stdgo.Slice<stdgo.GoByte>>, _spc:stdgo.GoI
 WrapWords is the low\-level line\-breaking algorithm, useful if you need more control over the details of the text wrapping process. For most uses, either Wrap or WrapBytes will be sufficient and more convenient.  WrapWords splits a list of words into lines with minimal "raggedness", treating each byte as one unit, accounting for spc units between adjacent words on each line, and attempting to limit lines to lim units. Raggedness is the total error over all lines, where error is the square of the difference of the length of the line and lim. Too\-long lines \(which only happen when a single word is longer than lim units\) have pen penalty units added to the error. 
 
 
-[\(view code\)](<./Text.hx#L105>)
+[\(view code\)](<./Text.hx#L124>)
 
 

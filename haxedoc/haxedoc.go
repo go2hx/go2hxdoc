@@ -213,7 +213,6 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			if *jvmFlag {
 				file := tempFilePrefix + "-jvm.hxml"
 				content := hxmlCommon + "--jvm " + tempFilePrefix + ".jvm\n"
-				content += "--dce full\n"
 				content += "--cmd java -jar " + tempFilePrefix + ".jvm\n"
 				err := os.WriteFile(file, []byte(content), 0666)
 				if err != nil {
@@ -225,7 +224,6 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			if *hlFlag {
 				file := tempFilePrefix + "-hl.hxml"
 				content := hxmlCommon + "--hl " + tempFilePrefix + ".hl\n"
-				content += "--dce full\n"
 				content += "--cmd hl " + tempFilePrefix + ".hl\n"
 				err := os.WriteFile(file, []byte(content), 0666)
 				if err != nil {
@@ -241,7 +239,6 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 					exeRunes[0] = unicode.ToUpper(exeRunes[0])
 					file := tempFilePrefix + "-cpp.hxml"
 					content := hxmlCommon
-					content += "--dce full\n"
 					content += "--cpp " + tempDir + "/hxcpp_common\n" // put all the cpp code in the same dir, to reuse common objects
 					content += "--cmd " + tempDir + "/hxcpp_common/" + string(exeRunes) + "\n"
 					err := os.WriteFile(file, []byte(content), 0666)
@@ -259,8 +256,8 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 
 var cpp1st sync.Once  // first time through for cpp, to allow longer processing time for compilation
 var cppMux sync.Mutex // needs to be global, as all cpp processing must be done serially to reuse the common compilation cache
-var hlMux sync.Mutex  // needs to be global, as all hl processing must be done serially - TODO true?
-var jvmMux sync.Mutex // needs to be global, as all jvm processing must be done serially - TODO true?
+//var hlMux sync.Mutex  // needs to be global, as all hl processing must be done serially - TODO true?
+//var jvmMux sync.Mutex // needs to be global, as all jvm processing must be done serially - TODO true?
 
 func RunTests(tests map[string]string, tempDir string) (markdown string, results map[string]bool) {
 	results = map[string]bool{}
@@ -279,9 +276,9 @@ func RunTests(tests map[string]string, tempDir string) (markdown string, results
 				thisTimeLimit *= 3 // allow a very long time for the first C++ compilation
 			})
 		case "hl":
-			hlMux.Lock()
+			//hlMux.Lock()
 		case "jvm":
-			jvmMux.Lock()
+			//jvmMux.Lock()
 		}
 
 		ctx, cancel := context.WithTimeout(context.Background(), thisTimeLimit)
@@ -292,9 +289,9 @@ func RunTests(tests map[string]string, tempDir string) (markdown string, results
 			case "cpp":
 				cppMux.Unlock()
 			case "hl":
-				hlMux.Unlock()
+				//hlMux.Unlock()
 			case "jvm":
-				jvmMux.Unlock()
+				//jvmMux.Unlock()
 			}
 		}()
 

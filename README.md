@@ -19,8 +19,8 @@ TO DO
 -----
 
 - Fix Typedef Haxe code display to be correct
-- Fix markdown index links to funcions with underscore in the title
 - Fix to document all `stdgo` core functionality e.g. document abstract use in stdgo/GoString.hx
+- Investigate orphan processes after timeout
 - Generate, or document how to generate, Haxe test code, at least for top-level `_ "packages"`
 - Put test results into central JSON in order to skip if already done when re-building documentation
 - Create a better working Haxe programe using a transpiled library in example-project

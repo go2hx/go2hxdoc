@@ -49,6 +49,6 @@ function main():Void
  
 
 
-[\(view code\)](<./Stringutil.hx#L15>)
+[\(view code\)](<./Stringutil.hx#L26>)
 
 
