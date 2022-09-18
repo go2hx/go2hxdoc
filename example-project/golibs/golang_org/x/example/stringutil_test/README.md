@@ -15,7 +15,7 @@
 
 - [Variables](<#variables>)
 
-- [function main\(\):Void](<#main>)
+- [function main\(\):Void](<#function-main>)
 
 # Variables
 
@@ -38,7 +38,7 @@ import golang_org.x.example.stringutil_test.Stringutil
 ```
 
 
-## main
+## function main
 
 
 ```haxe

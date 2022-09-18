@@ -15,7 +15,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000192880630493164)
+--- PASS: TestReverse (0.00019383430480957)
 ```
 </p>
 </details>
@@ -25,7 +25,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.00185394287109375)
+--- PASS: TestReverse (0.0018467903137207)
 ```
 </p>
 </details>
@@ -35,7 +35,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000414133071899414062)
+--- PASS: TestReverse (0.00049304962158203125)
 ```
 </p>
 </details>
@@ -50,7 +50,7 @@ Exception in thread "main" java.lang.NullPointerException: Cannot read field "na
 	at golang_org.x.example.stringutil_test._Stringutil.Stringutil_Fields_.main(golibs/golang_org/x/example/stringutil_test/Stringutil.hx:1)
 Error: Command failed with error 1
 === RUN   TestReverse
---- PASS: TestReverse (0.005000114440917969)
+--- PASS: TestReverse (0.003999948501586914)
 ```
 </p>
 </details>
@@ -59,9 +59,9 @@ Error: Command failed with error 1
 # Index
 
 
-- [function reverse\(\_s:stdgo.GoString\):stdgo.GoString](<#reverse>)
+- [function reverse\(\_s:stdgo.GoString\):stdgo.GoString](<#function-reverse>)
 
-- [function testReverse\(\_t:stdgo.Ref\<stdgo.testing.T\>\):Void](<#testreverse>)
+- [function testReverse\(\_t:stdgo.Ref\<stdgo.testing.T\>\):Void](<#function-testreverse>)
 
 # Functions
 
@@ -71,7 +71,7 @@ import golang_org.x.example.stringutil.Stringutil
 ```
 
 
-## reverse
+## function reverse
 
 
 ```haxe
@@ -85,7 +85,7 @@ Reverse returns its argument string reversed rune\-wise left to right.
 [\(view code\)](<./Stringutil.hx#L22>)
 
 
-## testReverse
+## function testReverse
 
 
 ```haxe

@@ -15,65 +15,65 @@
 
 - [Constants](<#constants>)
 
-- [function \_createNode\(\_level:stdgo.GoInt, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#_createnode>)
+- [function \_createNode\(\_level:stdgo.GoInt, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#function-_createnode>)
 
-- [function \_newZSkipList\(\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplist\>](<#_newzskiplist>)
+- [function \_newZSkipList\(\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplist\>](<#function-_newzskiplist>)
 
-- [function \_randomLevel\(\):stdgo.GoInt](<#_randomlevel>)
+- [function \_randomLevel\(\):stdgo.GoInt](<#function-_randomlevel>)
 
-- [function new\_\(\):stdgo.Ref\<github\_com.arriqaaq.zset.ZSet\>](<#new_>)
+- [function new\_\(\):stdgo.Ref\<github\_com.arriqaaq.zset.ZSet\>](<#function-new_>)
 
-- [class ZRangeOptions](<#zrangeoptions>)
+- [class ZRangeOptions](<#class-zrangeoptions>)
 
-  - [function new\(?limit:Null\<stdgo.GoInt\>, ?excludeStart:Bool, ?excludeEnd:Bool\):Void](<#zrangeoptions-new>)
+  - [function new\(?limit:Null\<stdgo.GoInt\>, ?excludeStart:Bool, ?excludeEnd:Bool\):Void](<#zrangeoptions-function-new>)
 
-- [class ZSet](<#zset>)
+- [class ZSet](<#class-zset>)
 
-  - [function new\(?\_records:stdgo.GoMap\<stdgo.GoString, stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zset\>\>\):Void](<#zset-new>)
+  - [function new\(?\_records:stdgo.GoMap\<stdgo.GoString, stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zset\>\>\):Void](<#zset-function-new>)
 
-  - [function \_exist\( \_key:stdgo.GoString\):Bool](<#zset-_exist>)
+  - [function \_exist\( \_key:stdgo.GoString\):Bool](<#zset-function-_exist>)
 
-  - [function keys\(\):stdgo.Slice\<stdgo.GoString\>](<#zset-keys>)
+  - [function keys\(\):stdgo.Slice\<stdgo.GoString\>](<#zset-function-keys>)
 
-  - [function zadd\( \_key:stdgo.GoString, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):stdgo.GoInt](<#zset-zadd>)
+  - [function zadd\( \_key:stdgo.GoString, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):stdgo.GoInt](<#zset-function-zadd>)
 
-  - [function zcard\( \_key:stdgo.GoString\):stdgo.GoInt](<#zset-zcard>)
+  - [function zcard\( \_key:stdgo.GoString\):stdgo.GoInt](<#zset-function-zcard>)
 
-  - [function zclear\( \_key:stdgo.GoString\):Void](<#zset-zclear>)
+  - [function zclear\( \_key:stdgo.GoString\):Void](<#zset-function-zclear>)
 
-  - [function zgetByRank\( \_key:stdgo.GoString, \_rank:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zgetbyrank>)
+  - [function zgetByRank\( \_key:stdgo.GoString, \_rank:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zgetbyrank>)
 
-  - [function zincrBy\( \_key:stdgo.GoString, \_increment:stdgo.GoFloat64, \_member:stdgo.GoString\):stdgo.GoFloat64](<#zset-zincrby>)
+  - [function zincrBy\( \_key:stdgo.GoString, \_increment:stdgo.GoFloat64, \_member:stdgo.GoString\):stdgo.GoFloat64](<#zset-function-zincrby>)
 
-  - [function zkeyExists\( \_key:stdgo.GoString\):Bool](<#zset-zkeyexists>)
+  - [function zkeyExists\( \_key:stdgo.GoString\):Bool](<#zset-function-zkeyexists>)
 
-  - [function zpopMax\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-zpopmax>)
+  - [function zpopMax\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-function-zpopmax>)
 
-  - [function zpopMin\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-zpopmin>)
+  - [function zpopMin\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-function-zpopmin>)
 
-  - [function zrange\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrange>)
+  - [function zrange\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrange>)
 
-  - [function zrangeByScore\( \_key:stdgo.GoString, \_start:stdgo.GoFloat64, \_end:stdgo.GoFloat64, \_options:stdgo.Ref\<github\_com.arriqaaq.zset.ZRangeOptions\>\):stdgo.Slice\<stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>\>](<#zset-zrangebyscore>)
+  - [function zrangeByScore\( \_key:stdgo.GoString, \_start:stdgo.GoFloat64, \_end:stdgo.GoFloat64, \_options:stdgo.Ref\<github\_com.arriqaaq.zset.ZRangeOptions\>\):stdgo.Slice\<stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>\>](<#zset-function-zrangebyscore>)
 
-  - [function zrangeWithScores\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrangewithscores>)
+  - [function zrangeWithScores\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrangewithscores>)
 
-  - [function zrank\( \_key:stdgo.GoString, \_member:stdgo.GoString\):stdgo.GoInt64](<#zset-zrank>)
+  - [function zrank\( \_key:stdgo.GoString, \_member:stdgo.GoString\):stdgo.GoInt64](<#zset-function-zrank>)
 
-  - [function zrem\( \_key:stdgo.GoString, \_member:stdgo.GoString\):Bool](<#zset-zrem>)
+  - [function zrem\( \_key:stdgo.GoString, \_member:stdgo.GoString\):Bool](<#zset-function-zrem>)
 
-  - [function zrevGetByRank\( \_key:stdgo.GoString, \_rank:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrevgetbyrank>)
+  - [function zrevGetByRank\( \_key:stdgo.GoString, \_rank:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevgetbyrank>)
 
-  - [function zrevRange\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrevrange>)
+  - [function zrevRange\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevrange>)
 
-  - [function zrevRangeWithScores\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrevrangewithscores>)
+  - [function zrevRangeWithScores\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevrangewithscores>)
 
-  - [function zrevRank\( \_key:stdgo.GoString, \_member:stdgo.GoString\):stdgo.GoInt64](<#zset-zrevrank>)
+  - [function zrevRank\( \_key:stdgo.GoString, \_member:stdgo.GoString\):stdgo.GoInt64](<#zset-function-zrevrank>)
 
-  - [function zrevScoreRange\( \_key:stdgo.GoString, \_max:stdgo.GoFloat64, \_min:stdgo.GoFloat64\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zrevscorerange>)
+  - [function zrevScoreRange\( \_key:stdgo.GoString, \_max:stdgo.GoFloat64, \_min:stdgo.GoFloat64\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevscorerange>)
 
-  - [function zscore\( \_key:stdgo.GoString, \_member:stdgo.GoString\):\{\_1:stdgo.GoFloat64, \_0:Bool\}](<#zset-zscore>)
+  - [function zscore\( \_key:stdgo.GoString, \_member:stdgo.GoString\):\{\_1:stdgo.GoFloat64, \_0:Bool\}](<#zset-function-zscore>)
 
-  - [function zscoreRange\( \_key:stdgo.GoString, \_min:stdgo.GoFloat64, \_max:stdgo.GoFloat64\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-zscorerange>)
+  - [function zscoreRange\( \_key:stdgo.GoString, \_min:stdgo.GoFloat64, \_max:stdgo.GoFloat64\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zscorerange>)
 
 # Constants
 
@@ -107,7 +107,7 @@ import github_com.arriqaaq.zset.Zset
 ```
 
 
-## \_createNode
+## function \_createNode
 
 
 ```haxe
@@ -121,7 +121,7 @@ function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.G
 [\(view code\)](<./Zset.hx#L126>)
 
 
-## \_newZSkipList
+## function \_newZSkipList
 
 
 ```haxe
@@ -135,7 +135,7 @@ function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>
 [\(view code\)](<./Zset.hx#L133>)
 
 
-## \_randomLevel
+## function \_randomLevel
 
 
 ```haxe
@@ -149,7 +149,7 @@ Returns a random level for the new skiplist node we are going to create. The ret
 [\(view code\)](<./Zset.hx#L116>)
 
 
-## new\_
+## function new\_
 
 
 ```haxe
@@ -201,7 +201,7 @@ var limit:stdgo.GoInt
 limit the max nodes to return 
 
 
-### ZRangeOptions new
+### ZRangeOptions function new
 
 
 ```haxe
@@ -226,7 +226,7 @@ var _records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset._Zse
 ```
 
 
-### ZSet new
+### ZSet function new
 
 
 ```haxe
@@ -240,7 +240,7 @@ function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq
 [\(view code\)](<./Zset.hx#L21>)
 
 
-### ZSet \_exist
+### ZSet function \_exist
 
 
 ```haxe
@@ -254,7 +254,7 @@ function _exist( _key:stdgo.GoString):Bool
 [\(view code\)](<./Zset.hx#L737>)
 
 
-### ZSet keys
+### ZSet function keys
 
 
 ```haxe
@@ -268,7 +268,7 @@ function keys():stdgo.Slice<stdgo.GoString>
 [\(view code\)](<./Zset.hx#L278>)
 
 
-### ZSet zadd
+### ZSet function zadd
 
 
 ```haxe
@@ -282,7 +282,7 @@ ZAdd Adds the specified member with the specified score to the sorted set stored
 [\(view code\)](<./Zset.hx#L710>)
 
 
-### ZSet zcard
+### ZSet function zcard
 
 
 ```haxe
@@ -296,7 +296,7 @@ ZCard returns the sorted set cardinality \(number of elements\) of the sorted se
 [\(view code\)](<./Zset.hx#L683>)
 
 
-### ZSet zclear
+### ZSet function zclear
 
 
 ```haxe
@@ -310,7 +310,7 @@ ZClear clear the key in zset.
 [\(view code\)](<./Zset.hx#L518>)
 
 
-### ZSet zgetByRank
+### ZSet function zgetByRank
 
 
 ```haxe
@@ -324,7 +324,7 @@ ZGetByRank gets the member at key by rank, the rank is ordered from lowest to hi
 [\(view code\)](<./Zset.hx#L456>)
 
 
-### ZSet zincrBy
+### ZSet function zincrBy
 
 
 ```haxe
@@ -338,7 +338,7 @@ ZIncrBy increments the score of member in the sorted set stored at key by increm
 [\(view code\)](<./Zset.hx#L629>)
 
 
-### ZSet zkeyExists
+### ZSet function zkeyExists
 
 
 ```haxe
@@ -352,7 +352,7 @@ ZKeyExists check if the key exists in zset.
 [\(view code\)](<./Zset.hx#L527>)
 
 
-### ZSet zpopMax
+### ZSet function zpopMax
 
 
 ```haxe
@@ -366,7 +366,7 @@ get and remove the element with maximum score, nil if the set is empty
 [\(view code\)](<./Zset.hx#L408>)
 
 
-### ZSet zpopMin
+### ZSet function zpopMin
 
 
 ```haxe
@@ -380,7 +380,7 @@ get and remove the element with minimal score, nil if the set is empty
 [\(view code\)](<./Zset.hx#L424>)
 
 
-### ZSet zrange
+### ZSet function zrange
 
 
 ```haxe
@@ -394,7 +394,7 @@ ZRange returns the specified range of elements in the sorted set stored at \<key
 [\(view code\)](<./Zset.hx#L507>)
 
 
-### ZSet zrangeByScore
+### ZSet function zrangeByScore
 
 
 ```haxe
@@ -408,7 +408,7 @@ function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.
 [\(view code\)](<./Zset.hx#L297>)
 
 
-### ZSet zrangeWithScores
+### ZSet function zrangeWithScores
 
 
 ```haxe
@@ -422,7 +422,7 @@ ZRangeWithScores returns the specified range of elements in the sorted set store
 [\(view code\)](<./Zset.hx#L496>)
 
 
-### ZSet zrank
+### ZSet function zrank
 
 
 ```haxe
@@ -436,7 +436,7 @@ ZRank returns the rank of member in the sorted set stored at key, with the score
 [\(view code\)](<./Zset.hx#L666>)
 
 
-### ZSet zrem
+### ZSet function zrem
 
 
 ```haxe
@@ -450,7 +450,7 @@ ZRem removes the specified members from the sorted set stored at key. Non existi
 [\(view code\)](<./Zset.hx#L610>)
 
 
-### ZSet zrevGetByRank
+### ZSet function zrevGetByRank
 
 
 ```haxe
@@ -464,7 +464,7 @@ ZRevGetByRank get the member at key by rank, the rank is ordered from highest to
 [\(view code\)](<./Zset.hx#L441>)
 
 
-### ZSet zrevRange
+### ZSet function zrevRange
 
 
 ```haxe
@@ -478,7 +478,7 @@ ZRevRange returns the specified range of elements in the sorted set stored at ke
 [\(view code\)](<./Zset.hx#L485>)
 
 
-### ZSet zrevRangeWithScores
+### ZSet function zrevRangeWithScores
 
 
 ```haxe
@@ -492,7 +492,7 @@ ZRevRange returns the specified range of elements in the sorted set stored at ke
 [\(view code\)](<./Zset.hx#L472>)
 
 
-### ZSet zrevRank
+### ZSet function zrevRank
 
 
 ```haxe
@@ -506,7 +506,7 @@ ZRevRank returns the rank of member in the sorted set stored at key, with the sc
 [\(view code\)](<./Zset.hx#L649>)
 
 
-### ZSet zrevScoreRange
+### ZSet function zrevScoreRange
 
 
 ```haxe
@@ -520,7 +520,7 @@ ZRevScoreRange returns all the elements in the sorted set at key with a score be
 [\(view code\)](<./Zset.hx#L535>)
 
 
-### ZSet zscore
+### ZSet function zscore
 
 
 ```haxe
@@ -534,7 +534,7 @@ ZScore returns the score of member in the sorted set at key.
 [\(view code\)](<./Zset.hx#L693>)
 
 
-### ZSet zscoreRange
+### ZSet function zscoreRange
 
 
 ```haxe

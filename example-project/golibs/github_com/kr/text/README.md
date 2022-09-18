@@ -13,17 +13,17 @@ Package text provides rudimentary functions for manipulating text in paragraphs.
 # Index
 
 
-- [function indent\(\_s:stdgo.GoString, \_prefix:stdgo.GoString\):stdgo.GoString](<#indent>)
+- [function indent\(\_s:stdgo.GoString, \_prefix:stdgo.GoString\):stdgo.GoString](<#function-indent>)
 
-- [function indentBytes\(\_b:stdgo.Slice\<stdgo.GoByte\>, \_prefix:stdgo.Slice\<stdgo.GoByte\>\):stdgo.Slice\<stdgo.GoByte\>](<#indentbytes>)
+- [function indentBytes\(\_b:stdgo.Slice\<stdgo.GoByte\>, \_prefix:stdgo.Slice\<stdgo.GoByte\>\):stdgo.Slice\<stdgo.GoByte\>](<#function-indentbytes>)
 
-- [function newIndentWriter\(\_w:stdgo.io.Writer, \_pre:haxe.Rest\<stdgo.Slice\<stdgo.GoByte\>\>\):stdgo.io.Writer](<#newindentwriter>)
+- [function newIndentWriter\(\_w:stdgo.io.Writer, \_pre:haxe.Rest\<stdgo.Slice\<stdgo.GoByte\>\>\):stdgo.io.Writer](<#function-newindentwriter>)
 
-- [function wrap\(\_s:stdgo.GoString, \_lim:stdgo.GoInt\):stdgo.GoString](<#wrap>)
+- [function wrap\(\_s:stdgo.GoString, \_lim:stdgo.GoInt\):stdgo.GoString](<#function-wrap>)
 
-- [function wrapBytes\(\_b:stdgo.Slice\<stdgo.GoByte\>, \_lim:stdgo.GoInt\):stdgo.Slice\<stdgo.GoByte\>](<#wrapbytes>)
+- [function wrapBytes\(\_b:stdgo.Slice\<stdgo.GoByte\>, \_lim:stdgo.GoInt\):stdgo.Slice\<stdgo.GoByte\>](<#function-wrapbytes>)
 
-- [function wrapWords\(\_words:stdgo.Slice\<stdgo.Slice\<stdgo.GoByte\>\>, \_spc:stdgo.GoInt, \_lim:stdgo.GoInt, \_pen:stdgo.GoInt\):stdgo.Slice\<stdgo.Slice\<stdgo.Slice\<stdgo.GoByte\>\>\>](<#wrapwords>)
+- [function wrapWords\(\_words:stdgo.Slice\<stdgo.Slice\<stdgo.GoByte\>\>, \_spc:stdgo.GoInt, \_lim:stdgo.GoInt, \_pen:stdgo.GoInt\):stdgo.Slice\<stdgo.Slice\<stdgo.Slice\<stdgo.GoByte\>\>\>](<#function-wrapwords>)
 
 # Functions
 
@@ -33,7 +33,7 @@ import github_com.kr.text.Text
 ```
 
 
-## indent
+## function indent
 
 
 ```haxe
@@ -47,7 +47,7 @@ Indent inserts prefix at the beginning of each non\-empty line of s. The end\-of
 [\(view code\)](<./Text.hx#L44>)
 
 
-## indentBytes
+## function indentBytes
 
 
 ```haxe
@@ -61,7 +61,7 @@ IndentBytes inserts prefix at the beginning of each non\-empty line of b. The en
 [\(view code\)](<./Text.hx#L51>)
 
 
-## newIndentWriter
+## function newIndentWriter
 
 
 ```haxe
@@ -75,7 +75,7 @@ NewIndentWriter makes a new write filter that indents the input lines. Each line
 [\(view code\)](<./Text.hx#L69>)
 
 
-## wrap
+## function wrap
 
 
 ```haxe
@@ -89,7 +89,7 @@ Wrap wraps s into a paragraph of lines of length lim, with minimal raggedness.
 [\(view code\)](<./Text.hx#L77>)
 
 
-## wrapBytes
+## function wrapBytes
 
 
 ```haxe
@@ -103,7 +103,7 @@ WrapBytes wraps b into a paragraph of lines of length lim, with minimal raggedne
 [\(view code\)](<./Text.hx#L84>)
 
 
-## wrapWords
+## function wrapWords
 
 
 ```haxe

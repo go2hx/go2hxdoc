@@ -125,7 +125,6 @@ func (cfg *Config) Link(text, href string) string {
 }
 
 func (cfg *Config) LocalHref(href string) string {
-	//href = cfg.MD.Escape(href)
 	txt, err := cfg.MD.LocalHref(href)
 	if err != nil {
 		panic(err)
@@ -236,7 +235,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		"Typedefs",
 	}
 
-	classMethodSeparator := " " // many other special characters have been tried here, but only space seems to work.
+	classMethodSeparator := " function " // many other special characters have been tried here, but only space seems to work.
 
 	cfg.Header(1, "Module: "+module)
 
@@ -281,16 +280,16 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			cfg.ListEntry(0, cfg.Link(headers[variables], cfg.LocalHref(headers[variables])))
 		}
 		for _, fn := range dd.ModuleLevel.Functions {
-			cfg.ListEntry(0, cfg.Link(fn.String(), cfg.LocalHref(fn.XMLName.Local)))
+			cfg.ListEntry(0, cfg.Link(fn.String(), cfg.LocalHref("function "+fn.XMLName.Local)))
 		}
 		for _, cl := range dd.Classes {
-			cfg.ListEntry(0, cfg.Link("class "+cl.Class.Name(), cfg.LocalHref(cl.Class.Name())))
+			cfg.ListEntry(0, cfg.Link("class "+cl.Class.Name(), cfg.LocalHref("class "+cl.Class.Name())))
 			for _, fn := range cl.Functions {
 				cfg.ListEntry(1, cfg.Link(fn.String(), cfg.LocalHref(cl.Class.Name()+classMethodSeparator+fn.XMLName.Local)))
 			}
 		}
 		for _, cd := range dd.Typedefs {
-			cfg.ListEntry(0, cfg.Link("typedef "+cd.Typedef.Name(), cfg.LocalHref(cd.Typedef.Name())))
+			cfg.ListEntry(0, cfg.Link("typedef "+cd.Typedef.Name(), cfg.LocalHref("typedef "+cd.Typedef.Name())))
 			for _, fn := range cd.Functions {
 				cfg.ListEntry(1, cfg.Link(fn.String(), cfg.LocalHref(cd.Typedef.Name()+classMethodSeparator+fn.XMLName.Local)))
 			}
@@ -336,7 +335,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		cfg.Header(1, headers[functions])
 		cfg.CodeBlock("import " + dd.ModuleLevel.Class.Module)
 		for _, fn := range dd.ModuleLevel.Functions {
-			cfg.Header(2, fn.XMLName.Local)
+			cfg.Header(2, "function "+fn.XMLName.Local)
 			cfg.CodeBlock(fn.String())
 			cfg.Comment(fn.Doc)
 			for _, ex := range fn.Examples {
