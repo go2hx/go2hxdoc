@@ -51,6 +51,10 @@ func main() {
 		os.Exit(1) // unprocessed flags
 	}
 
+	if len(haxedoc.CmdPrefix) > 0 {
+		haxedoc.CmdPrefix += " " // add a space to the end of the command prefix, if it has been set
+	}
+
 	// make the tempDir, if it does not already exist
 	if err := os.MkdirAll(tempDir, 0777); err != nil {
 		panic(err)

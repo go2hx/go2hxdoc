@@ -27,6 +27,7 @@ var interpFlag *bool         // set by flag code below
 var hlFlag *bool             // set by flag code below
 var cppFlag *bool            // set by flag code below
 var jvmFlag *bool            // set by flag code below
+var CmdPrefix string         // set by flag code below
 
 func init() {
 	// flag.StringVar(&target, "target", "interp", "testing target(s): 'interp', 'hl', 'cpp', 'jvm', or 'all'") // TODO !
@@ -40,6 +41,7 @@ func init() {
 	cppFlag = flag.Bool("cpp", false, "run the tests using C++")
 	jvmFlag = flag.Bool("jvm", false, "run the tests using the JVM")
 
+	flag.StringVar(&CmdPrefix, "prefix", "", "prefix for CLI commands (when using lix: '-prefix npx')")
 }
 
 func IsTest() bool {
@@ -295,7 +297,7 @@ func RunTests(tests map[string]string, tempDir string) (markdown string, results
 			}
 		}()
 
-		cmd := exec.CommandContext(ctx, "haxe", hxml)
+		cmd := exec.CommandContext(ctx, CmdPrefix+"haxe", hxml)
 		outBuf := bytes.Buffer{}
 		cmd.Stdout = &outBuf
 		errBuf := bytes.Buffer{}

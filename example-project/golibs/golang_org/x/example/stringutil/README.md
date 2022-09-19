@@ -15,7 +15,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000128030776977539)
+--- PASS: TestReverse (0.000726938247680664)
 ```
 </p>
 </details>
@@ -25,7 +25,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.00179004669189453)
+--- PASS: TestReverse (0.00185179710388184)
 ```
 </p>
 </details>
@@ -35,7 +35,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000459909439086914062)
+--- PASS: TestReverse (0.000522136688232421875)
 ```
 </p>
 </details>
@@ -45,9 +45,9 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 Error: Command failed with error 1
-[0.046s][warning][exceptions] Class java.lang.Object in throws clause of method java.lang.String haxe.io.Bytes.toString() is not a subtype of class java.lang.Throwable
-[0.046s][warning][exceptions] Class java.lang.Object in throws clause of method haxe.io.Bytes haxe.io.Bytes.ofString(java.lang.String, haxe.io.Encoding) is not a subtype of class java.lang.Throwable
-[0.046s][warning][exceptions] Class java.lang.Object in throws clause of method void haxe.io.Bytes.blit(int, haxe.io.Bytes, int, int) is not a subtype of class java.lang.Throwable
+[0.068s][warning][exceptions] Class java.lang.Object in throws clause of method java.lang.String haxe.io.Bytes.toString() is not a subtype of class java.lang.Throwable
+[0.068s][warning][exceptions] Class java.lang.Object in throws clause of method haxe.io.Bytes haxe.io.Bytes.ofString(java.lang.String, haxe.io.Encoding) is not a subtype of class java.lang.Throwable
+[0.068s][warning][exceptions] Class java.lang.Object in throws clause of method void haxe.io.Bytes.blit(int, haxe.io.Bytes, int, int) is not a subtype of class java.lang.Throwable
 === RUN   TestReverse
 Exception: null
 Called from stdgo.GoString$GoString_Impl_.__toSliceRune__ (/usr/local/lib/haxe/lib/go2hx/git/stdgo/GoString.hx line 112)
