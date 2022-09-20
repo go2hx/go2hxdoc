@@ -266,7 +266,10 @@ func (tt *TypeTree) FindClass(file, name string) *TClassdecl {
 }
 
 func isThisDir(file, base string, incSubDirs bool) bool {
-	dir := filepath.Dir(file)
+	dir, err := filepath.Abs(filepath.Dir(file))
+	if err != nil {
+		panic(err)
+	}
 	if incSubDirs {
 		return strings.HasPrefix(dir, base)
 	} else {
@@ -275,8 +278,11 @@ func isThisDir(file, base string, incSubDirs bool) bool {
 }
 
 func (tt *TypeTree) FilterBase(base string, incSubDirs bool) (*TypeTree, error) {
-
-	base = filepath.Clean(base) // get rid of any leading "./"
+	var err error
+	base, err = filepath.Abs(base) // get rid of any leading "./"
+	if err != nil {
+		panic(err)
+	}
 
 	var ret TypeTree
 	ret.XMLName = tt.XMLName
