@@ -1,6 +1,6 @@
-Example of how to generate, document and call Haxe modules from Go packages with go2hx and go2hxdoc.
+Example of how to generate, document and call Haxe modules generated from Go packages with go2hx and go2hxdoc.
 
-The Haxe code to call the generated libraries in Test.hx.
+The Haxe code to call the generated libraries is in Test.hx.
 
 Before go2hx can work, the Go program containing references to the required Go packages (main.go) needs to compile in Go, see https://go.dev/learn/.
 
