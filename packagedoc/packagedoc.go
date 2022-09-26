@@ -335,7 +335,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		cfg.Header(1, headers[functions])
 		cfg.CodeBlock("import " + dd.ModuleLevel.Class.Module)
 		for _, fn := range dd.ModuleLevel.Functions {
-			cfg.Header(2, "function "+fn.XMLName.Local)
+			cfg.Header(2, "function `"+fn.XMLName.Local+"`")
 			cfg.CodeBlock(fn.String())
 			cfg.Comment(fn.Doc)
 			for _, ex := range fn.Examples {
