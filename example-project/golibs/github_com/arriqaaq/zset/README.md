@@ -14,13 +14,13 @@
 
 - [Constants](<#constants>)
 
-- [`function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#`function-_createNode`>)
+- [`function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#function-_createnode>)
 
-- [`function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>`](<#`function-_newZSkipList`>)
+- [`function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>`](<#function-_newzskiplist>)
 
-- [`function _randomLevel():stdgo.GoInt`](<#`function-_randomLevel`>)
+- [`function _randomLevel():stdgo.GoInt`](<#function-_randomlevel>)
 
-- [`function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>`](<#`function-new_`>)
+- [`function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>`](<#function-new_>)
 
 - [`class ZRangeOptions`](<#class-zrangeoptions>)
 
@@ -106,7 +106,9 @@ import github_com.arriqaaq.zset.Zset
 ```
 
 
-## `function _createNode`
+## function \_createNode
+
+
 ```haxe
 function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
 ```
@@ -118,7 +120,9 @@ function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.G
 [\(view code\)](<./Zset.hx#L180>)
 
 
-## `function _newZSkipList`
+## function \_newZSkipList
+
+
 ```haxe
 function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>
 ```
@@ -130,7 +134,9 @@ function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>
 [\(view code\)](<./Zset.hx#L193>)
 
 
-## `function _randomLevel`
+## function \_randomLevel
+
+
 ```haxe
 function _randomLevel():stdgo.GoInt
 ```
@@ -142,7 +148,9 @@ Returns a random level for the new skiplist node we are going to create. The ret
 [\(view code\)](<./Zset.hx#L169>)
 
 
-## `function new_`
+## function new\_
+
+
 ```haxe
 function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>
 ```

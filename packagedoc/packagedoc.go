@@ -282,7 +282,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			cfg.ListEntry(0, cfg.Link(headers[variables], cfg.LocalHref(headers[variables])))
 		}
 		for _, fn := range dd.ModuleLevel.Functions {
-			cfg.ListEntry(0, cfg.Link("`"+fn.String()+"`", "#`function-"+fn.XMLName.Local+"`"))
+			cfg.ListEntry(0, cfg.Link("`"+fn.String()+"`", cfg.LocalHref("function "+fn.XMLName.Local)))
 		}
 		for _, cl := range dd.Classes {
 			cfg.ListEntry(0, cfg.Link("`class "+cl.Class.Name()+"`", cfg.LocalHref("class "+cl.Class.Name())))
@@ -337,7 +337,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		cfg.Header(1, headers[functions])
 		cfg.CodeBlock("import " + dd.ModuleLevel.Class.Module)
 		for _, fn := range dd.ModuleLevel.Functions {
-			cfg.Write("## `function " + fn.XMLName.Local + "`")
+			cfg.Header(2, "function "+fn.XMLName.Local)
 			cfg.CodeBlock(fn.String())
 			cfg.Comment(fn.Doc)
 			for _, ex := range fn.Examples {

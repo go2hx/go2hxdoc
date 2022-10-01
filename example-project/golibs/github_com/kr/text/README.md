@@ -12,17 +12,17 @@ Package text provides rudimentary functions for manipulating text in paragraphs.
 # Index
 
 
-- [`function indent(_s:stdgo.GoString, _prefix:stdgo.GoString):stdgo.GoString`](<#`function-indent`>)
+- [`function indent(_s:stdgo.GoString, _prefix:stdgo.GoString):stdgo.GoString`](<#function-indent>)
 
-- [`function indentBytes(_b:stdgo.Slice<stdgo.GoByte>, _prefix:stdgo.Slice<stdgo.GoByte>):stdgo.Slice<stdgo.GoByte>`](<#`function-indentBytes`>)
+- [`function indentBytes(_b:stdgo.Slice<stdgo.GoByte>, _prefix:stdgo.Slice<stdgo.GoByte>):stdgo.Slice<stdgo.GoByte>`](<#function-indentbytes>)
 
-- [`function newIndentWriter(_w:stdgo.io.Writer, _pre:haxe.Rest<stdgo.Slice<stdgo.GoByte>>):stdgo.io.Writer`](<#`function-newIndentWriter`>)
+- [`function newIndentWriter(_w:stdgo.io.Writer, _pre:haxe.Rest<stdgo.Slice<stdgo.GoByte>>):stdgo.io.Writer`](<#function-newindentwriter>)
 
-- [`function wrap(_s:stdgo.GoString, _lim:stdgo.GoInt):stdgo.GoString`](<#`function-wrap`>)
+- [`function wrap(_s:stdgo.GoString, _lim:stdgo.GoInt):stdgo.GoString`](<#function-wrap>)
 
-- [`function wrapBytes(_b:stdgo.Slice<stdgo.GoByte>, _lim:stdgo.GoInt):stdgo.Slice<stdgo.GoByte>`](<#`function-wrapBytes`>)
+- [`function wrapBytes(_b:stdgo.Slice<stdgo.GoByte>, _lim:stdgo.GoInt):stdgo.Slice<stdgo.GoByte>`](<#function-wrapbytes>)
 
-- [`function wrapWords(_words:stdgo.Slice<stdgo.Slice<stdgo.GoByte>>, _spc:stdgo.GoInt, _lim:stdgo.GoInt, _pen:stdgo.GoInt):stdgo.Slice<stdgo.Slice<stdgo.Slice<stdgo.GoByte>>>`](<#`function-wrapWords`>)
+- [`function wrapWords(_words:stdgo.Slice<stdgo.Slice<stdgo.GoByte>>, _spc:stdgo.GoInt, _lim:stdgo.GoInt, _pen:stdgo.GoInt):stdgo.Slice<stdgo.Slice<stdgo.Slice<stdgo.GoByte>>>`](<#function-wrapwords>)
 
 # Functions
 
@@ -32,7 +32,9 @@ import github_com.kr.text.Text
 ```
 
 
-## `function indent`
+## function indent
+
+
 ```haxe
 function indent(_s:stdgo.GoString, _prefix:stdgo.GoString):stdgo.GoString
 ```
@@ -44,7 +46,9 @@ Indent inserts prefix at the beginning of each non\-empty line of s. The end\-of
 [\(view code\)](<./Text.hx#L58>)
 
 
-## `function indentBytes`
+## function indentBytes
+
+
 ```haxe
 function indentBytes(_b:stdgo.Slice<stdgo.GoByte>, _prefix:stdgo.Slice<stdgo.GoByte>):stdgo.Slice<stdgo.GoByte>
 ```
@@ -56,7 +60,9 @@ IndentBytes inserts prefix at the beginning of each non\-empty line of b. The en
 [\(view code\)](<./Text.hx#L66>)
 
 
-## `function newIndentWriter`
+## function newIndentWriter
+
+
 ```haxe
 function newIndentWriter(_w:stdgo.io.Writer, _pre:haxe.Rest<stdgo.Slice<stdgo.GoByte>>):stdgo.io.Writer
 ```
@@ -68,7 +74,9 @@ NewIndentWriter makes a new write filter that indents the input lines. Each line
 [\(view code\)](<./Text.hx#L85>)
 
 
-## `function wrap`
+## function wrap
+
+
 ```haxe
 function wrap(_s:stdgo.GoString, _lim:stdgo.GoInt):stdgo.GoString
 ```
@@ -80,7 +88,9 @@ Wrap wraps s into a paragraph of lines of length lim, with minimal raggedness.
 [\(view code\)](<./Text.hx#L94>)
 
 
-## `function wrapBytes`
+## function wrapBytes
+
+
 ```haxe
 function wrapBytes(_b:stdgo.Slice<stdgo.GoByte>, _lim:stdgo.GoInt):stdgo.Slice<stdgo.GoByte>
 ```
@@ -92,7 +102,9 @@ WrapBytes wraps b into a paragraph of lines of length lim, with minimal raggedne
 [\(view code\)](<./Text.hx#L102>)
 
 
-## `function wrapWords`
+## function wrapWords
+
+
 ```haxe
 function wrapWords(_words:stdgo.Slice<stdgo.Slice<stdgo.GoByte>>, _spc:stdgo.GoInt, _lim:stdgo.GoInt, _pen:stdgo.GoInt):stdgo.Slice<stdgo.Slice<stdgo.Slice<stdgo.GoByte>>>
 ```

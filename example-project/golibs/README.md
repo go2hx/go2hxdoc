@@ -12,7 +12,7 @@ Example of how to generate and document Haxe modules from Go packages with go2hx
 # Index
 
 
-- [`function main():Void`](<#`function-main`>)
+- [`function main():Void`](<#function-main>)
 
 # Functions
 
@@ -22,7 +22,9 @@ import Main
 ```
 
 
-## `function main`
+## function main
+
+
 ```haxe
 function main():Void
 ```

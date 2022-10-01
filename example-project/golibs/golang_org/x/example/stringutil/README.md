@@ -14,7 +14,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000102996826171875)
+--- PASS: TestReverse (0.000105857849121094)
 ```
 </p>
 </details>
@@ -24,7 +24,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.00180411338806152)
+--- PASS: TestReverse (0.00190210342407227)
 ```
 </p>
 </details>
@@ -34,7 +34,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000499963760375976562)
+--- PASS: TestReverse (0.000528097152709960938)
 ```
 </p>
 </details>
@@ -44,9 +44,9 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 Error: Command failed with error 1
+[0.045s][warning][exceptions] Class java.lang.Object in throws clause of method java.lang.String haxe.io.Bytes.toString() is not a subtype of class java.lang.Throwable
 [0.046s][warning][exceptions] Class java.lang.Object in throws clause of method haxe.io.Bytes haxe.io.Bytes.ofString(java.lang.String, haxe.io.Encoding) is not a subtype of class java.lang.Throwable
 [0.046s][warning][exceptions] Class java.lang.Object in throws clause of method void haxe.io.Bytes.blit(int, haxe.io.Bytes, int, int) is not a subtype of class java.lang.Throwable
-[0.046s][warning][exceptions] Class java.lang.Object in throws clause of method java.lang.String haxe.io.Bytes.toString() is not a subtype of class java.lang.Throwable
 === RUN   TestReverse
 Exception: null
 Called from stdgo.GoString$GoString_Impl_.__toSliceRune__ (/usr/local/lib/haxe/lib/go2hx/git/stdgo/GoString.hx line 112)
@@ -65,9 +65,9 @@ Called from golang_org.x.example.stringutil_test._Stringutil.Stringutil_Fields_.
 # Index
 
 
-- [`function reverse(_s:stdgo.GoString):stdgo.GoString`](<#`function-reverse`>)
+- [`function reverse(_s:stdgo.GoString):stdgo.GoString`](<#function-reverse>)
 
-- [`function testReverse(_t:stdgo.Ref<stdgo.testing.T>):Void`](<#`function-testReverse`>)
+- [`function testReverse(_t:stdgo.Ref<stdgo.testing.T>):Void`](<#function-testreverse>)
 
 # Functions
 
@@ -77,7 +77,9 @@ import golang_org.x.example.stringutil.Stringutil
 ```
 
 
-## `function reverse`
+## function reverse
+
+
 ```haxe
 function reverse(_s:stdgo.GoString):stdgo.GoString
 ```
@@ -89,7 +91,9 @@ Reverse returns its argument string reversed rune\-wise left to right.
 [\(view code\)](<./Stringutil.hx#L26>)
 
 
-## `function testReverse`
+## function testReverse
+
+
 ```haxe
 function testReverse(_t:stdgo.Ref<stdgo.testing.T>):Void
 ```
