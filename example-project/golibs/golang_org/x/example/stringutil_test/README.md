@@ -14,7 +14,7 @@
 
 - [Variables](<#variables>)
 
-- [`function main():Void`](<#>)
+- [`function main():Void`](<#`function-main`>)
 
 # Variables
 

@@ -14,7 +14,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (9.48905944824219e-05)
+--- PASS: TestReverse (0.000102996826171875)
 ```
 </p>
 </details>
@@ -24,7 +24,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.00180602073669434)
+--- PASS: TestReverse (0.00180411338806152)
 ```
 </p>
 </details>
@@ -34,7 +34,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000419855117797851562)
+--- PASS: TestReverse (0.000499963760375976562)
 ```
 </p>
 </details>
@@ -65,9 +65,9 @@ Called from golang_org.x.example.stringutil_test._Stringutil.Stringutil_Fields_.
 # Index
 
 
-- [`function reverse(_s:stdgo.GoString):stdgo.GoString`](<#>)
+- [`function reverse(_s:stdgo.GoString):stdgo.GoString`](<#`function-reverse`>)
 
-- [`function testReverse(_t:stdgo.Ref<stdgo.testing.T>):Void`](<#>)
+- [`function testReverse(_t:stdgo.Ref<stdgo.testing.T>):Void`](<#`function-testReverse`>)
 
 # Functions
 

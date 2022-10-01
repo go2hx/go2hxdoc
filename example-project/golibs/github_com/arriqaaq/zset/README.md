@@ -14,13 +14,13 @@
 
 - [Constants](<#constants>)
 
-- [`function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#>)
+- [`function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#`function-_createNode`>)
 
-- [`function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>`](<#>)
+- [`function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>`](<#`function-_newZSkipList`>)
 
-- [`function _randomLevel():stdgo.GoInt`](<#>)
+- [`function _randomLevel():stdgo.GoInt`](<#`function-_randomLevel`>)
 
-- [`function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>`](<#>)
+- [`function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>`](<#`function-new_`>)
 
 - [`class ZRangeOptions`](<#class-zrangeoptions>)
 

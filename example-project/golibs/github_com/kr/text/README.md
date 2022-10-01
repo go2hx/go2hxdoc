@@ -12,17 +12,17 @@ Package text provides rudimentary functions for manipulating text in paragraphs.
 # Index
 
 
-- [`function indent(_s:stdgo.GoString, _prefix:stdgo.GoString):stdgo.GoString`](<#>)
+- [`function indent(_s:stdgo.GoString, _prefix:stdgo.GoString):stdgo.GoString`](<#`function-indent`>)
 
-- [`function indentBytes(_b:stdgo.Slice<stdgo.GoByte>, _prefix:stdgo.Slice<stdgo.GoByte>):stdgo.Slice<stdgo.GoByte>`](<#>)
+- [`function indentBytes(_b:stdgo.Slice<stdgo.GoByte>, _prefix:stdgo.Slice<stdgo.GoByte>):stdgo.Slice<stdgo.GoByte>`](<#`function-indentBytes`>)
 
-- [`function newIndentWriter(_w:stdgo.io.Writer, _pre:haxe.Rest<stdgo.Slice<stdgo.GoByte>>):stdgo.io.Writer`](<#>)
+- [`function newIndentWriter(_w:stdgo.io.Writer, _pre:haxe.Rest<stdgo.Slice<stdgo.GoByte>>):stdgo.io.Writer`](<#`function-newIndentWriter`>)
 
-- [`function wrap(_s:stdgo.GoString, _lim:stdgo.GoInt):stdgo.GoString`](<#>)
+- [`function wrap(_s:stdgo.GoString, _lim:stdgo.GoInt):stdgo.GoString`](<#`function-wrap`>)
 
-- [`function wrapBytes(_b:stdgo.Slice<stdgo.GoByte>, _lim:stdgo.GoInt):stdgo.Slice<stdgo.GoByte>`](<#>)
+- [`function wrapBytes(_b:stdgo.Slice<stdgo.GoByte>, _lim:stdgo.GoInt):stdgo.Slice<stdgo.GoByte>`](<#`function-wrapBytes`>)
 
-- [`function wrapWords(_words:stdgo.Slice<stdgo.Slice<stdgo.GoByte>>, _spc:stdgo.GoInt, _lim:stdgo.GoInt, _pen:stdgo.GoInt):stdgo.Slice<stdgo.Slice<stdgo.Slice<stdgo.GoByte>>>`](<#>)
+- [`function wrapWords(_words:stdgo.Slice<stdgo.Slice<stdgo.GoByte>>, _spc:stdgo.GoInt, _lim:stdgo.GoInt, _pen:stdgo.GoInt):stdgo.Slice<stdgo.Slice<stdgo.Slice<stdgo.GoByte>>>`](<#`function-wrapWords`>)
 
 # Functions
 
