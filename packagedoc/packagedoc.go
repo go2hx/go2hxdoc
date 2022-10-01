@@ -166,9 +166,9 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		for _, r := range CompilationTestResults.Results {
 			if r.Module != lastModule {
 				lastModule = r.Module
-				tests := "❌ no"
+				tests := "no"
 				if r.HasTest {
-					tests = "✅ yes"
+					tests = "yes"
 				}
 				pf := "❌"
 				if r.CompiledOK {
