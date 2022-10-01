@@ -285,13 +285,13 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			cfg.ListEntry(0, cfg.Link("`"+fn.String()+"`", cfg.LocalHref("function "+fn.XMLName.Local)))
 		}
 		for _, cl := range dd.Classes {
-			cfg.ListEntry(0, cfg.Link("`class "+cl.Class.Name()+"`", cfg.LocalHref("class "+cl.Class.Name())))
+			cfg.ListEntry(0, cfg.Link("class "+cl.Class.Name(), cfg.LocalHref("class "+cl.Class.Name())))
 			for _, fn := range cl.Functions {
 				cfg.ListEntry(1, cfg.Link("`"+fn.String()+"`", cfg.LocalHref(cl.Class.Name()+classMethodSeparator+fn.XMLName.Local)))
 			}
 		}
 		for _, cd := range dd.Typedefs {
-			cfg.ListEntry(0, cfg.Link("`typedef "+cd.Typedef.Name()+"`", cfg.LocalHref("typedef "+cd.Typedef.Name())))
+			cfg.ListEntry(0, cfg.Link("typedef "+cd.Typedef.Name(), cfg.LocalHref("typedef "+cd.Typedef.Name())))
 			for _, fn := range cd.Functions {
 				cfg.ListEntry(1, cfg.Link("`"+fn.String()+"`", cfg.LocalHref(cd.Typedef.Name()+classMethodSeparator+fn.XMLName.Local)))
 			}

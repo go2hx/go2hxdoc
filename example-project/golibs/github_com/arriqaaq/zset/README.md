@@ -22,11 +22,11 @@
 
 - [`function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>`](<#function-new_>)
 
-- [`class ZRangeOptions`](<#class-zrangeoptions>)
+- [class ZRangeOptions](<#class-zrangeoptions>)
 
   - [`function new(?limit:Null<stdgo.GoInt>, ?excludeStart:Bool, ?excludeEnd:Bool):Void`](<#zrangeoptions-function-new>)
 
-- [`class ZSet`](<#class-zset>)
+- [class ZSet](<#class-zset>)
 
   - [`function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zset>>):Void`](<#zset-function-new>)
 

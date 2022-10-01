@@ -14,7 +14,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000105857849121094)
+--- PASS: TestReverse (0.000102043151855469)
 ```
 </p>
 </details>
@@ -24,7 +24,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.00190210342407227)
+--- PASS: TestReverse (0.00181913375854492)
 ```
 </p>
 </details>
@@ -34,7 +34,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000528097152709960938)
+--- PASS: TestReverse (0.000505924224853515625)
 ```
 </p>
 </details>
@@ -44,9 +44,9 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 Error: Command failed with error 1
+[0.044s][warning][exceptions] Class java.lang.Object in throws clause of method haxe.io.Bytes haxe.io.Bytes.ofString(java.lang.String, haxe.io.Encoding) is not a subtype of class java.lang.Throwable
+[0.045s][warning][exceptions] Class java.lang.Object in throws clause of method void haxe.io.Bytes.blit(int, haxe.io.Bytes, int, int) is not a subtype of class java.lang.Throwable
 [0.045s][warning][exceptions] Class java.lang.Object in throws clause of method java.lang.String haxe.io.Bytes.toString() is not a subtype of class java.lang.Throwable
-[0.046s][warning][exceptions] Class java.lang.Object in throws clause of method haxe.io.Bytes haxe.io.Bytes.ofString(java.lang.String, haxe.io.Encoding) is not a subtype of class java.lang.Throwable
-[0.046s][warning][exceptions] Class java.lang.Object in throws clause of method void haxe.io.Bytes.blit(int, haxe.io.Bytes, int, int) is not a subtype of class java.lang.Throwable
 === RUN   TestReverse
 Exception: null
 Called from stdgo.GoString$GoString_Impl_.__toSliceRune__ (/usr/local/lib/haxe/lib/go2hx/git/stdgo/GoString.hx line 112)
