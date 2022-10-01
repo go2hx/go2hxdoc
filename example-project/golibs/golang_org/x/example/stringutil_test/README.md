@@ -1,5 +1,4 @@
-# Module: golang\_org.x.example.stringutil
-
+# Module: `golang_org.x.example.stringutil`
 
 [(view library index)](../../../../golibs.md)
 
@@ -15,7 +14,7 @@
 
 - [Variables](<#variables>)
 
-- [function main\(\):Void](<#function-main>)
+- [`function main():Void`](<#>)
 
 # Variables
 
@@ -38,9 +37,7 @@ import golang_org.x.example.stringutil_test.Stringutil
 ```
 
 
-## function main
-
-
+## `function main`
 ```haxe
 function main():Void
 ```

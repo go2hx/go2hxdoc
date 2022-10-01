@@ -4,4 +4,5 @@
 #
 go build go2hxdoc.go # rebuild the executable for testing
 # location of the stdgo code to document must be the same physcal location as the location of go2hx haxelib
-./go2hxdoc -dir `haxelib libpath go2hx`stdgo -interp -jvm -hl -cpp -stats -force # all testing possible in parallel (-seq for sequential)
+# -timeout defaut value is overriden (m=mins), -force the production of .md files even if they are older than the .hx files 
+./go2hxdoc -dir `haxelib libpath go2hx`stdgo -interp -jvm -hl -cpp -stats -timeout 1m -force # all testing possible in parallel (-seq for sequential)

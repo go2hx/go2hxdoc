@@ -1,5 +1,4 @@
-# Module: github\_com.arriqaaq.zset
-
+# Module: `github_com.arriqaaq.zset`
 
 [(view library index)](../../../golibs.md)
 
@@ -15,65 +14,65 @@
 
 - [Constants](<#constants>)
 
-- [function \_createNode\(\_level:stdgo.GoInt, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#function-_createnode>)
+- [`function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#>)
 
-- [function \_newZSkipList\(\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplist\>](<#function-_newzskiplist>)
+- [`function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>`](<#>)
 
-- [function \_randomLevel\(\):stdgo.GoInt](<#function-_randomlevel>)
+- [`function _randomLevel():stdgo.GoInt`](<#>)
 
-- [function new\_\(\):stdgo.Ref\<github\_com.arriqaaq.zset.ZSet\>](<#function-new_>)
+- [`function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>`](<#>)
 
-- [class ZRangeOptions](<#class-zrangeoptions>)
+- [`class ZRangeOptions`](<#class-zrangeoptions>)
 
-  - [function new\(?limit:Null\<stdgo.GoInt\>, ?excludeStart:Bool, ?excludeEnd:Bool\):Void](<#zrangeoptions-function-new>)
+  - [`function new(?limit:Null<stdgo.GoInt>, ?excludeStart:Bool, ?excludeEnd:Bool):Void`](<#zrangeoptions-function-new>)
 
-- [class ZSet](<#class-zset>)
+- [`class ZSet`](<#class-zset>)
 
-  - [function new\(?\_records:stdgo.GoMap\<stdgo.GoString, stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zset\>\>\):Void](<#zset-function-new>)
+  - [`function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zset>>):Void`](<#zset-function-new>)
 
-  - [function \_exist\( \_key:stdgo.GoString\):Bool](<#zset-function-_exist>)
+  - [`function _exist( _key:stdgo.GoString):Bool`](<#zset-function-_exist>)
 
-  - [function keys\(\):stdgo.Slice\<stdgo.GoString\>](<#zset-function-keys>)
+  - [`function keys():stdgo.Slice<stdgo.GoString>`](<#zset-function-keys>)
 
-  - [function zadd\( \_key:stdgo.GoString, \_score:stdgo.GoFloat64, \_member:stdgo.GoString, \_value:stdgo.AnyInterface\):stdgo.GoInt](<#zset-function-zadd>)
+  - [`function zadd( _key:stdgo.GoString, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.GoInt`](<#zset-function-zadd>)
 
-  - [function zcard\( \_key:stdgo.GoString\):stdgo.GoInt](<#zset-function-zcard>)
+  - [`function zcard( _key:stdgo.GoString):stdgo.GoInt`](<#zset-function-zcard>)
 
-  - [function zclear\( \_key:stdgo.GoString\):Void](<#zset-function-zclear>)
+  - [`function zclear( _key:stdgo.GoString):Void`](<#zset-function-zclear>)
 
-  - [function zgetByRank\( \_key:stdgo.GoString, \_rank:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zgetbyrank>)
+  - [`function zgetByRank( _key:stdgo.GoString, _rank:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zgetbyrank>)
 
-  - [function zincrBy\( \_key:stdgo.GoString, \_increment:stdgo.GoFloat64, \_member:stdgo.GoString\):stdgo.GoFloat64](<#zset-function-zincrby>)
+  - [`function zincrBy( _key:stdgo.GoString, _increment:stdgo.GoFloat64, _member:stdgo.GoString):stdgo.GoFloat64`](<#zset-function-zincrby>)
 
-  - [function zkeyExists\( \_key:stdgo.GoString\):Bool](<#zset-function-zkeyexists>)
+  - [`function zkeyExists( _key:stdgo.GoString):Bool`](<#zset-function-zkeyexists>)
 
-  - [function zpopMax\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-function-zpopmax>)
+  - [`function zpopMax( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#zset-function-zpopmax>)
 
-  - [function zpopMin\( \_key:stdgo.GoString\):stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>](<#zset-function-zpopmin>)
+  - [`function zpopMin( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#zset-function-zpopmin>)
 
-  - [function zrange\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrange>)
+  - [`function zrange( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrange>)
 
-  - [function zrangeByScore\( \_key:stdgo.GoString, \_start:stdgo.GoFloat64, \_end:stdgo.GoFloat64, \_options:stdgo.Ref\<github\_com.arriqaaq.zset.ZRangeOptions\>\):stdgo.Slice\<stdgo.Ref\<github\_com.arriqaaq.zset.\_Zset.T\_zskiplistNode\>\>](<#zset-function-zrangebyscore>)
+  - [`function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.GoFloat64, _options:stdgo.Ref<github_com.arriqaaq.zset.ZRangeOptions>):stdgo.Slice<stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>>`](<#zset-function-zrangebyscore>)
 
-  - [function zrangeWithScores\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrangewithscores>)
+  - [`function zrangeWithScores( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrangewithscores>)
 
-  - [function zrank\( \_key:stdgo.GoString, \_member:stdgo.GoString\):stdgo.GoInt64](<#zset-function-zrank>)
+  - [`function zrank( _key:stdgo.GoString, _member:stdgo.GoString):stdgo.GoInt64`](<#zset-function-zrank>)
 
-  - [function zrem\( \_key:stdgo.GoString, \_member:stdgo.GoString\):Bool](<#zset-function-zrem>)
+  - [`function zrem( _key:stdgo.GoString, _member:stdgo.GoString):Bool`](<#zset-function-zrem>)
 
-  - [function zrevGetByRank\( \_key:stdgo.GoString, \_rank:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevgetbyrank>)
+  - [`function zrevGetByRank( _key:stdgo.GoString, _rank:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrevgetbyrank>)
 
-  - [function zrevRange\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevrange>)
+  - [`function zrevRange( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrevrange>)
 
-  - [function zrevRangeWithScores\( \_key:stdgo.GoString, \_start:stdgo.GoInt, \_stop:stdgo.GoInt\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevrangewithscores>)
+  - [`function zrevRangeWithScores( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrevrangewithscores>)
 
-  - [function zrevRank\( \_key:stdgo.GoString, \_member:stdgo.GoString\):stdgo.GoInt64](<#zset-function-zrevrank>)
+  - [`function zrevRank( _key:stdgo.GoString, _member:stdgo.GoString):stdgo.GoInt64`](<#zset-function-zrevrank>)
 
-  - [function zrevScoreRange\( \_key:stdgo.GoString, \_max:stdgo.GoFloat64, \_min:stdgo.GoFloat64\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zrevscorerange>)
+  - [`function zrevScoreRange( _key:stdgo.GoString, _max:stdgo.GoFloat64, _min:stdgo.GoFloat64):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrevscorerange>)
 
-  - [function zscore\( \_key:stdgo.GoString, \_member:stdgo.GoString\):\{\_1:stdgo.GoFloat64, \_0:Bool\}](<#zset-function-zscore>)
+  - [`function zscore( _key:stdgo.GoString, _member:stdgo.GoString):{_1:stdgo.GoFloat64, _0:Bool}`](<#zset-function-zscore>)
 
-  - [function zscoreRange\( \_key:stdgo.GoString, \_min:stdgo.GoFloat64, \_max:stdgo.GoFloat64\):stdgo.Slice\<stdgo.AnyInterface\>](<#zset-function-zscorerange>)
+  - [`function zscoreRange( _key:stdgo.GoString, _min:stdgo.GoFloat64, _max:stdgo.GoFloat64):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zscorerange>)
 
 # Constants
 
@@ -107,9 +106,7 @@ import github_com.arriqaaq.zset.Zset
 ```
 
 
-## function \_createNode
-
-
+## `function _createNode`
 ```haxe
 function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.GoString, _value:stdgo.AnyInterface):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
 ```
@@ -121,9 +118,7 @@ function _createNode(_level:stdgo.GoInt, _score:stdgo.GoFloat64, _member:stdgo.G
 [\(view code\)](<./Zset.hx#L180>)
 
 
-## function \_newZSkipList
-
-
+## `function _newZSkipList`
 ```haxe
 function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>
 ```
@@ -135,9 +130,7 @@ function _newZSkipList():stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplist>
 [\(view code\)](<./Zset.hx#L193>)
 
 
-## function \_randomLevel
-
-
+## `function _randomLevel`
 ```haxe
 function _randomLevel():stdgo.GoInt
 ```
@@ -149,9 +142,7 @@ Returns a random level for the new skiplist node we are going to create. The ret
 [\(view code\)](<./Zset.hx#L169>)
 
 
-## function new\_
-
-
+## `function new_`
 ```haxe
 function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>
 ```
