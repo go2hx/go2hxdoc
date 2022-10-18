@@ -24,6 +24,10 @@ Package text provides rudimentary functions for manipulating text in paragraphs.
 
 - [`function wrapWords(_words:stdgo.Slice<stdgo.Slice<stdgo.GoByte>>, _spc:stdgo.GoInt, _lim:stdgo.GoInt, _pen:stdgo.GoInt):stdgo.Slice<stdgo.Slice<stdgo.Slice<stdgo.GoByte>>>`](<#function-wrapwords>)
 
+- [class T\_indentWriter\_static\_extension](<#class-t_indentwriter_static_extension>)
+
+  - [`function write(_w:stdgo.Ref<github_com.kr.text._Text.T_indentWriter>, _p:stdgo.Slice<stdgo.GoByte>):{_1:stdgo.Error, _0:stdgo.GoInt}`](<#t_indentwriter_static_extension-function-write>)
+
 # Functions
 
 
@@ -114,5 +118,33 @@ WrapWords is the low\-level line\-breaking algorithm, useful if you need more co
 
 
 [\(view code\)](<./Text.hx#L124>)
+
+
+# Classes
+
+
+```haxe
+import github_com.kr.text.*
+```
+
+
+## class T\_indentWriter\_static\_extension
+
+
+ 
+
+
+### T\_indentWriter\_static\_extension function write
+
+
+```haxe
+function write(_w:stdgo.Ref<github_com.kr.text._Text.T_indentWriter>, _p:stdgo.Slice<stdgo.GoByte>):{_1:stdgo.Error, _0:stdgo.GoInt}
+```
+
+
+The only errors returned are from the underlying indentWriter. 
+
+
+[\(view code\)](<./Text.hx#L202>)
 
 

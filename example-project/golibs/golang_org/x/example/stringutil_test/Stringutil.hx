@@ -11,7 +11,7 @@ import stdgo.GoMap;
 import stdgo.Chan;
 
 private var _tests:Slice<stdgo.testing.Testing.InternalTest> = (new Slice<stdgo.testing.Testing.InternalTest>(0, 0,
-	(new stdgo.testing.Testing.InternalTest((Go.str("TestReverse") : GoString),
+	(new stdgo.testing.Testing.InternalTest(Go.str("TestReverse"),
 		golang_org.x.example.stringutil.Stringutil.testReverse) : stdgo.testing.Testing.InternalTest)) : Slice<stdgo.testing.Testing.InternalTest>);
 
 private var _benchmarks:Slice<stdgo.testing.Testing.InternalBenchmark> = (new Slice<stdgo.testing.Testing.InternalBenchmark>(0,
@@ -32,7 +32,7 @@ function main():Void {
 
 @:keep var _ = {
 	try {
-		stdgo.testing.internal.testdeps.Testdeps.importPath = (Go.str("golang.org/x/example/stringutil") : GoString);
+		stdgo.testing.internal.testdeps.Testdeps.importPath = Go.str("golang.org/x/example/stringutil");
 	} catch (__exception__)
 		if (__exception__.message != "__return__")
 			throw __exception__;

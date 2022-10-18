@@ -16,9 +16,9 @@ import stdgo.Chan;
 **/
 private var __go2hxdoc__package:Bool;
 
-private var _nl:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, ("\n".code : GoUInt8)) : Slice<GoUInt8>);
-private var _sp:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, (" ".code : GoUInt8)) : Slice<GoUInt8>);
-private final _defaultPenalty:GoUnTypedFloat = (100000 : GoUnTypedFloat);
+private var _nl:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, ("\n".code : GoRune)) : Slice<GoUInt8>);
+private var _sp:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, (" ".code : GoRune)) : Slice<GoUInt8>);
+private final _defaultPenalty:GoFloat64 = (100000 : GoFloat64);
 
 /**
 	// Writer indents each line of its input.
@@ -67,11 +67,11 @@ function indentBytes(_b:Slice<GoByte>, _prefix:Slice<GoByte>):Slice<GoByte> {
 	var _res:Slice<GoByte> = (null : Slice<GoUInt8>);
 	var _bol:Bool = true;
 	for (_0 => _c in _b) {
-		if (_bol && (_c != ("\n".code : GoUInt8))) {
+		if (_bol && (_c != ("\n".code : GoRune))) {
 			_res = (_res.__append__(..._prefix.__toArray__()));
 		};
 		_res = (_res.__append__(_c));
-		_bol = _c == ("\n".code : GoUInt8);
+		_bol = _c == ("\n".code : GoRune);
 	};
 	return _res;
 }
@@ -84,7 +84,7 @@ function indentBytes(_b:Slice<GoByte>, _prefix:Slice<GoByte>):Slice<GoByte> {
 **/
 function newIndentWriter(_w:stdgo.io.Io.Writer, _pre:haxe.Rest<Slice<GoByte>>):stdgo.io.Io.Writer {
 	var _pre = new Slice<Slice<GoByte>>(0, 0, ..._pre);
-	return Go.asInterface(({_w: _w, _pre: _pre, _bol: true} : T_indentWriter));
+	return Go.asInterface((({_w: _w, _pre: _pre, _bol: true} : T_indentWriter) : Ref<T_indentWriter>));
 }
 
 /**
@@ -194,13 +194,13 @@ private class T_indentWriter_asInterface {
 	var __self__:T_indentWriter;
 }
 
-@:keep private class T_indentWriter_static_extension {
+@:keep @:allow(github_com.kr.text.Text.T_indentWriter_asInterface) class T_indentWriter_static_extension {
 	/**
 		// The only errors returned are from the underlying indentWriter.
 	**/
 	@:keep
 	static public function write(_w:Ref<T_indentWriter>, _p:Slice<GoByte>):{var _0:GoInt; var _1:Error;} {
-		var _n:GoInt = (0 : GoInt), _err:Error = (null : stdgo.Error);
+		var _n:GoInt = (0 : GoInt), _err:Error = (null : Error);
 		for (_0 => _c in _p) {
 			if (_w._bol) {
 				var _i:GoInt = (0 : GoInt);
@@ -222,7 +222,7 @@ private class T_indentWriter_asInterface {
 				return {_0: _n, _1: _err};
 			};
 			_n++;
-			_w._bol = _c == ("\n".code : GoUInt8);
+			_w._bol = _c == ("\n".code : GoRune);
 			if (_w._bol) {
 				_w._off = (0 : GoInt);
 				if (_w._sel < (_w._pre.length - (1 : GoInt))) {
@@ -230,6 +230,6 @@ private class T_indentWriter_asInterface {
 				};
 			};
 		};
-		return {_0: _n, _1: (null : stdgo.Error)};
+		return {_0: _n, _1: (null : Error)};
 	}
 }

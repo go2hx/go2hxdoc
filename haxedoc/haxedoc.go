@@ -173,7 +173,10 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			module += ".Go"
 		}
 
-		tempFilePrefix := path.Join(tempDir, strings.ReplaceAll(module, ".", "_"))
+		tempFilePrefix, err := filepath.Abs(path.Join(tempDir, strings.ReplaceAll(module, ".", "_")))
+		if err != nil {
+			panic(err)
+		}
 
 		this := HxmlXmlFiles{
 			Xml:       tempFilePrefix + ".xml",
@@ -183,7 +186,12 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			DP:        d,
 		}
 
-		hxmlCommon := "-cp " + baseDir + "\n"
+		baseDirCP, err := filepath.Abs(baseDir)
+		if err != nil {
+			panic(err)
+		}
+
+		hxmlCommon := "-cp " + baseDirCP + "\n"
 		hxmlCommon += "-lib go2hx\n"
 		hxmlCommon += module + "\n"
 		if d.HasTest {
@@ -195,7 +203,7 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 		}
 
 		hxmlDoc := hxmlCommon + "-D doc-gen\n-dce no\n--no-output\n-neko dummy.n\n-xml " + this.Xml + "\n"
-		err := os.WriteFile(this.HxmlDoc, []byte(hxmlDoc), 0666)
+		err = os.WriteFile(this.HxmlDoc, []byte(hxmlDoc), 0666)
 		if err != nil {
 			panic(err)
 		}
@@ -240,10 +248,14 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 				if len(exeRunes) > 1 {
 					exeRunes[0] = unicode.ToUpper(exeRunes[0])
 					file := tempFilePrefix + "-cpp.hxml"
+					tempDirAbs, err := filepath.Abs(tempDir)
+					if err != nil {
+						panic(err)
+					}
 					content := hxmlCommon
-					content += "--cpp " + tempDir + "/hxcpp_common\n" // put all the cpp code in the same dir, to reuse common objects
-					content += "--cmd " + tempDir + "/hxcpp_common/" + string(exeRunes) + "\n"
-					err := os.WriteFile(file, []byte(content), 0666)
+					content += "--cpp " + tempDirAbs + "/hxcpp_common\n" // put all the cpp code in the same dir, to reuse common objects
+					content += "--cmd " + tempDirAbs + "/hxcpp_common/" + string(exeRunes) + "\n"
+					err = os.WriteFile(file, []byte(content), 0666)
 					if err != nil {
 						panic(err)
 					}

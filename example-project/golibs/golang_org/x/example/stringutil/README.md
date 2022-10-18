@@ -14,17 +14,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000102043151855469)
-```
-</p>
-</details>
-
-<details><summary>hl tests passed</summary>
-<p>
-
-```
-=== RUN   TestReverse
---- PASS: TestReverse (0.00181913375854492)
+--- PASS: TestReverse (0.000466823577880859)
 ```
 </p>
 </details>
@@ -34,29 +24,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN   TestReverse
---- PASS: TestReverse (0.000505924224853515625)
-```
-</p>
-</details>
-
-<details><summary>jvm tests failed</summary>
-<p>
-
-```
-Error: Command failed with error 1
-[0.044s][warning][exceptions] Class java.lang.Object in throws clause of method haxe.io.Bytes haxe.io.Bytes.ofString(java.lang.String, haxe.io.Encoding) is not a subtype of class java.lang.Throwable
-[0.045s][warning][exceptions] Class java.lang.Object in throws clause of method void haxe.io.Bytes.blit(int, haxe.io.Bytes, int, int) is not a subtype of class java.lang.Throwable
-[0.045s][warning][exceptions] Class java.lang.Object in throws clause of method java.lang.String haxe.io.Bytes.toString() is not a subtype of class java.lang.Throwable
-=== RUN   TestReverse
-Exception: null
-Called from stdgo.GoString$GoString_Impl_.__toSliceRune__ (/usr/local/lib/haxe/lib/go2hx/git/stdgo/GoString.hx line 112)
-Called from golang_org.x.example.stringutil._Stringutil.Stringutil_Fields_.reverse (golibs/golang_org/x/example/stringutil/Stringutil.hx line 27)
-Called from golang_org.x.example.stringutil._Stringutil.Stringutil_Fields_.testReverse (golibs/golang_org/x/example/stringutil/Stringutil.hx line 51)
-Called from golang_org.x.example.stringutil_test._Stringutil.Stringutil_Fields_$Stringutil_Fields__testReverse.invoke (golibs/golang_org/x/example/stringutil_test/Stringutil.hx line -1)
-Called from golang_org.x.example.stringutil_test._Stringutil.Stringutil_Fields_$Stringutil_Fields__testReverse.invoke (golibs/golang_org/x/example/stringutil_test/Stringutil.hx line -1)
-Called from stdgo.testing.M.run (/usr/local/lib/haxe/lib/go2hx/git/stdgo/testing/Testing.hx line 353)
-Called from golang_org.x.example.stringutil_test._Stringutil.Stringutil_Fields_.main (golibs/golang_org/x/example/stringutil_test/Stringutil.hx line 30)
-Called from golang_org.x.example.stringutil_test._Stringutil.Stringutil_Fields_.main (golibs/golang_org/x/example/stringutil_test/Stringutil.hx line 1)
+--- PASS: TestReverse (0.000724077224731445312)
 ```
 </p>
 </details>

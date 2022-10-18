@@ -45,12 +45,11 @@ function reverse(_s:GoString):GoString {
 }
 
 function testReverse(_t:Ref<stdgo.testing.Testing.T>):Void {
-	for (_0 => _c in(new Slice<T__struct_0>(0, 0, ({_in: (Go.str("Hello, world") : GoString), _want: (Go.str("dlrow ,olleH") : GoString)} : T__struct_0),
-		({_in: (Go.str("Hello, 世界") : GoString), _want: (Go.str("界世 ,olleH") : GoString)} : T__struct_0),
-		({_in: (Go.str() : GoString), _want: (Go.str() : GoString)} : T__struct_0)) : Slice<T__struct_0>)) {
+	for (_0 => _c in(new Slice<T__struct_0>(0, 0, ({_in: Go.str("Hello, world"), _want: Go.str("dlrow ,olleH")} : T__struct_0),
+		({_in: Go.str("Hello, 世界"), _want: Go.str("界世 ,olleH")} : T__struct_0), ({_in: Go.str(), _want: Go.str()} : T__struct_0)) : Slice<T__struct_0>)) {
 		var _got:GoString = reverse(_c._in);
 		if (_got != _c._want) {
-			_t.errorf((Go.str("Reverse(%q) == %q, want %q") : GoString), Go.toInterface(_c._in), Go.toInterface(_got), Go.toInterface(_c._want));
+			_t.errorf(Go.str("Reverse(%q) == %q, want %q"), Go.toInterface(_c._in), Go.toInterface(_got), Go.toInterface(_c._want));
 		};
 	};
 }
