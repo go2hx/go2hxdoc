@@ -6,6 +6,7 @@
 package rtti
 
 import (
+	"bytes"
 	"encoding/xml"
 	"fmt"
 	"os"
@@ -13,6 +14,7 @@ import (
 	"sort"
 	"strings"
 	"unicode"
+	"unicode/utf8"
 )
 
 type M struct {
@@ -545,10 +547,21 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 }
 
 func XMLread(filename string) (*TypeTree, error) {
-	rawXml, err := os.ReadFile(filename)
+	rawXmlIn, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
+
+	// sanitise the XML to replace non-printable characters
+	rawXml := make([]byte, 0, len(rawXmlIn))
+	for _, r := range bytes.Runes(rawXmlIn) {
+		if unicode.IsGraphic(r) {
+			rawXml = utf8.AppendRune(rawXml, r)
+		} else {
+			rawXml = utf8.AppendRune(rawXml, utf8.RuneError)
+		}
+	}
+
 	var r TypeTree
 	if err := xml.Unmarshal(rawXml, &r); err != nil {
 		return nil, err
