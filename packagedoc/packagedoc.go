@@ -16,6 +16,7 @@ import (
 	"sort"
 	"strings"
 	"sync"
+	"unicode/utf8"
 
 	"github.com/go2hx/go2hxdoc/extractfunc"
 	"github.com/go2hx/go2hxdoc/haxedoc"
@@ -83,7 +84,7 @@ func (cfg *Config) CodeBlock(text string) {
 
 func (cfg *Config) Comment(text string) {
 	para := ""
-	for _, line := range strings.Split(text, "\n") {
+	for _, line := range strings.Split(text, string(utf8.RuneError)) {
 		line = strings.TrimSpace(line)
 		line = strings.TrimLeft(line, "//")
 		line = strings.TrimSpace(line)
