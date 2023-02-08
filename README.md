@@ -18,6 +18,7 @@ This project has only been tested on OSX.
 TO DO
 -----
 
+- Use `:private` metadata to remove Go private classes from the documentation [go2hx issue #159](https://github.com/go2hx/go2hx/issues/159)
 - Fix Typedef Haxe code display to be correct
 - Fix to document all `stdgo` core functionality e.g. document abstract use in stdgo/GoString.hx
 - Investigate orphan processes after timeout
