@@ -9,7 +9,7 @@ go2hxdoc also writes a summary markdown file into the top level code-generated d
 
 The project targets GitHub flavoured markdown. 
 
-To enable tests on specific targets, use one or more of the `-cpp -hl -interp -jvm` command line flags.
+To enable tests on specific targets, use one or more of the `-cpp -hl -interp -js -jvm` command line flags.
 
 go2hxdoc is a Go program, which must be built or installed before use.
 
@@ -19,7 +19,6 @@ TO DO
 -----
 
 - Use `:private` metadata to remove Go private classes from the documentation [go2hx issue #159](https://github.com/go2hx/go2hx/issues/159)
-- Alter headings at runtime to only show tested targets
 - Understand and add [go.work file](https://github.com/golang/tools/blob/master/gopls/doc/workspace.md) for example-project
 - Fix Typedef Haxe code display to be correct
 - Fix to document all `stdgo` core functionality e.g. document abstract use in stdgo/GoString.hx

@@ -130,16 +130,16 @@ Creating /Users/elliottstoneham/code/go2hx/go2hxdoc/example-project/bin/hxcpp_co
 
 [33;1mCompiling group: haxe[0m
 [1mg++[0m [0m-Iinclude[0m [0m-c[0m [0m-fvisibility=hidden[0m [0m-stdlib=libc++[0m [0m-Qunused-arguments[0m [0m-O2[0m [0m-I/usr/local/lib/haxe/lib/hxcpp/4,2,1/include[0m [1m-DHX_MACOS[0m [0m-m64[0m [0m-Wno-parentheses[0m [0m-Wno-unused-value[0m [0m-Wno-format-extra-args[0m [0m-Wno-overflow[0m [1m-DHXCPP_M64[0m [1m-DHXCPP_VISIT_ALLOCS[0m[2m(haxe)[0m [1m-DHX_SMART_STRINGS[0m[2m(haxe)[0m [1m-DHXCPP_API_LEVEL=430[0m[2m(haxe)[0m [2m...[0m [2mtags=[haxe,static][0m
- [2m-[0m [33msrc/stdgo/io/[33;1mT_multiReader_asInterface.cpp[0m [3m[0m
- [2m-[0m [33msrc/[33;1m__boot__.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/regexp/syntax/[33;1mT_compiler_static_extension.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mInt64__asInterface.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint32_asInterface.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/regexp/[33;1mT__struct_3_static_extension.cpp[0m [3m[0m
  [2m-[0m [33msrc/stdgo/sync/atomic/_Atomic/[33;1mAtomic_Fields_.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/sync/[33;1mPool_static_extension.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/_Chan/[33;1mChanIterator.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/regexp/[33;1mT__struct_5_asInterface.cpp[0m [3m[0m
+ [2m-[0m [33msrc/[33;1m__boot__.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/_Chan/[33;1mChanKeyValueIterator.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/bufio/_Bufio/[33;1mBufio_Fields_.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mInt64__asInterface.cpp[0m [3m[0m
  [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint64.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/_StdGoTypes/[33;1mGoUInt64_Impl_.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/syscall/[33;1mSockaddrInet6.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint32_asInterface.cpp[0m [3m[0m
 ```
 </p>
 </details>
@@ -149,7 +149,7 @@ Creating /Users/elliottstoneham/code/go2hx/go2hxdoc/example-project/bin/hxcpp_co
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0006349086761474609))
+--- PASS: TestReverse (%!s(float64=0.0006229877471923828))
 
 ```
 </p>

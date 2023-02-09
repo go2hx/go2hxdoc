@@ -51,6 +51,7 @@ func IsTest() bool {
 }
 
 var Targets = []string{"cpp", "hl", "interp", "js", "jvm"} // in lexical order
+var TargetsUsed = map[string]bool{}                        // to show
 
 type DirPair struct {
 	CodeDir string
@@ -213,6 +214,7 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 		if d.HasTest {
 			//interp
 			if *interpFlag {
+				TargetsUsed["interp"] = true
 				file := tempFilePrefix + "-interp.hxml"
 				content := hxmlCommon + "--interp\n"
 				err := os.WriteFile(file, []byte(content), 0666)
@@ -223,6 +225,7 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			}
 			//jvm
 			if *jvmFlag {
+				TargetsUsed["jvm"] = true
 				file := tempFilePrefix + "-jvm.hxml"
 				content := hxmlCommon + "--jvm " + tempFilePrefix + ".jvm\n"
 				content += "--cmd java -jar " + tempFilePrefix + ".jvm\n"
@@ -234,6 +237,7 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			}
 			//js
 			if *jsFlag {
+				TargetsUsed["js"] = true
 				file := tempFilePrefix + "-js.hxml"
 				content := hxmlCommon + "--js " + tempFilePrefix + ".js\n"
 				content += "--cmd node " + tempFilePrefix + ".js\n"
@@ -245,6 +249,7 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			}
 			//hl
 			if *hlFlag {
+				TargetsUsed["hl"] = true
 				file := tempFilePrefix + "-hl.hxml"
 				content := hxmlCommon + "--hl " + tempFilePrefix + ".hl\n"
 				content += "--cmd hl " + tempFilePrefix + ".hl\n"
@@ -256,6 +261,7 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 			}
 			//cpp
 			if *cppFlag {
+				TargetsUsed["cpp"] = true
 				exeParts := strings.Split(module, ".")
 				exeRunes := []rune(exeParts[len(exeParts)-1])
 				if len(exeRunes) > 1 {

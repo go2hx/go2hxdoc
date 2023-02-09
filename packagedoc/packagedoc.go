@@ -160,9 +160,21 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		}
 
 		cfg.Header(1, "Library compilation and test results")
-		cfg.Write(`
-| module | compile | tests | cpp | hl | interp | js | jvm | 
-| --- | --- | --- | --- | --- | --- | --- | --- |`)
+		line := `| module | compile | tests |`
+		for _, target := range haxedoc.Targets {
+			if haxedoc.TargetsUsed[target] {
+				line += " " + target + ` |`
+			}
+		}
+		cfg.Write(line)
+		line = `| --- | --- | --- | `
+		for _, target := range haxedoc.Targets {
+			if haxedoc.TargetsUsed[target] {
+				line += ` --- |`
+			}
+		}
+		cfg.Write(line)
+
 		lastModule := ""
 		for _, r := range CompilationTestResults.Results {
 			if r.Module != lastModule {
@@ -182,19 +194,21 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 
 				line := fmt.Sprintf("| [%s](%s) | %s | %s |", r.Module, moduleLink, pf, tests)
 				for _, t := range haxedoc.Targets {
-					if r.HasTest {
-						passed, exists := r.TargetTestOK[t]
-						if exists {
-							disp := "❌"
-							if passed {
-								disp = "✅"
+					if haxedoc.TargetsUsed[t] {
+						if r.HasTest {
+							passed, exists := r.TargetTestOK[t]
+							if exists {
+								disp := "❌"
+								if passed {
+									disp = "✅"
+								}
+								line += fmt.Sprintf(" %s |", disp)
+							} else {
+								line += "  |"
 							}
-							line += fmt.Sprintf(" %s |", disp)
 						} else {
 							line += "  |"
 						}
-					} else {
-						line += "  |"
 					}
 				}
 				cfg.Write(line)
