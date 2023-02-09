@@ -81,7 +81,8 @@ final skiplist_MAXLEVEL:stdgo.GoUInt64 = (("32" : GoUInt64))
 ```
 
 
-For 2^32 elements 
+For 2^32 elements  
+
 
 
 ```haxe
@@ -89,7 +90,8 @@ final skiplist_Probability:stdgo.GoFloat64 = ((0.25 : GoFloat64))
 ```
 
 
-Skiplist probability = 1/4 
+Skiplist probability = 1/4  
+
 
 
 # Functions
@@ -108,7 +110,8 @@ function new_():stdgo.Ref<github_com.arriqaaq.zset.ZSet>
 ```
 
 
-New create a new sorted set 
+New create a new sorted set  
+
 
 
 [\(view code\)](<./Zset.hx#L189>)
@@ -218,7 +221,10 @@ function zadd( _key:stdgo.GoString, _score:stdgo.GoFloat64, _member:stdgo.GoStri
 ```
 
 
-ZAdd Adds the specified member with the specified score to the sorted set stored at key. Add an element into the sorted set with specific key / value / score. Time complexity of this method is : O\(log\(N\)\) 
+ZAdd Adds the specified member with the specified score to the sorted set stored at key.  
+Add an element into the sorted set with specific key / value / score.  
+Time complexity of this method is : O\(log\(N\)\)  
+
 
 
 [\(view code\)](<./Zset.hx#L861>)
@@ -232,7 +238,8 @@ function zcard( _key:stdgo.GoString):stdgo.GoInt
 ```
 
 
-ZCard returns the sorted set cardinality \(number of elements\) of the sorted set stored at key. 
+ZCard returns the sorted set cardinality \(number of elements\) of the sorted set stored at key.  
+
 
 
 [\(view code\)](<./Zset.hx#L828>)
@@ -246,7 +253,8 @@ function zclear( _key:stdgo.GoString):Void
 ```
 
 
-ZClear clear the key in zset. 
+ZClear clear the key in zset.  
+
 
 
 [\(view code\)](<./Zset.hx#L640>)
@@ -260,7 +268,9 @@ function zgetByRank( _key:stdgo.GoString, _rank:stdgo.GoInt):stdgo.Slice<stdgo.A
 ```
 
 
-ZGetByRank gets the member at key by rank, the rank is ordered from lowest to highest. The rank of lowest is 0 and so on. 
+ZGetByRank gets the member at key by rank, the rank is ordered from lowest to highest.  
+The rank of lowest is 0 and so on.  
+
 
 
 [\(view code\)](<./Zset.hx#L571>)
@@ -274,7 +284,10 @@ function zincrBy( _key:stdgo.GoString, _increment:stdgo.GoFloat64, _member:stdgo
 ```
 
 
-ZIncrBy increments the score of member in the sorted set stored at key by increment. If member does not exist in the sorted set, it is added with increment as its score \(as if its previous score was 0.0\). If key does not exist, a new sorted set with the specified member as its sole member is created. 
+ZIncrBy increments the score of member in the sorted set stored at key by increment.  
+If member does not exist in the sorted set, it is added with increment as its score \(as if its previous score was 0.0\).  
+If key does not exist, a new sorted set with the specified member as its sole member is created.  
+
 
 
 [\(view code\)](<./Zset.hx#L761>)
@@ -288,7 +301,8 @@ function zkeyExists( _key:stdgo.GoString):Bool
 ```
 
 
-ZKeyExists check if the key exists in zset. 
+ZKeyExists check if the key exists in zset.  
+
 
 
 [\(view code\)](<./Zset.hx#L651>)
@@ -302,7 +316,8 @@ function zpopMax( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.
 ```
 
 
-get and remove the element with maximum score, nil if the set is empty 
+get and remove the element with maximum score, nil if the set is empty  
+
 
 
 [\(view code\)](<./Zset.hx#L518>)
@@ -316,7 +331,8 @@ function zpopMin( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.
 ```
 
 
-get and remove the element with minimal score, nil if the set is empty 
+get and remove the element with minimal score, nil if the set is empty  
+
 
 
 [\(view code\)](<./Zset.hx#L535>)
@@ -330,7 +346,8 @@ function zrange( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):std
 ```
 
 
-ZRange returns the specified range of elements in the sorted set stored at \<key\>. 
+ZRange returns the specified range of elements in the sorted set stored at \<key\>.  
+
 
 
 [\(view code\)](<./Zset.hx#L628>)
@@ -347,13 +364,18 @@ function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.
 
 
 
-Returns all the elements in the sorted set at key with a score between min and max \(including elements with score equal to min or max\). The elements are considered to be ordered from low to high scores. 
+Returns all the elements in the sorted set at key with a score between min and max \(including  
+elements with score equal to min or max\). The elements are considered to be ordered from low to  
+high scores.  
 
 
-If options is nil, it searchs in interval \[start, end\] without any limit by default 
+
+If options is nil, it searchs in interval \[start, end\] without any limit by default  
 
 
-https://github.com/wangjia184/sortedset/blob/af6d6d227aa79e2a64b899d995ce18aa0bef437c/sortedset.go#L283 
+
+https://github.com/wangjia184/sortedset/blob/af6d6d227aa79e2a64b899d995ce18aa0bef437c/sortedset.go#L283  
+
 
 
 
@@ -370,7 +392,8 @@ function zrangeWithScores( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.
 ```
 
 
-ZRangeWithScores returns the specified range of elements in the sorted set stored at \<key\>. 
+ZRangeWithScores returns the specified range of elements in the sorted set stored at \<key\>.  
+
 
 
 [\(view code\)](<./Zset.hx#L616>)
@@ -384,7 +407,9 @@ function zrank( _key:stdgo.GoString, _member:stdgo.GoString):stdgo.GoInt64
 ```
 
 
-ZRank returns the rank of member in the sorted set stored at key, with the scores ordered from low to high. The rank \(or index\) is 0\-based, which means that the member with the lowest score has rank 0. 
+ZRank returns the rank of member in the sorted set stored at key, with the scores ordered from low to high.  
+The rank \(or index\) is 0\-based, which means that the member with the lowest score has rank 0.  
+
 
 
 [\(view code\)](<./Zset.hx#L807>)
@@ -398,7 +423,9 @@ function zrem( _key:stdgo.GoString, _member:stdgo.GoString):Bool
 ```
 
 
-ZRem removes the specified members from the sorted set stored at key. Non existing members are ignored. An error is returned when key exists and does not hold a sorted set. 
+ZRem removes the specified members from the sorted set stored at key. Non existing members are ignored.  
+An error is returned when key exists and does not hold a sorted set.  
+
 
 
 [\(view code\)](<./Zset.hx#L737>)
@@ -412,7 +439,9 @@ function zrevGetByRank( _key:stdgo.GoString, _rank:stdgo.GoInt):stdgo.Slice<stdg
 ```
 
 
-ZRevGetByRank get the member at key by rank, the rank is ordered from highest to lowest. The rank of highest is 0 and so on. 
+ZRevGetByRank get the member at key by rank, the rank is ordered from highest to lowest.  
+The rank of highest is 0 and so on.  
+
 
 
 [\(view code\)](<./Zset.hx#L553>)
@@ -426,7 +455,10 @@ function zrevRange( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):
 ```
 
 
-ZRevRange returns the specified range of elements in the sorted set stored at key. The elements are considered to be ordered from the highest to the lowest score. Descending lexicographical order is used for elements with equal score. 
+ZRevRange returns the specified range of elements in the sorted set stored at key.  
+The elements are considered to be ordered from the highest to the lowest score.  
+Descending lexicographical order is used for elements with equal score.  
+
 
 
 [\(view code\)](<./Zset.hx#L604>)
@@ -440,7 +472,10 @@ function zrevRangeWithScores( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:std
 ```
 
 
-ZRevRange returns the specified range of elements in the sorted set stored at key. The elements are considered to be ordered from the highest to the lowest score. Descending lexicographical order is used for elements with equal score. 
+ZRevRange returns the specified range of elements in the sorted set stored at key.  
+The elements are considered to be ordered from the highest to the lowest score.  
+Descending lexicographical order is used for elements with equal score.  
+
 
 
 [\(view code\)](<./Zset.hx#L590>)
@@ -454,7 +489,9 @@ function zrevRank( _key:stdgo.GoString, _member:stdgo.GoString):stdgo.GoInt64
 ```
 
 
-ZRevRank returns the rank of member in the sorted set stored at key, with the scores ordered from high to low. The rank \(or index\) is 0\-based, which means that the member with the highest score has rank 0. 
+ZRevRank returns the rank of member in the sorted set stored at key, with the scores ordered from high to low.  
+The rank \(or index\) is 0\-based, which means that the member with the highest score has rank 0.  
+
 
 
 [\(view code\)](<./Zset.hx#L786>)
@@ -468,7 +505,9 @@ function zrevScoreRange( _key:stdgo.GoString, _max:stdgo.GoFloat64, _min:stdgo.G
 ```
 
 
-ZRevScoreRange returns all the elements in the sorted set at key with a score between max and min \(including elements with score equal to max or min\). In contrary to the default ordering of sorted sets, for this command the elements are considered to be ordered from high to low scores. 
+ZRevScoreRange returns all the elements in the sorted set at key with a score between max and min \(including elements with score equal to max or min\).  
+In contrary to the default ordering of sorted sets, for this command the elements are considered to be ordered from high to low scores.  
+
 
 
 [\(view code\)](<./Zset.hx#L660>)
@@ -482,7 +521,8 @@ function zscore( _key:stdgo.GoString, _member:stdgo.GoString):{_1:stdgo.GoFloat6
 ```
 
 
-ZScore returns the score of member in the sorted set at key. 
+ZScore returns the score of member in the sorted set at key.  
+
 
 
 [\(view code\)](<./Zset.hx#L839>)
@@ -496,7 +536,9 @@ function zscoreRange( _key:stdgo.GoString, _min:stdgo.GoFloat64, _max:stdgo.GoFl
 ```
 
 
-ZScoreRange returns all the elements in the sorted set at key with a score between min and max \(including elements with score equal to min or max\). The elements are considered to be ordered from low to high scores. 
+ZScoreRange returns all the elements in the sorted set at key with a score between min and max \(including elements with score equal to min or max\).  
+The elements are considered to be ordered from low to high scores.  
+
 
 
 [\(view code\)](<./Zset.hx#L698>)

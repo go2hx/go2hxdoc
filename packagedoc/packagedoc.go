@@ -114,7 +114,7 @@ func (cfg *Config) Comment(text string) {
 				fmt.Fprintln(&cfg.Out, txt)
 				para = ""
 			} else {
-				para += line + " "
+				para += line + "  \n" // two spaces at the end of a line should be interpreted by Git as a <br />
 			}
 		}
 	}
