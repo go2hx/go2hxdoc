@@ -347,7 +347,13 @@ function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.
 
 
 
-Returns all the elements in the sorted set at key with a score between min and max \(including elements with score equal to min or max\). The elements are considered to be ordered from low to high scores. If options is nil, it searchs in interval \[start, end\] without any limit by default https://github.com/wangjia184/sortedset/blob/af6d6d227aa79e2a64b899d995ce18aa0bef437c/sortedset.go#L283 
+Returns all the elements in the sorted set at key with a score between min and max \(including elements with score equal to min or max\). The elements are considered to be ordered from low to high scores. 
+
+
+If options is nil, it searchs in interval \[start, end\] without any limit by default 
+
+
+https://github.com/wangjia184/sortedset/blob/af6d6d227aa79e2a64b899d995ce18aa0bef437c/sortedset.go#L283 
 
 
 

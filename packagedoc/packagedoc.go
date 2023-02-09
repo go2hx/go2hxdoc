@@ -84,8 +84,21 @@ func (cfg *Config) CodeBlock(text string) {
 
 func (cfg *Config) Comment(text string) {
 	para := ""
+	blankCount := 0
 	for _, line := range strings.Split(text, string(utf8.RuneError)) {
-		if line != "" {
+		if line == "" {
+			blankCount++
+			if blankCount > 3 && para != "" { // probably a blank line between two sets of free-form text
+				txt, err := cfg.MD.Paragraph(para)
+				if err != nil {
+					panic(err)
+				}
+				fmt.Fprintln(&cfg.Out, txt)
+				para = ""
+				blankCount = 0
+			}
+		} else {
+			blankCount = 0
 			line = strings.TrimSpace(line)
 			line = strings.TrimLeft(line, "//")
 			line = strings.TrimLeft(line, "/*")
