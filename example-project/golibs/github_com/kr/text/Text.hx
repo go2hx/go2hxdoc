@@ -16,8 +16,8 @@ import stdgo.Chan;
 **/
 private var __go2hxdoc__package:Bool;
 
-private var _nl:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, ("\n".code : GoRune)) : Slice<GoUInt8>);
-private var _sp:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, (" ".code : GoRune)) : Slice<GoUInt8>);
+private var _nl:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, (10 : GoUInt8)) : Slice<GoUInt8>);
+private var _sp:Slice<GoUInt8> = (new Slice<GoUInt8>(0, 0, (32 : GoUInt8)) : Slice<GoUInt8>);
 private final _defaultPenalty:GoFloat64 = (100000 : GoFloat64);
 
 /**
@@ -43,7 +43,7 @@ private final _defaultPenalty:GoFloat64 = (100000 : GoFloat64);
 			this._off = _off;
 	}
 
-	public function __underlying__():AnyInterface
+	public function __underlying__()
 		return Go.toInterface(this);
 
 	public function __copy__() {
@@ -67,11 +67,11 @@ function indentBytes(_b:Slice<GoByte>, _prefix:Slice<GoByte>):Slice<GoByte> {
 	var _res:Slice<GoByte> = (null : Slice<GoUInt8>);
 	var _bol:Bool = true;
 	for (_0 => _c in _b) {
-		if (_bol && (_c != ("\n".code : GoRune))) {
-			_res = (_res.__append__(..._prefix.__toArray__()));
+		if (_bol && (_c != (10 : GoUInt8))) {
+			_res = _res.__appendref__(..._prefix.__toArray__());
 		};
-		_res = (_res.__append__(_c));
-		_bol = _c == ("\n".code : GoRune);
+		_res = _res.__appendref__(_c);
+		_bol = _c == ((10 : GoUInt8));
 	};
 	return _res;
 }
@@ -84,7 +84,7 @@ function indentBytes(_b:Slice<GoByte>, _prefix:Slice<GoByte>):Slice<GoByte> {
 **/
 function newIndentWriter(_w:stdgo.io.Io.Writer, _pre:haxe.Rest<Slice<GoByte>>):stdgo.io.Io.Writer {
 	var _pre = new Slice<Slice<GoByte>>(0, 0, ..._pre);
-	return Go.asInterface((({_w: _w, _pre: _pre, _bol: true} : T_indentWriter) : Ref<T_indentWriter>));
+	return Go.asInterface((({_w: _w, _bol: true, _pre: _pre} : T_indentWriter) : Ref<T_indentWriter>));
 }
 
 /**
@@ -103,7 +103,7 @@ function wrapBytes(_b:Slice<GoByte>, _lim:GoInt):Slice<GoByte> {
 	var _words = stdgo.bytes.Bytes.split(stdgo.bytes.Bytes.replace(stdgo.bytes.Bytes.trimSpace(_b), _nl, _sp, (-1 : GoInt)), _sp);
 	var _lines:Slice<Slice<GoByte>> = (null : Slice<Slice<GoUInt8>>);
 	for (_0 => _line in wrapWords(_words, (1 : GoInt), _lim, (100000 : GoInt))) {
-		_lines = (_lines.__append__(stdgo.bytes.Bytes.join(_line, _sp)));
+		_lines = _lines.__appendref__(stdgo.bytes.Bytes.join(_line, _sp));
 	};
 	return stdgo.bytes.Bytes.join(_lines, _nl);
 }
@@ -127,39 +127,39 @@ function wrapWords(_words:Slice<Slice<GoByte>>, _spc:GoInt, _lim:GoInt, _pen:GoI
 	{
 		var _i:GoInt = (0 : GoInt);
 		Go.cfor(_i < _n, _i++, {
-			_length[_i] = new Slice<GoInt>((_n : GoInt).toBasic(), 0, ...[for (i in 0...(_n : GoInt).toBasic()) (0 : GoInt)]);
-			_length[_i][_i] = (_words[_i].length);
+			_length[(_i : GoInt)] = new Slice<GoInt>((_n : GoInt).toBasic(), 0, ...[for (i in 0...(_n : GoInt).toBasic()) (0 : GoInt)]);
+			_length[(_i : GoInt)][(_i : GoInt)] = (_words[(_i : GoInt)].length);
 			{
 				var _j:GoInt = _i + (1 : GoInt);
 				Go.cfor(_j < _n, _j++, {
-					_length[_i][_j] = (_length[_i][_j - (1 : GoInt)] + _spc) + (_words[_j].length);
+					_length[(_i : GoInt)][(_j : GoInt)] = (_length[(_i : GoInt)][(_j - (1 : GoInt) : GoInt)] + _spc) + (_words[(_j : GoInt)].length);
 				});
 			};
 		});
 	};
 	var _nbrk = new Slice<GoInt>((_n : GoInt).toBasic(), 0, ...[for (i in 0...(_n : GoInt).toBasic()) (0 : GoInt)]);
 	var _cost = new Slice<GoInt>((_n : GoInt).toBasic(), 0, ...[for (i in 0...(_n : GoInt).toBasic()) (0 : GoInt)]);
-	for (_i => _ in _cost) {
-		_cost[_i] = (2147483647 : GoInt);
+	for (_i in 0..._cost.length.toBasic()) {
+		_cost[(_i : GoInt)] = (2147483647 : GoInt);
 	};
 	{
 		var _i:GoInt = _n - (1 : GoInt);
 		Go.cfor(_i >= (0 : GoInt), _i--, {
-			if ((_length[_i][_n - (1 : GoInt)] <= _lim) || (_i == (_n - (1 : GoInt)))) {
-				_cost[_i] = (0 : GoInt);
-				_nbrk[_i] = _n;
+			if ((_length[(_i : GoInt)][(_n - (1 : GoInt) : GoInt)] <= _lim) || (_i == (_n - (1 : GoInt)))) {
+				_cost[(_i : GoInt)] = (0 : GoInt);
+				_nbrk[(_i : GoInt)] = _n;
 			} else {
 				{
 					var _j:GoInt = _i + (1 : GoInt);
 					Go.cfor(_j < _n, _j++, {
-						var _d:GoInt = _lim - _length[_i][_j - (1 : GoInt)];
-						var _c:GoInt = (_d * _d) + _cost[_j];
-						if (_length[_i][_j - (1 : GoInt)] > _lim) {
+						var _d:GoInt = _lim - _length[(_i : GoInt)][(_j - (1 : GoInt) : GoInt)];
+						var _c:GoInt = (_d * _d) + _cost[(_j : GoInt)];
+						if (_length[(_i : GoInt)][(_j - (1 : GoInt) : GoInt)] > _lim) {
 							_c = _c + (_pen);
 						};
-						if (_c < _cost[_i]) {
-							_cost[_i] = _c;
-							_nbrk[_i] = _j;
+						if (_c < _cost[(_i : GoInt)]) {
+							_cost[(_i : GoInt)] = _c;
+							_nbrk[(_i : GoInt)] = _j;
 						};
 					});
 				};
@@ -169,29 +169,32 @@ function wrapWords(_words:Slice<Slice<GoByte>>, _spc:GoInt, _lim:GoInt, _pen:GoI
 	var _lines:Slice<Slice<Slice<GoByte>>> = (null : Slice<Slice<Slice<GoUInt8>>>);
 	var _i:GoInt = (0 : GoInt);
 	while (_i < _n) {
-		_lines = (_lines.__append__((_words.__slice__(_i, _nbrk[_i]) : Slice<Slice<GoUInt8>>)));
-		_i = _nbrk[_i];
+		_lines = _lines.__appendref__((_words.__slice__(_i, _nbrk[(_i : GoInt)]) : Slice<Slice<GoUInt8>>));
+		_i = _nbrk[(_i : GoInt)];
 	};
 	return _lines;
 }
 
-private class T_indentWriter_asInterface {
+class T_indentWriter_asInterface {
 	/**
 		// The only errors returned are from the underlying indentWriter.
 	**/
 	@:keep
 	public function write(_p:Slice<GoByte>):{var _0:GoInt; var _1:Error;}
-		return __self__.write(_p);
+		return __self__.value.write(_p);
 
-	public function new(?__self__) {
-		if (__self__ != null)
-			this.__self__ = __self__;
+	public function new(__self__, __type__) {
+		this.__self__ = __self__;
+		this.__type__ = __type__;
 	}
 
 	public function __underlying__()
-		return Go.toInterface(__self__);
+		return new AnyInterface((__type__.kind() == stdgo.reflect.Reflect.ptr
+			&& !stdgo.internal.reflect.Reflect.isReflectTypeRef(__type__)) ? (__self__ : Dynamic) : (__self__.value : Dynamic),
+			__type__);
 
-	var __self__:T_indentWriter;
+	var __self__:Pointer<T_indentWriter>;
+	var __type__:stdgo.internal.reflect.Reflect._Type;
 }
 
 @:keep @:allow(github_com.kr.text.Text.T_indentWriter_asInterface) class T_indentWriter_static_extension {
@@ -205,7 +208,7 @@ private class T_indentWriter_asInterface {
 			if (_w._bol) {
 				var _i:GoInt = (0 : GoInt);
 				{
-					var __tmp__ = _w._w.write((_w._pre[_w._sel].__slice__(_w._off) : Slice<GoUInt8>));
+					var __tmp__ = _w._w.write((_w._pre[(_w._sel : GoInt)].__slice__(_w._off) : Slice<GoUInt8>));
 					_i = __tmp__._0;
 					_err = __tmp__._1;
 				};
@@ -222,7 +225,7 @@ private class T_indentWriter_asInterface {
 				return {_0: _n, _1: _err};
 			};
 			_n++;
-			_w._bol = _c == ("\n".code : GoRune);
+			_w._bol = _c == ((10 : GoUInt8));
 			if (_w._bol) {
 				_w._off = (0 : GoInt);
 				if (_w._sel < (_w._pre.length - (1 : GoInt))) {

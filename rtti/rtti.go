@@ -406,7 +406,7 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 			}
 		} else {
 			// Ordinary class
-			if !tt.Classes[i].Private && !strings.HasSuffix(tt.Classes[i].Path, "_asInterface") {
+			if !tt.Classes[i].Private && !strings.HasSuffix(tt.Classes[i].Path, "_static_extension") && !strings.HasSuffix(tt.Classes[i].Path, "_asInterface") {
 				cd := ClassData{
 					Class: &tt.Classes[i],
 				}

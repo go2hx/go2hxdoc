@@ -1,6 +1,6 @@
 module github.com/go2hx/go2hxdoc/example-project
 
-go 1.19
+go 1.20
 
 require (
 	github.com/arriqaaq/zset v0.1.2

@@ -26,6 +26,7 @@ var timeLimit *time.Duration // set by flag code below
 var interpFlag *bool         // set by flag code below
 var hlFlag *bool             // set by flag code below
 var cppFlag *bool            // set by flag code below
+var jsFlag *bool             // set by flag code below
 var jvmFlag *bool            // set by flag code below
 var CmdPrefix string         // set by flag code below
 
@@ -39,16 +40,17 @@ func init() {
 	interpFlag = flag.Bool("interp", false, "run the tests using Haxe interp")
 	hlFlag = flag.Bool("hl", false, "run the tests using HashLink")
 	cppFlag = flag.Bool("cpp", false, "run the tests using C++")
+	jsFlag = flag.Bool("js", false, "run the tests using the JavaScript")
 	jvmFlag = flag.Bool("jvm", false, "run the tests using the JVM")
 
 	flag.StringVar(&CmdPrefix, "prefix", "", "prefix for CLI commands (when using lix: '-prefix npx')")
 }
 
 func IsTest() bool {
-	return *interpFlag || *hlFlag || *cppFlag || *jvmFlag
+	return *interpFlag || *hlFlag || *cppFlag || *jsFlag || *jvmFlag
 }
 
-var Targets = []string{"cpp", "hl", "interp", "jvm"} // in lexical order
+var Targets = []string{"cpp", "hl", "interp", "js", "jvm"} // in lexical order
 
 type DirPair struct {
 	CodeDir string
@@ -229,6 +231,17 @@ func HaxeHxml(dirPairs []DirPair, baseDir, tempDir string) []HxmlXmlFiles {
 					panic(err)
 				}
 				this.HxmlTests["jvm"] = file
+			}
+			//js
+			if *jsFlag {
+				file := tempFilePrefix + "-js.hxml"
+				content := hxmlCommon + "--js " + tempFilePrefix + ".js\n"
+				content += "--cmd node " + tempFilePrefix + ".js\n"
+				err := os.WriteFile(file, []byte(content), 0666)
+				if err != nil {
+					panic(err)
+				}
+				this.HxmlTests["js"] = file
 			}
 			//hl
 			if *hlFlag {

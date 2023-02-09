@@ -14,8 +14,6 @@
 
 - [Variables](<#variables>)
 
-- [`function main():Void`](<#function-main>)
-
 # Variables
 
 
@@ -27,27 +25,5 @@ import golang_org.x.example.stringutil_test.Stringutil
 ```haxe
 var _:Bool
 ```
-
-
-# Functions
-
-
-```haxe
-import golang_org.x.example.stringutil_test.Stringutil
-```
-
-
-## function main
-
-
-```haxe
-function main():Void
-```
-
-
- 
-
-
-[\(view code\)](<./Stringutil.hx#L26>)
 
 

@@ -161,8 +161,8 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 
 		cfg.Header(1, "Library compilation and test results")
 		cfg.Write(`
-| module | compile | tests | cpp | hl | interp | jvm | 
-| --- | --- | --- | --- | --- | --- | --- |`)
+| module | compile | tests | cpp | hl | interp | js | jvm | 
+| --- | --- | --- | --- | --- | --- | --- | --- |`)
 		lastModule := ""
 		for _, r := range CompilationTestResults.Results {
 			if r.Module != lastModule {

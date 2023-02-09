@@ -11,7 +11,7 @@ import stdgo.GoMap;
 import stdgo.Chan;
 
 private var _tests:Slice<stdgo.testing.Testing.InternalTest> = (new Slice<stdgo.testing.Testing.InternalTest>(0, 0,
-	(new stdgo.testing.Testing.InternalTest(Go.str("TestReverse"),
+	(new stdgo.testing.Testing.InternalTest(("TestReverse" : GoString),
 		golang_org.x.example.stringutil.Stringutil.testReverse) : stdgo.testing.Testing.InternalTest)) : Slice<stdgo.testing.Testing.InternalTest>);
 
 private var _benchmarks:Slice<stdgo.testing.Testing.InternalBenchmark> = (new Slice<stdgo.testing.Testing.InternalBenchmark>(0,
@@ -23,7 +23,7 @@ private var _fuzzTargets:Slice<stdgo.testing.Testing.InternalFuzzTarget> = (new 
 private var _examples:Slice<stdgo.testing.Testing.InternalExample> = (new Slice<stdgo.testing.Testing.InternalExample>(0,
 	0) : Slice<stdgo.testing.Testing.InternalExample>);
 
-function main():Void {
+private function main():Void {
 	var _m = stdgo.testing.Testing.mainStart(Go.asInterface((new stdgo.testing.internal.testdeps.Testdeps.TestDeps() : stdgo.testing.internal.testdeps.Testdeps.TestDeps)),
 		_tests, _benchmarks,
 		_fuzzTargets, _examples);
@@ -32,7 +32,7 @@ function main():Void {
 
 @:keep var _ = {
 	try {
-		stdgo.testing.internal.testdeps.Testdeps.importPath = Go.str("golang.org/x/example/stringutil");
+		stdgo.testing.internal.testdeps.Testdeps.importPath = ("golang.org/x/example/stringutil" : GoString);
 	} catch (__exception__)
 		if (__exception__.message != "__return__")
 			throw __exception__;

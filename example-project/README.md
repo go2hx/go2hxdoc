@@ -8,6 +8,6 @@ Once go2hx has run, the Go libriaries can be accessed from Haxe by adding the go
 
 Once g2hxdoc has run, the documentation for the libraries will be available as README.md in each directory.
 
-if there are Go tests, and at least one testing flag (-cpp,-hl,-interp,-jvm) is set, the test results will appear in the README.md files.
+if there are Go tests, and at least one testing flag (-cpp,-hl,-interp,-js,-jvm) is set, the test results will appear in the README.md files.
 
 For an example of the CLI commands to do the above, see test.sh.
