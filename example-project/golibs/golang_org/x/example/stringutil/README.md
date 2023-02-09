@@ -13,6 +13,66 @@ Package stringutil contains utility functions for working with strings.
 <p>
 
 ```
+[31;1mError:[0m [1mIn file included from ./src/stdgo/sync/atomic/Uint32_static_extension.cpp:5:
+include/stdgo/sync/atomic/Uint32.h:11:37: error: expected identifier or '{'
+HX_DECLARE_CLASS4(stdgo,sync,atomic,_Atomic,T_noCopy)
+                                    ^
+include/stdgo/sync/atomic/Uint32.h:11:1: error: expected unqualified-id
+HX_DECLARE_CLASS4(stdgo,sync,atomic,_Atomic,T_noCopy)
+^
+/usr/local/lib/haxe/lib/hxcpp/4,2,1/include/hx/Macros.h:21:66: note: expanded from macro 'HX_DECLARE_CLASS4'
+#define HX_DECLARE_CLASS4(ns4,ns3,ns2,ns1,klass) namespace ns4 { HX_DECLARE_CLASS3(ns3,ns2,ns1,klass) }
+                                                                 ^
+/usr/local/lib/haxe/lib/hxcpp/4,2,1/include/hx/Macros.h:20:62: note: expanded from macro 'HX_DECLARE_CLASS3'
+#define HX_DECLARE_CLASS3(ns3,ns2,ns1,klass) namespace ns3 { HX_DECLARE_CLASS2(ns2,ns1,klass) }
+                                                             ^
+/usr/local/lib/haxe/lib/hxcpp/4,2,1/include/hx/Macros.h:19:58: note: expanded from macro 'HX_DECLARE_CLASS2'
+#define HX_DECLARE_CLASS2(ns2,ns1,klass) namespace ns2 { HX_DECLARE_CLASS1(ns1,klass) }
+                                                         ^
+/usr/local/lib/haxe/lib/hxcpp/4,2,1/include/hx/Macros.h:18:52: note: expanded from macro 'HX_DECLARE_CLASS1'
+#define HX_DECLARE_CLASS1(ns1,klass) namespace ns1 { HX_DECLARE_CLASS0(klass) }
+                                                   ^
+In file included from ./src/stdgo/sync/atomic/Uint32_static_extension.cpp:5:
+include/stdgo/sync/atomic/Uint32.h:28:43: error: expected unqualified-id
+                void __construct(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                        ^
+include/stdgo/sync/atomic/Uint32.h:28:20: error: expected parameter declarator
+                void __construct(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                 ^
+include/stdgo/sync/atomic/Uint32.h:28:43: error: expected ')'
+                void __construct(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                        ^
+include/stdgo/sync/atomic/Uint32.h:28:19: note: to match this '('
+                void __construct(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                ^
+include/stdgo/sync/atomic/Uint32.h:33:69: error: expected unqualified-id
+                static ::hx::ObjectPtr< Uint32_obj > __new(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                                                  ^
+include/stdgo/sync/atomic/Uint32.h:33:46: error: expected parameter declarator
+                static ::hx::ObjectPtr< Uint32_obj > __new(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                           ^
+include/stdgo/sync/atomic/Uint32.h:33:69: error: expected ')'
+                static ::hx::ObjectPtr< Uint32_obj > __new(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                                                  ^
+include/stdgo/sync/atomic/Uint32.h:33:45: note: to match this '('
+                static ::hx::ObjectPtr< Uint32_obj > __new(::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                          ^
+include/stdgo/sync/atomic/Uint32.h:34:90: error: expected unqualified-id
+                static ::hx::ObjectPtr< Uint32_obj > __alloc(::hx::Ctx *_hx_ctx,::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                                                                       ^
+include/stdgo/sync/atomic/Uint32.h:34:67: error: expected parameter declarator
+                static ::hx::ObjectPtr< Uint32_obj > __alloc(::hx::Ctx *_hx_ctx,::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                                                ^
+include/stdgo/sync/atomic/Uint32.h:34:90: error: expected ')'
+                static ::hx::ObjectPtr< Uint32_obj > __alloc(::hx::Ctx *_hx_ctx,::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                                                                       ^
+include/stdgo/sync/atomic/Uint32.h:34:47: note: to match this '('
+                static ::hx::ObjectPtr< Uint32_obj > __alloc(::hx::Ctx *_hx_ctx,::stdgo::sync::atomic::_Atomic::T_noCopy _10, ::Dynamic _v);
+                                                            ^
+include/stdgo/sync/atomic/Uint32.h:50:26: error: expected unqualified-id
+                ::stdgo::sync::atomic::_Atomic::T_noCopy _10;
+                                       ^
+12 errors generated.[0m[0m
 [31;1mError:[0m [1mIn file included from ./src/stdgo/sync/atomic/Uint64.cpp:33:
 include/stdgo/sync/atomic/Uint64.h:15:37: error: expected identifier or '{'
 HX_DECLARE_CLASS4(stdgo,sync,atomic,_Atomic,T_align64)
@@ -130,16 +190,16 @@ Creating /Users/elliottstoneham/code/go2hx/go2hxdoc/example-project/bin/hxcpp_co
 
 [33;1mCompiling group: haxe[0m
 [1mg++[0m [0m-Iinclude[0m [0m-c[0m [0m-fvisibility=hidden[0m [0m-stdlib=libc++[0m [0m-Qunused-arguments[0m [0m-O2[0m [0m-I/usr/local/lib/haxe/lib/hxcpp/4,2,1/include[0m [1m-DHX_MACOS[0m [0m-m64[0m [0m-Wno-parentheses[0m [0m-Wno-unused-value[0m [0m-Wno-format-extra-args[0m [0m-Wno-overflow[0m [1m-DHXCPP_M64[0m [1m-DHXCPP_VISIT_ALLOCS[0m[2m(haxe)[0m [1m-DHX_SMART_STRINGS[0m[2m(haxe)[0m [1m-DHXCPP_API_LEVEL=430[0m[2m(haxe)[0m [2m...[0m [2mtags=[haxe,static][0m
- [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mInt64__asInterface.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/sync/atomic/_Atomic/[33;1mAtomic_Fields_.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint64.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint32_asInterface.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/_StdGoTypes/[33;1mGoInt16_Impl_.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/regexp/[33;1mFindTest_asInterface.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint32_static_extension.cpp[0m [3m[0m
  [2m-[0m [33msrc/[33;1m__boot__.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/sort/[33;1mT_reverse_asInterface.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/testing/[33;1mInternalExample.cpp[0m [3m[0m
- [2m-[0m [33msrc/stdgo/_Slice/[33;1mSliceKeyValueIterator.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mInt64__static_extension.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mInt64__asInterface.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/time/[33;1mTimer_static_extension.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/regexp/syntax/_Syntax/[33;1mT_parser.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint32_asInterface.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/[33;1mUint64.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/io/[33;1mPipeReader_static_extension.cpp[0m [3m[0m
+ [2m-[0m [33msrc/stdgo/sync/atomic/_Atomic/[33;1mAtomic_Fields_.cpp[0m [3m[0m
 ```
 </p>
 </details>
@@ -149,7 +209,7 @@ Creating /Users/elliottstoneham/code/go2hx/go2hxdoc/example-project/bin/hxcpp_co
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0006659030914306641))
+--- PASS: TestReverse (%!s(float64=0.0007119178771972656))
 
 ```
 </p>

@@ -84,25 +84,25 @@ func (cfg *Config) CodeBlock(text string) {
 
 func (cfg *Config) Comment(text string) {
 	para := ""
-	blankLines := 0
 	for _, line := range strings.Split(text, string(utf8.RuneError)) {
-		line = strings.TrimSpace(line)
-		line = strings.TrimLeft(line, "//")
-		line = strings.TrimSpace(line)
-		if line == "" {
-			blankLines++
-			if blankLines > 1 {
+		if line != "" {
+			line = strings.TrimSpace(line)
+			line = strings.TrimLeft(line, "//")
+			line = strings.TrimLeft(line, "/*")
+			line = strings.TrimLeft(line, "/|*")
+			line = strings.TrimRight(line, "*/")
+			line = strings.TrimRight(line, "*|/")
+			line = strings.TrimSpace(line)
+			if line == "" {
 				txt, err := cfg.MD.Paragraph(para)
 				if err != nil {
 					panic(err)
 				}
 				fmt.Fprintln(&cfg.Out, txt)
 				para = ""
-				blankLines = 0
+			} else {
+				para += line + " "
 			}
-		} else {
-			blankLines = 0
-			para += line + " "
 		}
 	}
 	txt, err := cfg.MD.Paragraph(para)
