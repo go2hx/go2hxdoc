@@ -407,29 +407,39 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 		} else {
 			// Ordinary class
 			if !tt.Classes[i].Private && !strings.HasSuffix(tt.Classes[i].Path, "_static_extension") && !strings.HasSuffix(tt.Classes[i].Path, "_asInterface") {
-				cd := ClassData{
-					Class: &tt.Classes[i],
-				}
-				for j := range tt.Classes[i].Fields {
-					cd.AddField(&tt.Classes[i].Fields[j])
-				}
 
-				using := tt.Classes[i].MetaInfo.Using()
-				if using != "" {
-					if extn := tt.FindClass(tt.Classes[i].File, using); extn == nil {
-						fmt.Printf("Warning - @:using class " + using + " not found")
-					} else {
-						for ex := range extn.Fields {
-							extn.Fields[ex].TypeIs1stParam = true // signal to strip first parameter from call sig
-							cd.AddField(&extn.Fields[ex])
-						}
+				hasPrivateMeta := false
+				for _, meta := range tt.Classes[i].MetaInfo.Metas {
+					if meta.N == "private" {
+						hasPrivateMeta = true
 					}
 				}
-				dd.Classes = append(dd.Classes, cd)
+				if !hasPrivateMeta {
 
-				sort.Slice(dd.Classes, func(i, j int) bool {
-					return dd.Classes[i].Class.Path < dd.Classes[j].Class.Path
-				})
+					cd := ClassData{
+						Class: &tt.Classes[i],
+					}
+					for j := range tt.Classes[i].Fields {
+						cd.AddField(&tt.Classes[i].Fields[j])
+					}
+
+					using := tt.Classes[i].MetaInfo.Using()
+					if using != "" {
+						if extn := tt.FindClass(tt.Classes[i].File, using); extn == nil {
+							fmt.Printf("Warning - @:using class " + using + " not found")
+						} else {
+							for ex := range extn.Fields {
+								extn.Fields[ex].TypeIs1stParam = true // signal to strip first parameter from call sig
+								cd.AddField(&extn.Fields[ex])
+							}
+						}
+					}
+					dd.Classes = append(dd.Classes, cd)
+
+					sort.Slice(dd.Classes, func(i, j int) bool {
+						return dd.Classes[i].Class.Path < dd.Classes[j].Class.Path
+					})
+				}
 			}
 		}
 		an[dir] = dd

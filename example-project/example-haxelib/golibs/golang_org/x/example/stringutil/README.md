@@ -15,7 +15,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0006148815155029297))
+--- PASS: TestReverse (%!s(float64=0.0006091594696044922))
 
 ```
 </p>
