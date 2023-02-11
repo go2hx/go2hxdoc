@@ -1,0 +1,13 @@
+{
+    "name": "go2hxdoc_example",
+    "url" : "https://github.com/go2hx/go2hxdoc/example-project/example-haxelib",
+    "license": "MIT",
+    "tags": ["go2hx"],
+    "description": "This library provides an example of how to use go2hx.",
+    "version": "0.0.1",
+    "classPath": "golibs/",
+    "releasenote": "Experimantal release, everything is probably not working correctly.",
+    "contributors": ["Elliott"],
+    "dependencies": {},
+    "main": ""
+  }

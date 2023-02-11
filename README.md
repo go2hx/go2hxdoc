@@ -13,6 +13,10 @@ To enable tests on specific targets, use one or more of the `-cpp -hl -interp -j
 
 go2hxdoc is a Go program, which must be built or installed before use.
 
+```
+$ go install go2hxdoc.go   # from the same directory as the file go2hxdoc.go
+```
+
 This project has only been tested on OSX.
 
 TO DO
