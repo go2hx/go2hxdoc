@@ -410,8 +410,9 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 
 				hasPrivateMeta := false
 				for _, meta := range tt.Classes[i].MetaInfo.Metas {
-					if meta.N == "private" {
+					if meta.N == ":private" {
 						hasPrivateMeta = true
+						break
 					}
 				}
 				if !hasPrivateMeta {
