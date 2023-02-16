@@ -22,7 +22,7 @@
 
 - [class ZSet](<#class-zset>)
 
-  - [`function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zset>>):Void`](<#zset-function-new>)
+  - [`function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset.T_zset>>):Void`](<#zset-function-new>)
 
   - [`function _exist( _key:stdgo.GoString):Bool`](<#zset-function-_exist>)
 
@@ -40,13 +40,13 @@
 
   - [`function zkeyExists( _key:stdgo.GoString):Bool`](<#zset-function-zkeyexists>)
 
-  - [`function zpopMax( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#zset-function-zpopmax>)
+  - [`function zpopMax( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset.T_zskiplistNode>`](<#zset-function-zpopmax>)
 
-  - [`function zpopMin( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>`](<#zset-function-zpopmin>)
+  - [`function zpopMin( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset.T_zskiplistNode>`](<#zset-function-zpopmin>)
 
   - [`function zrange( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrange>)
 
-  - [`function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.GoFloat64, _options:stdgo.Ref<github_com.arriqaaq.zset.ZRangeOptions>):stdgo.Slice<stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>>`](<#zset-function-zrangebyscore>)
+  - [`function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.GoFloat64, _options:stdgo.Ref<github_com.arriqaaq.zset.ZRangeOptions>):stdgo.Slice<stdgo.Ref<github_com.arriqaaq.zset.T_zskiplistNode>>`](<#zset-function-zrangebyscore>)
 
   - [`function zrangeWithScores( _key:stdgo.GoString, _start:stdgo.GoInt, _stop:stdgo.GoInt):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrangewithscores>)
 
@@ -114,7 +114,7 @@ New create a new sorted set
 
 
 
-[\(view code\)](<./Zset.hx#L189>)
+[\(view code\)](<./Zset.hx#L164>)
 
 
 # Classes
@@ -157,7 +157,7 @@ function new(?limit:Null<stdgo.GoInt>, ?excludeStart:Bool, ?excludeEnd:Bool):Voi
 
 
 
-[\(view code\)](<./Zset.hx#L135>)
+[\(view code\)](<./Zset.hx#L125>)
 
 
 ## class ZSet
@@ -167,7 +167,7 @@ function new(?limit:Null<stdgo.GoInt>, ?excludeStart:Bool, ?excludeEnd:Bool):Voi
 
 
 ```haxe
-var _records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zset>>
+var _records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset.T_zset>>
 ```
 
 
@@ -175,14 +175,14 @@ var _records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset._Zse
 
 
 ```haxe
-function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zset>>):Void
+function new(?_records:stdgo.GoMap<stdgo.GoString, stdgo.Ref<github_com.arriqaaq.zset.T_zset>>):Void
 ```
 
 
 
 
 
-[\(view code\)](<./Zset.hx#L26>)
+[\(view code\)](<./Zset.hx#L30>)
 
 
 ### ZSet function \_exist
@@ -196,7 +196,7 @@ function _exist( _key:stdgo.GoString):Bool
 
 
 
-[\(view code\)](<./Zset.hx#L896>)
+[\(view code\)](<./Zset.hx#L764>)
 
 
 ### ZSet function keys
@@ -210,7 +210,7 @@ function keys():stdgo.Slice<stdgo.GoString>
 
 
 
-[\(view code\)](<./Zset.hx#L385>)
+[\(view code\)](<./Zset.hx#L305>)
 
 
 ### ZSet function zadd
@@ -227,7 +227,7 @@ Time complexity of this method is : O\(log\(N\)\)
 
 
 
-[\(view code\)](<./Zset.hx#L861>)
+[\(view code\)](<./Zset.hx#L737>)
 
 
 ### ZSet function zcard
@@ -242,7 +242,7 @@ ZCard returns the sorted set cardinality \(number of elements\) of the sorted se
 
 
 
-[\(view code\)](<./Zset.hx#L828>)
+[\(view code\)](<./Zset.hx#L710>)
 
 
 ### ZSet function zclear
@@ -257,7 +257,7 @@ ZClear clear the key in zset.
 
 
 
-[\(view code\)](<./Zset.hx#L640>)
+[\(view code\)](<./Zset.hx#L545>)
 
 
 ### ZSet function zgetByRank
@@ -273,7 +273,7 @@ The rank of lowest is 0 and so on.
 
 
 
-[\(view code\)](<./Zset.hx#L571>)
+[\(view code\)](<./Zset.hx#L483>)
 
 
 ### ZSet function zincrBy
@@ -290,7 +290,7 @@ If key does not exist, a new sorted set with the specified member as its sole me
 
 
 
-[\(view code\)](<./Zset.hx#L761>)
+[\(view code\)](<./Zset.hx#L656>)
 
 
 ### ZSet function zkeyExists
@@ -305,14 +305,14 @@ ZKeyExists check if the key exists in zset.
 
 
 
-[\(view code\)](<./Zset.hx#L651>)
+[\(view code\)](<./Zset.hx#L554>)
 
 
 ### ZSet function zpopMax
 
 
 ```haxe
-function zpopMax( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
+function zpopMax( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset.T_zskiplistNode>
 ```
 
 
@@ -320,14 +320,14 @@ get and remove the element with maximum score, nil if the set is empty
 
 
 
-[\(view code\)](<./Zset.hx#L518>)
+[\(view code\)](<./Zset.hx#L435>)
 
 
 ### ZSet function zpopMin
 
 
 ```haxe
-function zpopMin( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>
+function zpopMin( _key:stdgo.GoString):stdgo.Ref<github_com.arriqaaq.zset.T_zskiplistNode>
 ```
 
 
@@ -335,7 +335,7 @@ get and remove the element with minimal score, nil if the set is empty
 
 
 
-[\(view code\)](<./Zset.hx#L535>)
+[\(view code\)](<./Zset.hx#L451>)
 
 
 ### ZSet function zrange
@@ -350,27 +350,42 @@ ZRange returns the specified range of elements in the sorted set stored at \<key
 
 
 
-[\(view code\)](<./Zset.hx#L628>)
+[\(view code\)](<./Zset.hx#L534>)
 
 
 ### ZSet function zrangeByScore
 
 
 ```haxe
-function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.GoFloat64, _options:stdgo.Ref<github_com.arriqaaq.zset.ZRangeOptions>):stdgo.Slice<stdgo.Ref<github_com.arriqaaq.zset._Zset.T_zskiplistNode>>
+function zrangeByScore( _key:stdgo.GoString, _start:stdgo.GoFloat64, _end:stdgo.GoFloat64, _options:stdgo.Ref<github_com.arriqaaq.zset.ZRangeOptions>):stdgo.Slice<stdgo.Ref<github_com.arriqaaq.zset.T_zskiplistNode>>
 ```
 
 
 
 
 
+
+
+
 Returns all the elements in the sorted set at key with a score between min and max \(including  
+
+
+
 elements with score equal to min or max\). The elements are considered to be ordered from low to  
+
+
+
 high scores.  
 
 
 
+
+
+
 If options is nil, it searchs in interval \[start, end\] without any limit by default  
+
+
+
 
 
 
@@ -381,7 +396,7 @@ https://github.com/wangjia184/sortedset/blob/af6d6d227aa79e2a64b899d995ce18aa0be
 
 
 
-[\(view code\)](<./Zset.hx#L406>)
+[\(view code\)](<./Zset.hx#L324>)
 
 
 ### ZSet function zrangeWithScores
@@ -396,7 +411,7 @@ ZRangeWithScores returns the specified range of elements in the sorted set store
 
 
 
-[\(view code\)](<./Zset.hx#L616>)
+[\(view code\)](<./Zset.hx#L523>)
 
 
 ### ZSet function zrank
@@ -412,7 +427,7 @@ The rank \(or index\) is 0\-based, which means that the member with the lowest s
 
 
 
-[\(view code\)](<./Zset.hx#L807>)
+[\(view code\)](<./Zset.hx#L693>)
 
 
 ### ZSet function zrem
@@ -428,7 +443,7 @@ An error is returned when key exists and does not hold a sorted set.
 
 
 
-[\(view code\)](<./Zset.hx#L737>)
+[\(view code\)](<./Zset.hx#L637>)
 
 
 ### ZSet function zrevGetByRank
@@ -444,7 +459,7 @@ The rank of highest is 0 and so on.
 
 
 
-[\(view code\)](<./Zset.hx#L553>)
+[\(view code\)](<./Zset.hx#L468>)
 
 
 ### ZSet function zrevRange
@@ -461,7 +476,7 @@ Descending lexicographical order is used for elements with equal score.
 
 
 
-[\(view code\)](<./Zset.hx#L604>)
+[\(view code\)](<./Zset.hx#L512>)
 
 
 ### ZSet function zrevRangeWithScores
@@ -478,7 +493,7 @@ Descending lexicographical order is used for elements with equal score.
 
 
 
-[\(view code\)](<./Zset.hx#L590>)
+[\(view code\)](<./Zset.hx#L499>)
 
 
 ### ZSet function zrevRank
@@ -494,7 +509,7 @@ The rank \(or index\) is 0\-based, which means that the member with the highest 
 
 
 
-[\(view code\)](<./Zset.hx#L786>)
+[\(view code\)](<./Zset.hx#L676>)
 
 
 ### ZSet function zrevScoreRange
@@ -510,7 +525,7 @@ In contrary to the default ordering of sorted sets, for this command the element
 
 
 
-[\(view code\)](<./Zset.hx#L660>)
+[\(view code\)](<./Zset.hx#L562>)
 
 
 ### ZSet function zscore
@@ -525,7 +540,7 @@ ZScore returns the score of member in the sorted set at key.
 
 
 
-[\(view code\)](<./Zset.hx#L839>)
+[\(view code\)](<./Zset.hx#L720>)
 
 
 ### ZSet function zscoreRange
@@ -541,6 +556,6 @@ The elements are considered to be ordered from low to high scores.
 
 
 
-[\(view code\)](<./Zset.hx#L698>)
+[\(view code\)](<./Zset.hx#L599>)
 
 

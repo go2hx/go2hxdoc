@@ -47,7 +47,7 @@ end\-of\-line marker is NL.
 
 
 
-[\(view code\)](<./Text.hx#L58>)
+[\(view code\)](<./Text.hx#L61>)
 
 
 ## function indentBytes
@@ -63,7 +63,7 @@ The end\-of\-line marker is NL.
 
 
 
-[\(view code\)](<./Text.hx#L66>)
+[\(view code\)](<./Text.hx#L68>)
 
 
 ## function newIndentWriter
@@ -81,7 +81,7 @@ element of pre is repeated for each subsequent line.
 
 
 
-[\(view code\)](<./Text.hx#L85>)
+[\(view code\)](<./Text.hx#L86>)
 
 
 ## function wrap
@@ -113,7 +113,7 @@ raggedness.
 
 
 
-[\(view code\)](<./Text.hx#L102>)
+[\(view code\)](<./Text.hx#L101>)
 
 
 ## function wrapWords
@@ -140,6 +140,6 @@ added to the error.
 
 
 
-[\(view code\)](<./Text.hx#L124>)
+[\(view code\)](<./Text.hx#L122>)
 
 

@@ -15,7 +15,7 @@ Package stringutil contains utility functions for working with strings.
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0006091594696044922))
+--- PASS: TestReverse (%!s(float64=0.0006568431854248047))
 
 ```
 </p>
@@ -49,7 +49,7 @@ Reverse returns its argument string reversed rune\-wise left to right.
 
 
 
-[\(view code\)](<./Stringutil.hx#L43>)
+[\(view code\)](<./Stringutil.hx#L34>)
 
 
 ## function testReverse
@@ -63,6 +63,6 @@ function testReverse(_t:stdgo.Ref<stdgo.testing.T>):Void
 
 
 
-[\(view code\)](<./Stringutil.hx#L67>)
+[\(view code\)](<./Stringutil.hx#L54>)
 
 
