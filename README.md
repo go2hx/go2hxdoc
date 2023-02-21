@@ -19,12 +19,17 @@ $ go install go2hxdoc.go   # from the same directory as the file go2hxdoc.go
 
 This project has only been tested on OSX and Ubuntu.
 
-Further improvements to consider:
---------------------------------
 
-- Understand and add [go.work file](https://github.com/golang/tools/blob/master/gopls/doc/workspace.md) for example-project
-- Investigate orphan processes after timeout
+Further possible improvements:
+------------------------------
+
+Robustness:
+- Investigate orphan processes after timeout to see if tidy-up is required
+- Consider ways to avoid re-building documentation or re-running tests when this work has already been done
+
+Example project:
+- Integrate with [go2hx/libraries](https://github.com/go2hx/libraries)
+- Create a better working Haxe programe using transpiled libraries
+- Demonstrate better use of Go package tests
 - Generate, or document how to generate, Haxe test code, at least for top-level `_ "packages"`
-- Put test results into central JSON in order to skip if already done when re-building documentation
-- Create a better working Haxe programe using a transpiled library in example-project
-- Demonstrate use of Go package tests in example-project
+- Add [go.work file](https://github.com/golang/tools/blob/master/gopls/doc/workspace.md) if required
