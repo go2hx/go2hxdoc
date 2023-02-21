@@ -51,7 +51,18 @@ type Type struct { // amalgum of Haxe types
 	XMLName xml.Name
 	Path    string `xml:"path,attr"`
 	Args    string `xml:"a,attr"`
+	Doc     string `xml:"haxe_doc"`
 	Wraps   []Type `xml:",any"`
+}
+
+var typeIndent int // NOTE use of this variable requires a single thread of documentation generation
+
+func typeIndentTabs() string {
+	ret := ""
+	for i := 0; i < typeIndent; i++ {
+		ret += "\t"
+	}
+	return ret
 }
 
 func (t *Type) String() string {
@@ -79,13 +90,37 @@ func (t *Type) String() string {
 		return ret
 
 	case "a": // anonymous structure
-		ret := "{"
-		comma := ""
+		ret := "{\n"
+		typeIndent++
 		for _, w := range t.Wraps {
-			ret += comma + w.String()
-			comma = ", "
+			rep := w.String()
+			if !strings.HasPrefix(rep, "__underlying__") {
+				if strings.Contains(rep, ":(") {
+					// it is really a function
+					rep = "public function " + strings.Replace(rep, ":(", "(", 1)
+				}
+				ret += typeIndentTabs() + rep + ";"
+				if w.Doc != "" {
+					doc := strings.TrimSpace(w.Doc)
+					doc = strings.ReplaceAll(doc, "//", " ")
+					doc = strings.ReplaceAll(doc, "\t", " ")
+					doc = strings.ReplaceAll(doc, string(utf8.RuneError), " ")
+
+					docLast := ""
+					for doc != docLast { //keep going until all the double spaces are contracted
+						docLast = doc
+						doc = strings.ReplaceAll(doc, "  ", " ")
+					}
+
+					doc = "// " + doc
+					ret += "\t" + doc
+				}
+				ret += "\n"
+			}
 		}
-		return ret + "}"
+		typeIndent--
+		ret = ret + typeIndentTabs() + "}"
+		return ret
 
 	case "e", "c", "t", "x":
 		if len(t.Wraps) == 0 {
@@ -157,6 +192,7 @@ func (f *CField) Declaration() string {
 }
 
 func (f *CField) String() string {
+
 	typeString := f.TypeInfo.String()
 	sp := ":"
 	decl := f.Declaration()
@@ -218,14 +254,14 @@ func (tc *TClassdecl) SortFields() { // also set file in Fields
 }
 
 type TTypedecl struct {
-	Path     string   `xml:"path,attr"`
-	Params   string   `xml:"params,attr"`
-	File     string   `xml:"file,attr"`
-	Private  bool     `xml:"private,attr"`
-	Module   string   `xml:"module,attr"`
-	MetaInfo Meta     `xml:"meta"`
-	Doc      string   `xml:"haxe_doc"`
-	Fields   []CField `xml:",any"`
+	Path     string `xml:"path,attr"`
+	Params   string `xml:"params,attr"`
+	File     string `xml:"file,attr"`
+	Private  bool   `xml:"private,attr"`
+	Module   string `xml:"module,attr"`
+	MetaInfo Meta   `xml:"meta"`
+	Doc      string `xml:"haxe_doc"`
+	Fields   []Type `xml:",any"`
 }
 
 func (ty *TTypedecl) Name() string {
@@ -453,17 +489,7 @@ func (tt *TypeTree) FindDirs() (Dirs, error) {
 			cd := ClassData{
 				Typedef: &tt.Typedefs[i],
 			}
-			using := tt.Typedefs[i].MetaInfo.Using()
-			if using != "" {
-				if extn := tt.FindClass(tt.Typedefs[i].File, using); extn == nil {
-					fmt.Printf("Warning - @:using class " + using + " not found")
-				} else {
-					for ex := range extn.Fields {
-						extn.Fields[ex].TypeIs1stParam = true // signal to strip first parameter from call sig
-						cd.AddField(&extn.Fields[ex])
-					}
-				}
-			}
+
 			dd.Typedefs = append(dd.Typedefs, cd)
 
 			sort.Slice(dd.Typedefs, func(i, j int) bool {

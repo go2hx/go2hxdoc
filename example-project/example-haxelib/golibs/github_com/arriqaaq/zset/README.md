@@ -64,7 +64,7 @@
 
   - [`function zrevScoreRange( _key:stdgo.GoString, _max:stdgo.GoFloat64, _min:stdgo.GoFloat64):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zrevscorerange>)
 
-  - [`function zscore( _key:stdgo.GoString, _member:stdgo.GoString):{_1:stdgo.GoFloat64, _0:Bool}`](<#zset-function-zscore>)
+  - [`function zscore( _key:stdgo.GoString, _member:stdgo.GoString):{ _1:stdgo.GoFloat64; _0:Bool;}`](<#zset-function-zscore>)
 
   - [`function zscoreRange( _key:stdgo.GoString, _min:stdgo.GoFloat64, _max:stdgo.GoFloat64):stdgo.Slice<stdgo.AnyInterface>`](<#zset-function-zscorerange>)
 
@@ -532,7 +532,10 @@ In contrary to the default ordering of sorted sets, for this command the element
 
 
 ```haxe
-function zscore( _key:stdgo.GoString, _member:stdgo.GoString):{_1:stdgo.GoFloat64, _0:Bool}
+function zscore( _key:stdgo.GoString, _member:stdgo.GoString):{
+	_1:stdgo.GoFloat64;
+	_0:Bool;
+}
 ```
 
 

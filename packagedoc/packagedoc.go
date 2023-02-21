@@ -330,14 +330,14 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		for _, cl := range dd.Classes {
 			cfg.ListEntry(0, cfg.Link("class "+cl.Class.Name(), cfg.LocalHref("class "+cl.Class.Name())))
 			for _, fn := range cl.Functions {
-				cfg.ListEntry(1, cfg.Link("`"+fn.String()+"`", cfg.LocalHref(cl.Class.Name()+classMethodSeparator+fn.XMLName.Local)))
+				fnSig := fn.String()                         // this is needed if an anonymous structure is returned
+				fnSig = strings.ReplaceAll(fnSig, "\t", " ") // replace tabs with spaces
+				fnSig = strings.ReplaceAll(fnSig, "\n", "")  // remove newlines
+				cfg.ListEntry(1, cfg.Link("`"+fnSig+"`", cfg.LocalHref(cl.Class.Name()+classMethodSeparator+fn.XMLName.Local)))
 			}
 		}
 		for _, cd := range dd.Typedefs {
 			cfg.ListEntry(0, cfg.Link("typedef "+cd.Typedef.Name(), cfg.LocalHref("typedef "+cd.Typedef.Name())))
-			for _, fn := range cd.Functions {
-				cfg.ListEntry(1, cfg.Link("`"+fn.String()+"`", cfg.LocalHref(cd.Typedef.Name()+classMethodSeparator+fn.XMLName.Local)))
-			}
 		}
 	}
 
@@ -427,24 +427,12 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			cfg.Header(2, "typedef "+cd.Typedef.Name())
 			code := "typedef " + cd.Typedef.Name() + " = "
 			for _, fld := range cd.Typedef.Fields {
-				code += fld.String()
+				code += fld.String() + ";\n"
 			}
+
 			cfg.CodeBlock(code)
 
 			cfg.Comment(cd.Typedef.Doc)
-
-			for _, ex := range cd.Examples {
-				cfg.Example(&ex)
-			}
-
-			for _, fn := range cd.Functions {
-				cfg.Header(3, cd.Typedef.Name()+classMethodSeparator+fn.XMLName.Local)
-				cfg.CodeBlock(fn.String())
-				cfg.Comment(fn.Doc)
-				if cd.Typedef.File != "" && fn.Line != 0 {
-					cfg.Write(cfg.Link("(view code)", cfg.CodeHref(cd.Typedef.File, fn.Line)) + "\n\n")
-				}
-			}
 		}
 	}
 
