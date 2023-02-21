@@ -23,7 +23,6 @@ TO DO
 -----
 
 - Understand and add [go.work file](https://github.com/golang/tools/blob/master/gopls/doc/workspace.md) for example-project
-- Fix Typedef Haxe code display to be correct
 - Fix to document all `stdgo` core functionality e.g. document abstract use in stdgo/GoString.hx
 - Investigate orphan processes after timeout
 - Generate, or document how to generate, Haxe test code, at least for top-level `_ "packages"`
