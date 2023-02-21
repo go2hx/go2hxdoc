@@ -114,7 +114,7 @@ func (cfg *Config) Comment(text string) {
 				fmt.Fprintln(&cfg.Out, txt)
 				para = ""
 			} else {
-				para += line + "  \n" // two spaces at the end of a line should be interpreted by Git as a <br />
+				para += line + "  \n" // two spaces at the end of a line should be interpreted by GitHub as a <br />
 			}
 		}
 	}
@@ -165,10 +165,11 @@ func (cfg *Config) LocalHref(href string) string {
 
 func (cfg *Config) CodeHref(file string, line uint) string {
 	// TODO consider use of MD package version
-	if line == 0 {
-		return ""
-	}
 	_, fname := filepath.Split(file)
+	if line == 0 {
+		// link just to the file, not including the line
+		return fmt.Sprintf("./%s", fname)
+	}
 	return fmt.Sprintf("./%s#L%d", fname, line)
 }
 
@@ -267,6 +268,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		functions
 		classes
 		typedefs
+		abstracts
 	)
 
 	headers := []string{
@@ -278,6 +280,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		"Functions",
 		"Classes",
 		"Typedefs",
+		"Abstracts",
 	}
 
 	classMethodSeparator := " function " // many other special characters have been tried here, but only space seems to work.
@@ -338,6 +341,9 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		}
 		for _, cd := range dd.Typedefs {
 			cfg.ListEntry(0, cfg.Link("typedef "+cd.Typedef.Name(), cfg.LocalHref("typedef "+cd.Typedef.Name())))
+		}
+		for _, ab := range dd.Abstracts {
+			cfg.ListEntry(0, cfg.Link("abstract "+ab.Abstract.Name(), cfg.LocalHref("abstract "+ab.Abstract.Name())))
 		}
 	}
 
@@ -433,6 +439,18 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			cfg.CodeBlock(code)
 
 			cfg.Comment(cd.Typedef.Doc)
+		}
+	}
+
+	// abstracts
+	if len(dd.Abstracts) > 0 {
+		cfg.Header(1, headers[abstracts])
+		for _, ab := range dd.Abstracts {
+			cfg.Header(2, "abstract "+ab.Abstract.Name())
+			if ab.Abstract.Doc != "" {
+				cfg.Comment(ab.Abstract.Doc)
+			}
+			cfg.Write(cfg.Link("(view file containing code)", cfg.CodeHref(ab.Abstract.File, 0)) + "\n\n")
 		}
 	}
 

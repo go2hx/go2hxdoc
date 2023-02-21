@@ -17,13 +17,12 @@ go2hxdoc is a Go program, which must be built or installed before use.
 $ go install go2hxdoc.go   # from the same directory as the file go2hxdoc.go
 ```
 
-This project has only been tested on OSX.
+This project has only been tested on OSX and Ubuntu.
 
-TO DO
------
+Further mprovements to consider:
+--------------------------------
 
 - Understand and add [go.work file](https://github.com/golang/tools/blob/master/gopls/doc/workspace.md) for example-project
-- Fix to document all `stdgo` core functionality e.g. document abstract use in stdgo/GoString.hx
 - Investigate orphan processes after timeout
 - Generate, or document how to generate, Haxe test code, at least for top-level `_ "packages"`
 - Put test results into central JSON in order to skip if already done when re-building documentation

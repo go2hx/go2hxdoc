@@ -47,6 +47,11 @@ type TAbstractdecl struct {
 	Doc      string `xml:"haxe_doc"`
 }
 
+func (ta *TAbstractdecl) Name() string {
+	pathParts := strings.Split(ta.Path, ".")
+	return pathParts[len(pathParts)-1]
+}
+
 type Type struct { // amalgum of Haxe types
 	XMLName xml.Name
 	Path    string `xml:"path,attr"`
@@ -392,6 +397,7 @@ type DirData struct {
 	ModuleLevel ClassData   // module of the variables and functions below
 	Classes     []ClassData // the classes for this directory
 	Typedefs    []ClassData // the typedefs for this directory
+	Abstracts   []ClassData // the abstracts for this directory
 }
 
 type Dirs map[string]DirData
@@ -420,9 +426,15 @@ func (a Dirs) DirList() []string {
 func (tt *TypeTree) FindDirs() (Dirs, error) {
 	an := make(Dirs)
 
-	for _, a := range tt.Abstracts {
-		dir := an.AddFile(a.File, a.Module)
-		_ = dir // TODO build abstracts too, as used in stdgo (if not go2hx output)
+	for a, aa := range tt.Abstracts {
+		dir := an.AddFile(aa.File, aa.Module)
+		dd := an[dir]
+		// abstracts are used in stdgo (if not go2hx output)
+		absractClassData := ClassData{
+			Abstract: &tt.Abstracts[a],
+		}
+		dd.Abstracts = append(dd.Abstracts, absractClassData)
+		an[dir] = dd
 	}
 
 	for i, a := range tt.Classes {
