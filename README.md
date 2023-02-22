@@ -24,7 +24,7 @@ Further possible improvements:
 ------------------------------
 
 Robustness:
-- Emit json showing which tests have passed in the form of ["target|package"](https://github.com/go2hx/go2hx/blob/master/tests/std.json) for use in regression testing
+- Check format of generated json test result file for use in regression testing
 - Add test targets: "cs", "lua", "python", "php", "neko"
 - Investigate orphan processes after timeout to see if tidy-up is required
 - Consider ways to avoid re-building documentation or re-running tests when this work has already been done

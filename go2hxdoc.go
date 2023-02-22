@@ -3,12 +3,14 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"strings"
 	"sync"
 	"time"
@@ -141,7 +143,31 @@ func main() {
 		}
 		if libIndex != nil {
 			codeDirParts := strings.Split(comp.DP.CodeDir, "/")
-			writeFile(filepath.Join(comp.DP.CodeDir, codeDirParts[len(codeDirParts)-1]+".md"), libIndex)
+			filePath := filepath.Join(comp.DP.CodeDir, codeDirParts[len(codeDirParts)-1])
+			writeFile(filePath+".md", libIndex)
+
+			{ // output the json showing which package tests pass
+				deDupMap := map[string]bool{}
+				for _, r := range packagedoc.CompilationTestResults.Results {
+					if r.HasTest {
+						for t, ok := range r.TargetTestOK {
+							if ok {
+								deDupMap[t+"|"+r.Module] = true
+							}
+						}
+					}
+				}
+				jsonData := []string{}
+				for k := range deDupMap {
+					jsonData = append(jsonData, k)
+				}
+				sort.Strings(jsonData)
+				byts, err := json.MarshalIndent(jsonData, "", " ")
+				if err != nil {
+					panic(err)
+				}
+				writeFile(filePath+".json", byts)
+			}
 		}
 		if !comp.DP.IsRoot {
 			wg.Done()
