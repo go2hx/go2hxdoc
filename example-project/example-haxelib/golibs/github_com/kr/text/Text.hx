@@ -85,7 +85,7 @@ function indentBytes(_b:Slice<GoByte>, _prefix:Slice<GoByte>):Slice<GoByte> {
 **/
 function newIndentWriter(_w:stdgo.io.Io.Writer, _pre:haxe.Rest<Slice<GoByte>>):stdgo.io.Io.Writer {
         var _pre = new Slice<Slice<GoByte>>(0, 0, ..._pre);
-        return Go.asInterface((({ _w : _w, _bol : true, _pre : _pre } : T_indentWriter) : Ref<T_indentWriter>));
+        return Go.asInterface((Go.setRef(({ _w : _w, _bol : true, _pre : _pre } : T_indentWriter)) : Ref<T_indentWriter>));
     }
 /**
     // Wrap wraps s into a paragraph of lines of length lim, with minimal
@@ -177,7 +177,7 @@ class T_indentWriter_asInterface {
         // The only errors returned are from the underlying indentWriter.
     **/
     @:keep
-    public function write(_p:Slice<GoByte>):{ var _0 : GoInt; var _1 : Error; } return __self__.value.write(_p);
+    public dynamic function write(_p:Slice<GoByte>):{ var _0 : GoInt; var _1 : Error; } return __self__.value.write(_p);
     public function new(__self__, __type__) {
         this.__self__ = __self__;
         this.__type__ = __type__;

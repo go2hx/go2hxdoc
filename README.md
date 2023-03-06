@@ -24,7 +24,7 @@ Further possible improvements:
 ------------------------------
 
 Robustness:
-- Check format of generated json test result file for use in regression testing
+- Add further [Go comment formatting](https://tip.golang.org/doc/comment)
 - Add test targets: "cs", "lua", "python", "php", "neko"
 - Investigate orphan processes after timeout to see if tidy-up is required
 - Consider ways to avoid re-building documentation or re-running tests when this work has already been done

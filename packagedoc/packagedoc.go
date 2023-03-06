@@ -99,14 +99,26 @@ func (cfg *Config) Comment(text string) {
 			}
 		} else {
 			blankCount = 0
-			line = strings.TrimSpace(line)
-			line = strings.TrimLeft(line, "//")
-			line = strings.TrimLeft(line, "/*")
-			line = strings.TrimLeft(line, "/|*")
-			line = strings.TrimRight(line, "*/")
-			line = strings.TrimRight(line, "*|/")
-			line = strings.TrimSpace(line)
-			if line == "" {
+
+			line = strings.TrimSpace(line) // remove leading and trailing whitespace
+
+			if len(line) >= 2 { // remove leading comment markers, if present, and trim whitespace
+				switch line[:2] {
+				case "/|":
+					if len(line) >= 3 && line[2] == '*' {
+						line = strings.TrimSpace(line[3:])
+					}
+				case "//", "/*":
+					line = strings.TrimSpace(line[2:])
+				default:
+				}
+			}
+
+			// remove trailing comment markers, if present
+			line = strings.TrimSuffix(line, "*/")
+			line = strings.TrimSuffix(line, "*|/")
+
+			if line == "" { // we must be between paragraphs
 				txt, err := cfg.MD.Paragraph(para)
 				if err != nil {
 					panic(err)

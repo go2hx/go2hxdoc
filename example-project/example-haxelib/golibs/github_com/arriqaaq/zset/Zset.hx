@@ -149,24 +149,24 @@ private function _randomLevel():GoInt {
         return (32 : GoInt);
     }
 private function _createNode(_level:GoInt, _score:GoFloat64, _member:GoString, _value:AnyInterface):Ref<T_zskiplistNode> {
-        var _node = (({ _member : _member, _value : _value, _score : _score, _level : new Slice<Ref<T_zskiplistLevel>>((_level : GoInt).toBasic(), 0, ...[for (i in 0 ... (_level : GoInt).toBasic()) (null : Ref<T_zskiplistLevel>)]) } : T_zskiplistNode) : Ref<T_zskiplistNode>);
+        var _node = (Go.setRef(({ _member : _member, _value : _value, _score : _score, _level : new Slice<Ref<T_zskiplistLevel>>((_level : GoInt).toBasic(), 0, ...[for (i in 0 ... (_level : GoInt).toBasic()) (null : Ref<T_zskiplistLevel>)]) } : T_zskiplistNode)) : Ref<T_zskiplistNode>);
         for (_i in 0 ... _node._level.length.toBasic()) {
-            _node._level[(_i : GoInt)] = ({} : T_zskiplistLevel);
+            _node._level[(_i : GoInt)] = (Go.setRef(({} : T_zskiplistLevel)) : Ref<T_zskiplistLevel>);
         };
         return _node;
     }
 private function _newZSkipList():Ref<T_zskiplist> {
-        return (({ _head : _createNode((32 : GoInt), (0 : GoFloat64), Go.str(), (null : AnyInterface)), _level : (1 : GoInt) } : T_zskiplist) : Ref<T_zskiplist>);
+        return (Go.setRef(({ _head : _createNode((32 : GoInt), (0 : GoFloat64), Go.str(), (null : AnyInterface)), _level : (1 : GoInt) } : T_zskiplist)) : Ref<T_zskiplist>);
     }
 /**
     // New create a new sorted set
 **/
 function new_():Ref<ZSet> {
-        return ((new ZSet((new GoObjectMap<GoString, Ref<T_zset>>(new stdgo.internal.reflect.Reflect._Type(stdgo.internal.reflect.Reflect.GoType.mapType({ get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zset", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_dict", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.mapType({ get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }, { name : "_zsl", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplist", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_head", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }, optional : false }, { name : "_tail", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }, optional : false }, { name : "_length", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(int64_kind) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(int_kind) }, optional : false }]), false, { get : () -> null }) }) }, optional : false }]), false, { get : () -> null }) }) }))) : GoMap<GoString, Ref<T_zset>>)) : ZSet) : Ref<ZSet>);
+        return (Go.setRef((new ZSet((new GoObjectMap<GoString, Ref<T_zset>>(new stdgo.internal.reflect.Reflect._Type(stdgo.internal.reflect.Reflect.GoType.mapType({ get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zset", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_dict", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.mapType({ get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }, { name : "_zsl", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplist", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_head", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }, optional : false }, { name : "_tail", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }, optional : false }, { name : "_length", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(int64_kind) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(int_kind) }, optional : false }]), false, { get : () -> null }) }) }, optional : false }]), false, { get : () -> null }) }) }))) : GoMap<GoString, Ref<T_zset>>)) : ZSet)) : Ref<ZSet>);
     }
 class ZSet_asInterface {
     @:keep
-    public function keys():Slice<GoString> return __self__.value.keys();
+    public dynamic function keys():Slice<GoString> return __self__.value.keys();
     /**
         /|*
         	Returns all the elements in the sorted set at key with a score between min and max (including
@@ -179,119 +179,119 @@ class ZSet_asInterface {
         *|/
     **/
     @:keep
-    public function zrangeByScore(_key:GoString, _start:GoFloat64, _end:GoFloat64, _options:Ref<ZRangeOptions>):Slice<Ref<T_zskiplistNode>> return __self__.value.zrangeByScore(_key, _start, _end, _options);
+    public dynamic function zrangeByScore(_key:GoString, _start:GoFloat64, _end:GoFloat64, _options:Ref<ZRangeOptions>):Slice<Ref<T_zskiplistNode>> return __self__.value.zrangeByScore(_key, _start, _end, _options);
     /**
         // get and remove the element with maximum score, nil if the set is empty
     **/
     @:keep
-    public function zpopMax(_key:GoString):Ref<T_zskiplistNode> return __self__.value.zpopMax(_key);
+    public dynamic function zpopMax(_key:GoString):Ref<T_zskiplistNode> return __self__.value.zpopMax(_key);
     /**
         // get and remove the element with minimal score, nil if the set is empty
     **/
     @:keep
-    public function zpopMin(_key:GoString):Ref<T_zskiplistNode> return __self__.value.zpopMin(_key);
+    public dynamic function zpopMin(_key:GoString):Ref<T_zskiplistNode> return __self__.value.zpopMin(_key);
     /**
         // ZRevGetByRank get the member at key by rank, the rank is ordered from highest to lowest.
         // The rank of highest is 0 and so on.
     **/
     @:keep
-    public function zrevGetByRank(_key:GoString, _rank:GoInt):Slice<AnyInterface> return __self__.value.zrevGetByRank(_key, _rank);
+    public dynamic function zrevGetByRank(_key:GoString, _rank:GoInt):Slice<AnyInterface> return __self__.value.zrevGetByRank(_key, _rank);
     /**
         // ZGetByRank gets the member at key by rank, the rank is ordered from lowest to highest.
         // The rank of lowest is 0 and so on.
     **/
     @:keep
-    public function zgetByRank(_key:GoString, _rank:GoInt):Slice<AnyInterface> return __self__.value.zgetByRank(_key, _rank);
+    public dynamic function zgetByRank(_key:GoString, _rank:GoInt):Slice<AnyInterface> return __self__.value.zgetByRank(_key, _rank);
     /**
         // ZRevRange returns the specified range of elements in the sorted set stored at key.
         // The elements are considered to be ordered from the highest to the lowest score.
         // Descending lexicographical order is used for elements with equal score.
     **/
     @:keep
-    public function zrevRangeWithScores(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrevRangeWithScores(_key, _start, _stop);
+    public dynamic function zrevRangeWithScores(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrevRangeWithScores(_key, _start, _stop);
     /**
         // ZRevRange returns the specified range of elements in the sorted set stored at key.
         // The elements are considered to be ordered from the highest to the lowest score.
         // Descending lexicographical order is used for elements with equal score.
     **/
     @:keep
-    public function zrevRange(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrevRange(_key, _start, _stop);
+    public dynamic function zrevRange(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrevRange(_key, _start, _stop);
     /**
         // ZRangeWithScores returns the specified range of elements in the sorted set stored at <key>.
     **/
     @:keep
-    public function zrangeWithScores(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrangeWithScores(_key, _start, _stop);
+    public dynamic function zrangeWithScores(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrangeWithScores(_key, _start, _stop);
     /**
         // ZRange returns the specified range of elements in the sorted set stored at <key>.
     **/
     @:keep
-    public function zrange(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrange(_key, _start, _stop);
+    public dynamic function zrange(_key:GoString, _start:GoInt, _stop:GoInt):Slice<AnyInterface> return __self__.value.zrange(_key, _start, _stop);
     /**
         // ZClear clear the key in zset.
     **/
     @:keep
-    public function zclear(_key:GoString):Void __self__.value.zclear(_key);
+    public dynamic function zclear(_key:GoString):Void __self__.value.zclear(_key);
     /**
         // ZKeyExists check if the key exists in zset.
     **/
     @:keep
-    public function zkeyExists(_key:GoString):Bool return __self__.value.zkeyExists(_key);
+    public dynamic function zkeyExists(_key:GoString):Bool return __self__.value.zkeyExists(_key);
     /**
         // ZRevScoreRange returns all the elements in the sorted set at key with a score between max and min (including elements with score equal to max or min).
         // In contrary to the default ordering of sorted sets, for this command the elements are considered to be ordered from high to low scores.
     **/
     @:keep
-    public function zrevScoreRange(_key:GoString, _max:GoFloat64, _min:GoFloat64):Slice<AnyInterface> return __self__.value.zrevScoreRange(_key, _max, _min);
+    public dynamic function zrevScoreRange(_key:GoString, _max:GoFloat64, _min:GoFloat64):Slice<AnyInterface> return __self__.value.zrevScoreRange(_key, _max, _min);
     /**
         // ZScoreRange returns all the elements in the sorted set at key with a score between min and max (including elements with score equal to min or max).
         // The elements are considered to be ordered from low to high scores.
     **/
     @:keep
-    public function zscoreRange(_key:GoString, _min:GoFloat64, _max:GoFloat64):Slice<AnyInterface> return __self__.value.zscoreRange(_key, _min, _max);
+    public dynamic function zscoreRange(_key:GoString, _min:GoFloat64, _max:GoFloat64):Slice<AnyInterface> return __self__.value.zscoreRange(_key, _min, _max);
     /**
         // ZRem removes the specified members from the sorted set stored at key. Non existing members are ignored.
         // An error is returned when key exists and does not hold a sorted set.
     **/
     @:keep
-    public function zrem(_key:GoString, _member:GoString):Bool return __self__.value.zrem(_key, _member);
+    public dynamic function zrem(_key:GoString, _member:GoString):Bool return __self__.value.zrem(_key, _member);
     /**
         // ZIncrBy increments the score of member in the sorted set stored at key by increment.
         // If member does not exist in the sorted set, it is added with increment as its score (as if its previous score was 0.0).
         // If key does not exist, a new sorted set with the specified member as its sole member is created.
     **/
     @:keep
-    public function zincrBy(_key:GoString, _increment:GoFloat64, _member:GoString):GoFloat64 return __self__.value.zincrBy(_key, _increment, _member);
+    public dynamic function zincrBy(_key:GoString, _increment:GoFloat64, _member:GoString):GoFloat64 return __self__.value.zincrBy(_key, _increment, _member);
     /**
         // ZRevRank returns the rank of member in the sorted set stored at key, with the scores ordered from high to low.
         // The rank (or index) is 0-based, which means that the member with the highest score has rank 0.
     **/
     @:keep
-    public function zrevRank(_key:GoString, _member:GoString):GoInt64 return __self__.value.zrevRank(_key, _member);
+    public dynamic function zrevRank(_key:GoString, _member:GoString):GoInt64 return __self__.value.zrevRank(_key, _member);
     /**
         // ZRank returns the rank of member in the sorted set stored at key, with the scores ordered from low to high.
         // The rank (or index) is 0-based, which means that the member with the lowest score has rank 0.
     **/
     @:keep
-    public function zrank(_key:GoString, _member:GoString):GoInt64 return __self__.value.zrank(_key, _member);
+    public dynamic function zrank(_key:GoString, _member:GoString):GoInt64 return __self__.value.zrank(_key, _member);
     /**
         // ZCard returns the sorted set cardinality (number of elements) of the sorted set stored at key.
     **/
     @:keep
-    public function zcard(_key:GoString):GoInt return __self__.value.zcard(_key);
+    public dynamic function zcard(_key:GoString):GoInt return __self__.value.zcard(_key);
     /**
         // ZScore returns the score of member in the sorted set at key.
     **/
     @:keep
-    public function zscore(_key:GoString, _member:GoString):{ var _0 : Bool; var _1 : GoFloat64; } return __self__.value.zscore(_key, _member);
+    public dynamic function zscore(_key:GoString, _member:GoString):{ var _0 : Bool; var _1 : GoFloat64; } return __self__.value.zscore(_key, _member);
     /**
         // ZAdd Adds the specified member with the specified score to the sorted set stored at key.
         // Add an element into the sorted set with specific key / value / score.
         // Time complexity of this method is : O(log(N))
     **/
     @:keep
-    public function zadd(_key:GoString, _score:GoFloat64, _member:GoString, _value:AnyInterface):GoInt return __self__.value.zadd(_key, _score, _member, _value);
+    public dynamic function zadd(_key:GoString, _score:GoFloat64, _member:GoString, _value:AnyInterface):GoInt return __self__.value.zadd(_key, _score, _member, _value);
     @:keep
-    public function _exist(_key:GoString):Bool return __self__.value._exist(_key);
+    public dynamic function _exist(_key:GoString):Bool return __self__.value._exist(_key);
     public function new(__self__, __type__) {
         this.__self__ = __self__;
         this.__type__ = __type__;
@@ -329,11 +329,11 @@ class ZSet_asInterface {
         var _n = _z._records[_key];
         var _zsl = _n._zsl;
         var _limit:GoInt = ((("2147483647" : GoUInt) : GoUInt) : GoInt);
-        if ((_options != null) && (_options.limit > (0 : GoInt))) {
+        if (((_options != null) && ((_options : Dynamic).__nil__ == null || !(_options : Dynamic).__nil__)) && (_options.limit > (0 : GoInt))) {
             _limit = _options.limit;
         };
-        var _excludeStart:Bool = (_options != null) && _options.excludeStart;
-        var _excludeEnd:Bool = (_options != null) && _options.excludeEnd;
+        var _excludeStart:Bool = ((_options != null) && ((_options : Dynamic).__nil__ == null || !(_options : Dynamic).__nil__)) && _options.excludeStart;
+        var _excludeEnd:Bool = ((_options != null) && ((_options : Dynamic).__nil__ == null || !(_options : Dynamic).__nil__)) && _options.excludeEnd;
         var _reverse:Bool = _start > _end;
         if (_reverse) {
             {
@@ -358,7 +358,7 @@ class ZSet_asInterface {
                 {
                     var _i:GoInt = _zsl._level - (1 : GoInt);
                     Go.cfor(_i >= (0 : GoInt), _i--, {
-                        while ((_x._level[(_i : GoInt)]._forward != null) && (_x._level[(_i : GoInt)]._forward._score < _end)) {
+                        while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && (_x._level[(_i : GoInt)]._forward._score < _end)) {
                             _x = _x._level[(_i : GoInt)]._forward;
                         };
                     });
@@ -367,13 +367,13 @@ class ZSet_asInterface {
                 {
                     var _i:GoInt = _zsl._level - (1 : GoInt);
                     Go.cfor(_i >= (0 : GoInt), _i--, {
-                        while ((_x._level[(_i : GoInt)]._forward != null) && (_x._level[(_i : GoInt)]._forward._score <= _end)) {
+                        while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && (_x._level[(_i : GoInt)]._forward._score <= _end)) {
                             _x = _x._level[(_i : GoInt)]._forward;
                         };
                     });
                 };
             };
-            while ((_x != null) && (_limit > (0 : GoInt))) {
+            while (((_x != null) && ((_x : Dynamic).__nil__ == null || !(_x : Dynamic).__nil__)) && (_limit > (0 : GoInt))) {
                 if (_excludeStart) {
                     if (_x._score <= _start) {
                         break;
@@ -394,7 +394,7 @@ class ZSet_asInterface {
                 {
                     var _i:GoInt = _zsl._level - (1 : GoInt);
                     Go.cfor(_i >= (0 : GoInt), _i--, {
-                        while ((_x._level[(_i : GoInt)]._forward != null) && (_x._level[(_i : GoInt)]._forward._score <= _start)) {
+                        while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && (_x._level[(_i : GoInt)]._forward._score <= _start)) {
                             _x = _x._level[(_i : GoInt)]._forward;
                         };
                     });
@@ -403,14 +403,14 @@ class ZSet_asInterface {
                 {
                     var _i:GoInt = _zsl._level - (1 : GoInt);
                     Go.cfor(_i >= (0 : GoInt), _i--, {
-                        while ((_x._level[(_i : GoInt)]._forward != null) && (_x._level[(_i : GoInt)]._forward._score < _start)) {
+                        while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && (_x._level[(_i : GoInt)]._forward._score < _start)) {
                             _x = _x._level[(_i : GoInt)]._forward;
                         };
                     });
                 };
             };
             _x = _x._level[(0 : GoInt)]._forward;
-            while ((_x != null) && (_limit > (0 : GoInt))) {
+            while (((_x != null) && ((_x : Dynamic).__nil__ == null || !(_x : Dynamic).__nil__)) && (_limit > (0 : GoInt))) {
                 if (_excludeEnd) {
                     if (_x._score >= _end) {
                         break;
@@ -439,7 +439,7 @@ class ZSet_asInterface {
         };
         var _n = _z._records[_key];
         var _x = _n._zsl._tail;
-        if (_x != null) {
+        if (_x != null && ((_x : Dynamic).__nil__ == null || !(_x : Dynamic).__nil__)) {
             _z.zrem(_key, _x._member);
         };
         return _x;
@@ -455,7 +455,7 @@ class ZSet_asInterface {
         };
         var _n = _z._records[_key];
         var _x = _n._zsl._head._level[(0 : GoInt)]._forward;
-        if (_x != null) {
+        if (_x != null && ((_x : Dynamic).__nil__ == null || !(_x : Dynamic).__nil__)) {
             _z.zrem(_key, _x._member);
         };
         return _x;
@@ -577,12 +577,12 @@ class ZSet_asInterface {
         {
             var _i:GoInt = _item._level - (1 : GoInt);
             Go.cfor(_i >= (0 : GoInt), _i--, {
-                while ((_x._level[(_i : GoInt)]._forward != null) && (_x._level[(_i : GoInt)]._forward._score <= _max)) {
+                while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && (_x._level[(_i : GoInt)]._forward._score <= _max)) {
                     _x = _x._level[(_i : GoInt)]._forward;
                 };
             });
         };
-        while (_x != null) {
+        while (_x != null && ((_x : Dynamic).__nil__ == null || !(_x : Dynamic).__nil__)) {
             if (_x._score < _min) {
                 break;
             };
@@ -614,13 +614,13 @@ class ZSet_asInterface {
         {
             var _i:GoInt = _item._level - (1 : GoInt);
             Go.cfor(_i >= (0 : GoInt), _i--, {
-                while ((_x._level[(_i : GoInt)]._forward != null) && (_x._level[(_i : GoInt)]._forward._score < _min)) {
+                while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && (_x._level[(_i : GoInt)]._forward._score < _min)) {
                     _x = _x._level[(_i : GoInt)]._forward;
                 };
             });
         };
         _x = _x._level[(0 : GoInt)]._forward;
-        while (_x != null) {
+        while (_x != null && ((_x : Dynamic).__nil__ == null || !(_x : Dynamic).__nil__)) {
             if (_x._score > _max) {
                 break;
             };
@@ -737,7 +737,7 @@ class ZSet_asInterface {
     static public function zadd( _z:Ref<ZSet>, _key:GoString, _score:GoFloat64, _member:GoString, _value:AnyInterface):GoInt {
         var _val:GoInt = (0 : GoInt);
         if (!_z._exist(_key)) {
-            var _node = (({ _dict : (new GoObjectMap<GoString, Ref<T_zskiplistNode>>(new stdgo.internal.reflect.Reflect._Type(stdgo.internal.reflect.Reflect.GoType.mapType({ get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }))) : GoMap<GoString, Ref<T_zskiplistNode>>), _zsl : _newZSkipList() } : T_zset) : Ref<T_zset>);
+            var _node = (Go.setRef(({ _dict : (new GoObjectMap<GoString, Ref<T_zskiplistNode>>(new stdgo.internal.reflect.Reflect._Type(stdgo.internal.reflect.Reflect.GoType.mapType({ get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_member", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(string_kind) }, optional : false }, { name : "_value", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.interfaceType(true, []) }, optional : false }, { name : "_score", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(float64_kind) }, optional : false }, { name : "_backward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_level", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.sliceType({ get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistLevel", [], stdgo.internal.reflect.Reflect.GoType.structType([{ name : "_forward", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.refType({ get : () -> stdgo.internal.reflect.Reflect.GoType.named("T_zskiplistNode", [], stdgo.internal.reflect.Reflect.GoType.invalidType, false, { get : () -> null }) }) }, optional : false }, { name : "_span", embedded : false, tag : "", type : { get : () -> stdgo.internal.reflect.Reflect.GoType.basic(uint64_kind) }, optional : false }]), false, { get : () -> null }) }) }) }, optional : false }]), false, { get : () -> null }) }) }))) : GoMap<GoString, Ref<T_zskiplistNode>>), _zsl : _newZSkipList() } : T_zset)) : Ref<T_zset>);
             _z._records[_key] = _node;
         };
         var _item = _z._records[_key];
@@ -755,7 +755,7 @@ class ZSet_asInterface {
             _val = (1 : GoInt);
             _node = _item._zsl._insert(_score, _member, _value);
         };
-        if (_node != null) {
+        if (_node != null && ((_node : Dynamic).__nil__ == null || !(_node : Dynamic).__nil__)) {
             _item._dict[_member] = _node;
         };
         return _val;
@@ -768,23 +768,23 @@ class ZSet_asInterface {
 }
 class T_zskiplist_asInterface {
     @:keep
-    public function _getNodeByRank(_rank:GoUInt64):Ref<T_zskiplistNode> return __self__.value._getNodeByRank(_rank);
+    public dynamic function _getNodeByRank(_rank:GoUInt64):Ref<T_zskiplistNode> return __self__.value._getNodeByRank(_rank);
     /**
         // Find the rank of the node specified by key
         // Note that the rank is 0-based integer. Rank 0 means the first node
     **/
     @:keep
-    public function _getRank(_score:GoFloat64, _member:GoString):GoInt64 return __self__.value._getRank(_score, _member);
+    public dynamic function _getRank(_score:GoFloat64, _member:GoString):GoInt64 return __self__.value._getRank(_score, _member);
     /**
         /|* Delete an element with matching score/key from the skiplist. *|/
     **/
     @:keep
-    public function _delete(_score:GoFloat64, _member:GoString):Void __self__.value._delete(_score, _member);
+    public dynamic function _delete(_score:GoFloat64, _member:GoString):Void __self__.value._delete(_score, _member);
     /**
         /|* Internal function used by delete, DeleteByScore and DeleteByRank *|/
     **/
     @:keep
-    public function _deleteNode(_x:Ref<T_zskiplistNode>, _updates:Slice<Ref<T_zskiplistNode>>):Void __self__.value._deleteNode(_x, _updates);
+    public dynamic function _deleteNode(_x:Ref<T_zskiplistNode>, _updates:Slice<Ref<T_zskiplistNode>>):Void __self__.value._deleteNode(_x, _updates);
     /**
         /|*
         	Insert a new node in the skiplist. Assumes the element does not already
@@ -793,7 +793,7 @@ class T_zskiplist_asInterface {
         *|/
     **/
     @:keep
-    public function _insert(_score:GoFloat64, _member:GoString, _value:AnyInterface):Ref<T_zskiplistNode> return __self__.value._insert(_score, _member, _value);
+    public dynamic function _insert(_score:GoFloat64, _member:GoString, _value:AnyInterface):Ref<T_zskiplistNode> return __self__.value._insert(_score, _member, _value);
     public function new(__self__, __type__) {
         this.__self__ = __self__;
         this.__type__ = __type__;
@@ -810,7 +810,7 @@ class T_zskiplist_asInterface {
         {
             var _i:GoInt = _z._level - (1 : GoInt);
             Go.cfor(_i >= (0 : GoInt), _i--, {
-                while ((_x._level[(_i : GoInt)]._forward != null) && ((_traversed + _x._level[(_i : GoInt)]._span) <= _rank)) {
+                while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && ((_traversed + _x._level[(_i : GoInt)]._span) <= _rank)) {
                     _traversed = _traversed + (_x._level[(_i : GoInt)]._span);
                     _x = _x._level[(_i : GoInt)]._forward;
                 };
@@ -832,7 +832,7 @@ class T_zskiplist_asInterface {
         {
             var _i:GoInt = _z._level - (1 : GoInt);
             Go.cfor(_i >= (0 : GoInt), _i--, {
-                while ((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward._score < _score) || ((_x._level[(_i : GoInt)]._forward._score == _score) && (_x._level[(_i : GoInt)]._forward._member <= _member)))) {
+                while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && ((_x._level[(_i : GoInt)]._forward._score < _score) || ((_x._level[(_i : GoInt)]._forward._score == _score) && (_x._level[(_i : GoInt)]._forward._member <= _member)))) {
                     _rank = _rank + (_x._level[(_i : GoInt)]._span);
                     _x = _x._level[(_i : GoInt)]._forward;
                 };
@@ -853,14 +853,14 @@ class T_zskiplist_asInterface {
         {
             var _i:GoInt = _z._level - (1 : GoInt);
             Go.cfor(_i >= (0 : GoInt), _i--, {
-                while ((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward._score < _score) || ((_x._level[(_i : GoInt)]._forward._score == _score) && (_x._level[(_i : GoInt)]._forward._member < _member)))) {
+                while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && ((_x._level[(_i : GoInt)]._forward._score < _score) || ((_x._level[(_i : GoInt)]._forward._score == _score) && (_x._level[(_i : GoInt)]._forward._member < _member)))) {
                     _x = _x._level[(_i : GoInt)]._forward;
                 };
                 _update[(_i : GoInt)] = _x;
             });
         };
         _x = _x._level[(0 : GoInt)]._forward;
-        if (((_x != null) && (_score == _x._score)) && (_x._member == _member)) {
+        if ((((_x != null) && ((_x : Dynamic).__nil__ == null || !(_x : Dynamic).__nil__)) && (_score == _x._score)) && (_x._member == _member)) {
             _z._deleteNode(_x, _update);
             return;
         };
@@ -881,12 +881,12 @@ class T_zskiplist_asInterface {
                 };
             });
         };
-        if (_x._level[(0 : GoInt)]._forward != null) {
+        if (_x._level[(0 : GoInt)]._forward != null && ((_x._level[(0 : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(0 : GoInt)]._forward : Dynamic).__nil__)) {
             _x._level[(0 : GoInt)]._forward._backward = _x._backward;
         } else {
             _z._tail = _x._backward;
         };
-        while ((_z._level > (1 : GoInt)) && (_z._head._level[(_z._level - (1 : GoInt) : GoInt)]._forward == null)) {
+        while ((_z._level > (1 : GoInt)) && (_z._head._level[(_z._level - (1 : GoInt) : GoInt)]._forward == null) || (_z._head._level[(_z._level - (1 : GoInt) : GoInt)]._forward : Dynamic).__nil__) {
             _z._level--;
         };
         _z._length--;
@@ -911,8 +911,8 @@ class T_zskiplist_asInterface {
                 } else {
                     _rank[(_i : GoInt)] = _rank[(_i + (1 : GoInt) : GoInt)];
                 };
-                if (_x._level[(_i : GoInt)] != null) {
-                    while ((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward._score < _score) || ((_x._level[(_i : GoInt)]._forward._score == _score) && (_x._level[(_i : GoInt)]._forward._member < _member)))) {
+                if (_x._level[(_i : GoInt)] != null && ((_x._level[(_i : GoInt)] : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)] : Dynamic).__nil__)) {
+                    while (((_x._level[(_i : GoInt)]._forward != null) && ((_x._level[(_i : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(_i : GoInt)]._forward : Dynamic).__nil__)) && ((_x._level[(_i : GoInt)]._forward._score < _score) || ((_x._level[(_i : GoInt)]._forward._score == _score) && (_x._level[(_i : GoInt)]._forward._member < _member)))) {
                         _rank[(_i : GoInt)] = _rank[(_i : GoInt)] + (_x._level[(_i : GoInt)]._span);
                         _x = _x._level[(_i : GoInt)]._forward;
                     };
@@ -953,7 +953,7 @@ class T_zskiplist_asInterface {
         } else {
             _x._backward = _updates[(0 : GoInt)];
         };
-        if (_x._level[(0 : GoInt)]._forward != null) {
+        if (_x._level[(0 : GoInt)]._forward != null && ((_x._level[(0 : GoInt)]._forward : Dynamic).__nil__ == null || !(_x._level[(0 : GoInt)]._forward : Dynamic).__nil__)) {
             _x._level[(0 : GoInt)]._forward._backward = _x;
         } else {
             _z._tail = _x;
@@ -964,9 +964,9 @@ class T_zskiplist_asInterface {
 }
 class T_zset_asInterface {
     @:keep
-    public function _findRange(_key:GoString, _start:GoInt64, _stop:GoInt64, _reverse:Bool, _withScores:Bool):Slice<AnyInterface> return __self__.value._findRange(_key, _start, _stop, _reverse, _withScores);
+    public dynamic function _findRange(_key:GoString, _start:GoInt64, _stop:GoInt64, _reverse:Bool, _withScores:Bool):Slice<AnyInterface> return __self__.value._findRange(_key, _start, _stop, _reverse, _withScores);
     @:keep
-    public function _getNodeByRank(_key:GoString, _rank:GoInt64, _reverse:Bool):{ var _0 : GoString; var _1 : GoFloat64; } return __self__.value._getNodeByRank(_key, _rank, _reverse);
+    public dynamic function _getNodeByRank(_key:GoString, _rank:GoInt64, _reverse:Bool):{ var _0 : GoString; var _1 : GoFloat64; } return __self__.value._getNodeByRank(_key, _rank, _reverse);
     public function new(__self__, __type__) {
         this.__self__ = __self__;
         this.__type__ = __type__;
@@ -1034,11 +1034,11 @@ class T_zset_asInterface {
             _rank++;
         };
         var _n = _z._zsl._getNodeByRank((_rank : GoUInt64));
-        if (_n == null) {
+        if (_n == null || (_n : Dynamic).__nil__) {
             return { _0 : Go.str(), _1 : (-9.223372036854776e+18 : GoFloat64) };
         };
         var _node = _z._dict[_n._member];
-        if (_node == null) {
+        if (_node == null || (_node : Dynamic).__nil__) {
             return { _0 : Go.str(), _1 : (-9.223372036854776e+18 : GoFloat64) };
         };
         return { _0 : _node._member, _1 : _node._score };

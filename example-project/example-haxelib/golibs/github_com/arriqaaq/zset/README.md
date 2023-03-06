@@ -81,7 +81,7 @@ final skiplist_MAXLEVEL:stdgo.GoUInt64 = (("32" : GoUInt64))
 ```
 
 
-For 2^32 elements  
+For 2^32 elements   
 
 
 
@@ -90,7 +90,7 @@ final skiplist_Probability:stdgo.GoFloat64 = ((0.25 : GoFloat64))
 ```
 
 
-Skiplist probability = 1/4  
+Skiplist probability = 1/4   
 
 
 
