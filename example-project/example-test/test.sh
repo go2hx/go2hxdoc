@@ -6,4 +6,5 @@ cd example-haxelib
 cd ../example-test # back here again
 haxelib remove go2hxdoc_example
 haxelib dev go2hxdoc_example ../example-haxelib
-haxe -m Test -lib go2hx -lib go2hxdoc_example --interp
+haxe -m Test -lib go2hx -lib go2hxdoc_example -hl test.hl
+hl test.hl

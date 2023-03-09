@@ -607,7 +607,11 @@ func XMLread(filename string) (*TypeTree, error) {
 		if unicode.IsGraphic(r) {
 			rawXml = utf8.AppendRune(rawXml, r)
 		} else {
-			rawXml = utf8.AppendRune(rawXml, utf8.RuneError)
+			if r == '\t' { // let tab through, for formatting
+				rawXml = utf8.AppendRune(rawXml, '\t')
+			} else {
+				rawXml = utf8.AppendRune(rawXml, utf8.RuneError)
+			}
 		}
 	}
 

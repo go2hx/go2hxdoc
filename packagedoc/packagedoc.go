@@ -16,6 +16,7 @@ import (
 	"sort"
 	"strings"
 	"sync"
+	"unicode"
 	"unicode/utf8"
 
 	"github.com/go2hx/go2hxdoc/extractfunc"
@@ -82,6 +83,17 @@ func (cfg *Config) CodeBlock(text string) {
 	fmt.Fprintln(&cfg.Out, txt)
 }
 
+func (cfg *Config) CommentPara(text string) {
+	text = strings.TrimRightFunc(text, func(r rune) bool {
+		return unicode.IsSpace(r) // remove whitespace
+	})
+	if len(text) == 0 {
+		return
+	}
+	text = "```\n" + text + "\n```" // a code block - hand coded
+	fmt.Fprintln(&cfg.Out, text)
+}
+
 func (cfg *Config) Comment(text string) {
 	para := ""
 	blankCount := 0
@@ -89,28 +101,24 @@ func (cfg *Config) Comment(text string) {
 		if line == "" {
 			blankCount++
 			if blankCount > 3 && para != "" { // probably a blank line between two sets of free-form text
-				txt, err := cfg.MD.Paragraph(para)
-				if err != nil {
-					panic(err)
-				}
-				fmt.Fprintln(&cfg.Out, txt)
 				para = ""
 				blankCount = 0
 			}
 		} else {
 			blankCount = 0
 
+			oldLine := line
 			line = strings.TrimSpace(line) // remove leading and trailing whitespace
-
-			if len(line) >= 2 { // remove leading comment markers, if present, and trim whitespace
+			if len(line) >= 2 {            // remove leading comment markers, if present
 				switch line[:2] {
 				case "/|":
 					if len(line) >= 3 && line[2] == '*' {
-						line = strings.TrimSpace(line[3:])
+						line = line[3:]
 					}
 				case "//", "/*":
-					line = strings.TrimSpace(line[2:])
+					line = line[2:]
 				default:
+					line = oldLine // otherwise reinstate the original line's leading spacing
 				}
 			}
 
@@ -119,22 +127,14 @@ func (cfg *Config) Comment(text string) {
 			line = strings.TrimSuffix(line, "*|/")
 
 			if line == "" { // we must be between paragraphs
-				txt, err := cfg.MD.Paragraph(para)
-				if err != nil {
-					panic(err)
-				}
-				fmt.Fprintln(&cfg.Out, txt)
+				cfg.CommentPara(para)
 				para = ""
 			} else {
 				para += line + "  \n" // two spaces at the end of a line should be interpreted by GitHub as a <br />
 			}
 		}
 	}
-	txt, err := cfg.MD.Paragraph(para)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Fprintln(&cfg.Out, txt)
+	cfg.CommentPara(para)
 }
 
 func (cfg *Config) Example(ex *rtti.Example) {

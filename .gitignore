@@ -1,4 +1,5 @@
 bin
 go2hxdoc
 example-project/bin
+example-project/example-test/*.hl
 .DS_Store
