@@ -83,18 +83,28 @@ func (cfg *Config) CodeBlock(text string) {
 	fmt.Fprintln(&cfg.Out, txt)
 }
 
-func (cfg *Config) CommentPara(text string) {
+func (cfg *Config) CommentPara(text string, headingLevel int) {
 	text = strings.TrimRightFunc(text, func(r rune) bool {
 		return unicode.IsSpace(r) // remove whitespace
 	})
 	if len(text) == 0 {
 		return
 	}
+	{ // generate Go subheading if required
+		testHeading := strings.TrimLeftFunc(text, func(r rune) bool {
+			return unicode.IsSpace(r) // remove whitespace
+		})
+		if strings.HasPrefix(testHeading, "# ") {
+			cfg.Header(headingLevel, testHeading[2:])
+			return
+		}
+	}
+
 	text = "```\n" + text + "\n```" // a code block - hand coded
 	fmt.Fprintln(&cfg.Out, text)
 }
 
-func (cfg *Config) Comment(text string) {
+func (cfg *Config) Comment(text string, headingLevel int) {
 	para := ""
 	blankCount := 0
 	for _, line := range strings.Split(text, string(utf8.RuneError)) {
@@ -127,14 +137,14 @@ func (cfg *Config) Comment(text string) {
 			line = strings.TrimSuffix(line, "*|/")
 
 			if line == "" { // we must be between paragraphs
-				cfg.CommentPara(para)
+				cfg.CommentPara(para, headingLevel)
 				para = ""
 			} else {
 				para += line + "  \n" // two spaces at the end of a line should be interpreted by GitHub as a <br />
 			}
 		}
 	}
-	cfg.CommentPara(para)
+	cfg.CommentPara(para, headingLevel)
 }
 
 func (cfg *Config) Example(ex *rtti.Example) {
@@ -325,7 +335,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 
 	cfg.Header(1, headers[overview])
 	{
-		cfg.Comment(dd.Doc)
+		cfg.Comment(dd.Doc, 2)
 		if dd.TestModule != "" {
 			fmt.Fprintln(&cfg.Out, stdout)
 		}
@@ -375,7 +385,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 			for _, v := range dd.ModuleLevel.Constants {
 				cfg.CodeBlock(v.String() + " = " + v.Expr)
 				if len(v.Doc) > 0 {
-					cfg.Comment(v.Doc)
+					cfg.Comment(v.Doc, 2)
 				}
 			}
 		}
@@ -388,7 +398,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		for _, v := range dd.ModuleLevel.Variables {
 			cfg.CodeBlock(v.String())
 			if len(v.Doc) > 0 {
-				cfg.Comment(v.Doc)
+				cfg.Comment(v.Doc, 2)
 			}
 		}
 	}
@@ -400,7 +410,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		for _, fn := range dd.ModuleLevel.Functions {
 			cfg.Header(2, "function "+fn.XMLName.Local)
 			cfg.CodeBlock(fn.String())
-			cfg.Comment(fn.Doc)
+			cfg.Comment(fn.Doc, 3)
 			for _, ex := range fn.Examples {
 				cfg.Example(&ex)
 			}
@@ -415,19 +425,19 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 
 		for _, cd := range dd.Classes {
 			cfg.Header(2, "class "+cd.Class.Name())
-			cfg.Comment(cd.Class.Doc)
+			cfg.Comment(cd.Class.Doc, 3)
 
 			for _, v := range cd.Variables {
 				cfg.CodeBlock(v.String())
 				if len(v.Doc) > 0 {
-					cfg.Comment(v.Doc)
+					cfg.Comment(v.Doc, 3)
 				}
 			}
 
 			for _, fn := range cd.Functions {
 				cfg.Header(3, cd.Class.Name()+classMethodSeparator+fn.XMLName.Local)
 				cfg.CodeBlock(fn.String())
-				cfg.Comment(fn.Doc)
+				cfg.Comment(fn.Doc, 4)
 				if cd.Class.File != "" && fn.Line != 0 {
 					cfg.Write(cfg.Link("(view code)", cfg.CodeHref(cd.Class.File, fn.Line)) + "\n\n")
 				}
@@ -450,7 +460,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 
 			cfg.CodeBlock(code)
 
-			cfg.Comment(cd.Typedef.Doc)
+			cfg.Comment(cd.Typedef.Doc, 3)
 		}
 	}
 
@@ -460,7 +470,7 @@ func FileMD(dd rtti.DirData, module, stdout string, showGlobalResults, hadError 
 		for _, ab := range dd.Abstracts {
 			cfg.Header(2, "abstract "+ab.Abstract.Name())
 			if ab.Abstract.Doc != "" {
-				cfg.Comment(ab.Abstract.Doc)
+				cfg.Comment(ab.Abstract.Doc, 3)
 			}
 			cfg.Write(cfg.Link("(view file containing code)", cfg.CodeHref(ab.Abstract.File, 0)) + "\n\n")
 		}

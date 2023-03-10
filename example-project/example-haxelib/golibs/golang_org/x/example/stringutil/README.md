@@ -14,7 +14,7 @@
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0014820098876953125))
+--- PASS: TestReverse (%!s(float64=0.0015261173248291016))
 
 ```
 </p>
@@ -25,7 +25,7 @@
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0007140636444091797))
+--- PASS: TestReverse (%!s(float64=0.0006690025329589844))
 
 ```
 </p>
