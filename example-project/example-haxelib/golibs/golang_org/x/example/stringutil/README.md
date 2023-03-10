@@ -6,15 +6,15 @@
 # Overview
 
 
-```
- Package stringutil contains utility functions for working with strings.
-```
+
+Package stringutil contains utility functions for working with strings.  
+
 <details><summary>hl tests passed</summary>
 <p>
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0015261173248291016))
+--- PASS: TestReverse (%!s(float64=0.0015711784362792969))
 
 ```
 </p>
@@ -25,7 +25,7 @@
 
 ```
 === RUN  TestReverse
---- PASS: TestReverse (%!s(float64=0.0006690025329589844))
+--- PASS: TestReverse (%!s(float64=0.0006361007690429688))
 
 ```
 </p>
@@ -55,9 +55,9 @@ function reverse(_s:stdgo.GoString):stdgo.GoString
 ```
 
 
-```
- Reverse returns its argument string reversed rune-wise left to right.
-```
+
+Reverse returns its argument string reversed rune\-wise left to right.  
+
 [\(view code\)](<./Stringutil.hx#L34>)
 
 

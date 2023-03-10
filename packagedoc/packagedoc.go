@@ -83,30 +83,91 @@ func (cfg *Config) CodeBlock(text string) {
 	fmt.Fprintln(&cfg.Out, txt)
 }
 
-func (cfg *Config) CommentPara(text string, headingLevel int) {
+func (cfg *Config) CommentPara(text string, headingLevel, lastParaLeadingSpaces int) int {
+
+	// remove spaces from the end
 	text = strings.TrimRightFunc(text, func(r rune) bool {
 		return unicode.IsSpace(r) // remove whitespace
 	})
 	if len(text) == 0 {
-		return
+		return lastParaLeadingSpaces
 	}
+
 	{ // generate Go subheading if required
+		spaceCount := 0
 		testHeading := strings.TrimLeftFunc(text, func(r rune) bool {
-			return unicode.IsSpace(r) // remove whitespace
+			if r == ' ' {
+				spaceCount++
+				return true
+			}
+			return false
 		})
-		if strings.HasPrefix(testHeading, "# ") {
-			cfg.Header(headingLevel, testHeading[2:])
-			return
+		if spaceCount < 6 && strings.HasPrefix(testHeading, "# ") && !strings.Contains(testHeading, "\n") { // hash space at front and blank line after
+			testHeading = strings.TrimSpace(testHeading[2:]) // get the text of the heading
+			if len(testHeading) > 0 {                        // if there actually is a heading
+				cfg.Header(headingLevel, testHeading)
+				return lastParaLeadingSpaces
+			}
 		}
 	}
 
-	text = "```\n" + text + "\n```" // a code block - hand coded
+	lines := strings.Split(text, "\n")
+	mustBeCodeBlock := false
+
+	if lastParaLeadingSpaces == 0 {
+		for _, r := range lines[0] {
+			switch r {
+			case ' ':
+				lastParaLeadingSpaces++
+			default:
+				goto endLines0
+			}
+		}
+	endLines0:
+	}
+
+	// code to check if indented
+	for _, l := range lines {
+		spaces := 0
+		for _, r := range l {
+			switch r {
+			case ' ':
+				spaces++
+			case '\t':
+				mustBeCodeBlock = true
+				fallthrough
+			default:
+				goto endLines
+			}
+		}
+	endLines:
+		if spaces != lastParaLeadingSpaces || mustBeCodeBlock {
+			mustBeCodeBlock = true
+			break
+		}
+	}
+
+	if mustBeCodeBlock {
+		text = "" + strings.Join(lines, "\n") // NOTE could possibly add slashes to visually denote comment
+		text = "```\n" + text + "\n```"       // a code block - hand coded
+	} else {
+		for i, l := range lines {
+			lines[i] = strings.TrimSpace(l)
+		}
+		text = "\n" + strings.Join(lines, "\n") + "  \n" // NOTE "  \n" at end acts as </ BR> on github, only used at end here - so text may wrap
+		text = cfg.MD.Escape(text)
+	}
 	fmt.Fprintln(&cfg.Out, text)
+	if mustBeCodeBlock {
+		return 0
+	}
+	return lastParaLeadingSpaces
 }
 
 func (cfg *Config) Comment(text string, headingLevel int) {
 	para := ""
 	blankCount := 0
+	lastParaLeadingSpaces := 0
 	for _, line := range strings.Split(text, string(utf8.RuneError)) {
 		if line == "" {
 			blankCount++
@@ -137,14 +198,14 @@ func (cfg *Config) Comment(text string, headingLevel int) {
 			line = strings.TrimSuffix(line, "*|/")
 
 			if line == "" { // we must be between paragraphs
-				cfg.CommentPara(para, headingLevel)
+				lastParaLeadingSpaces = cfg.CommentPara(para, headingLevel, lastParaLeadingSpaces)
 				para = ""
 			} else {
-				para += line + "  \n" // two spaces at the end of a line should be interpreted by GitHub as a <br />
+				para += line + "\n"
 			}
 		}
 	}
-	cfg.CommentPara(para, headingLevel)
+	cfg.CommentPara(para, headingLevel, lastParaLeadingSpaces)
 }
 
 func (cfg *Config) Example(ex *rtti.Example) {
